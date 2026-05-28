@@ -1,0 +1,32 @@
+﻿@model List<AcademicDocumentRagSystem.Services.DTOs.Chat.IndexedDocumentDto>
+
+<h2>Choose a Document to Ask</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Course</th>
+            <th>Chapter</th>
+            <th>File</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var document in Model)
+        {
+            <tr>
+                <td>@document.Title</td>
+                <td>@document.CourseCode</td>
+                <td>@document.Chapter</td>
+                <td>@document.OriginalFileName</td>
+                <td>
+                    <a asp-action="Ask" asp-route-documentId="@document.DocumentId" class="btn btn-primary">
+                        Ask
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

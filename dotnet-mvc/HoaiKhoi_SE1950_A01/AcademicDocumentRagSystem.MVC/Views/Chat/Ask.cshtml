@@ -1,0 +1,18 @@
+﻿@model AcademicDocumentRagSystem.Services.DTOs.Chat.AskQuestionDto
+
+<h2>Ask Question</h2>
+
+<form asp-action="Ask" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input type="hidden" asp-for="DocumentId" />
+
+    <div class="mb-3">
+        <label>Question</label>
+        <textarea asp-for="Question" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Question" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Ask</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

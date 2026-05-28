@@ -1,0 +1,56 @@
+﻿@model AcademicDocumentRagSystem.Services.DTOs.Chat.ChatAnswerDto
+
+<h2>Chatbot Answer</h2>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>Your Question</strong>
+    </div>
+    <div class="card-body">
+        @Model.Question
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>Answer</strong>
+    </div>
+    <div class="card-body">
+        @Model.Answer
+    </div>
+</div>
+
+<h4>Sources</h4>
+
+@if (Model.Sources == null || !Model.Sources.Any())
+{
+    <p>No sources returned.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>File</th>
+                <th>Page</th>
+                <th>Chunk</th>
+                <th>Text</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var source in Model.Sources)
+            {
+                <tr>
+                    <td>@source.FileName</td>
+                    <td>@source.PageNumber</td>
+                    <td>@source.ChunkIndex</td>
+                    <td>@source.Text</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Ask" asp-route-documentId="@Model.DocumentId" class="btn btn-primary">Ask Another Question</a>
+<a asp-action="Index" class="btn btn-secondary">Back to Documents</a>
