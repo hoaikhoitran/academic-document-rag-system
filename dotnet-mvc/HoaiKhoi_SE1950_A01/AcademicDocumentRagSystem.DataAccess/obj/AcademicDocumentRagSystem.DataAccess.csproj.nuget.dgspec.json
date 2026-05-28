@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj": {}
+    "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj": {}
   },
   "projects": {
-    "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj": {
+    "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj",
+        "projectUniqueName": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj",
         "projectName": "AcademicDocumentRagSystem.DataAccess",
-        "projectPath": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj",
+        "projectPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj",
         "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\obj\\",
+        "outputPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

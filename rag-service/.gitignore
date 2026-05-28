@@ -1,131 +1,26 @@
-@"
-# =========================
-# Python virtual environment
-# =========================
-.venv/
-venv/
-env/
+# Local overrides for rag-service.
+# The repository root .gitignore already covers Python, .env, ChromaDB,
+# storage/documents, IDE, and OS junk. Add per-service-only entries below.
 
-# =========================
-# Python cache
-# =========================
-__pycache__/
-*.py[cod]
-*$py.class
-
-# =========================
-# Test / coverage cache
-# =========================
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-
-# =========================
-# Environment variables / secrets
-# =========================
+# Secrets
 .env
 .env.*
 !.env.example
 
-# =========================
-# ChromaDB local runtime data
-# Keep only folder placeholder
-# =========================
-chroma_db/*
-!chroma_db/.gitkeep
-
-# =========================
-# Uploaded local documents
-# Keep only folder placeholder
-# =========================
-storage/documents/*
-!storage/documents/.gitkeep
-
-# =========================
-# Logs
-# =========================
-*.log
-logs/
-
-# =========================
-# OS / editor
-# =========================
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-
-# =========================
-# Local model/cache folders
-# =========================
-.cache/
-huggingface/
-transformers/
-sentence_transformers/
-torch/
-AI_Cache/
-"@ | Set-Content -Encoding UTF8 .gitignore
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-*.egg
-*.egg-info/
-.Python
-build/
-dist/
 .venv/
-venv/
-env/
-.eggs/
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Environment files (NEVER commit secrets)
-.env
-.env.local
-.env.*.local
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Pytest / coverage
 .pytest_cache/
-.coverage
-htmlcov/
-.tox/
 
-# ChromaDB persistent data
+# Local runtime data
 chroma_db/*
 !chroma_db/.gitkeep
-
-# Uploaded documents (binary, can be large)
 storage/documents/*
 !storage/documents/.gitkeep
+
+# Stray file from a botched PowerShell command
+New-Item
 
 # Logs
 *.log
-.env
-.venv/
-__pycache__/
-.pytest_cache/
-
-chroma_db/*
-!chroma_db/.gitkeep
-
-storage/documents/*
-!storage/documents/.gitkeep
-
-*.log
-.vscode/
-.idea/

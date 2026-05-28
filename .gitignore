@@ -1,0 +1,203 @@
+# =============================================================================
+# Basic-Retrieval-Augmented-Generation - root .gitignore
+# Covers: Python (rag-service), .NET (dotnet-mvc), IDE/OS junk, local data.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Secrets / environment files (NEVER commit)
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+appsettings.*.Local.json
+
+# -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+.Python
+build/
+dist/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test / coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# Jupyter
+.ipynb_checkpoints/
+
+# -----------------------------------------------------------------------------
+# .NET / Visual Studio
+# -----------------------------------------------------------------------------
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Rider / ReSharper
+.idea/
+*.DotSettings.user
+_ReSharper*/
+*.ReSharper
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# Publish output
+[Pp]ublish/
+PublishScripts/
+*.publishsettings
+
+# Entity Framework
+*.mdf
+*.ldf
+*.ndf
+
+# ASP.NET / scaffolding
+ScaffoldingReadMe.txt
+StyleCopReport.xml
+
+# Misc .NET
+*.tlog
+*.tlh
+*.tli
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# -----------------------------------------------------------------------------
+# Project-specific local data
+# -----------------------------------------------------------------------------
+# ChromaDB persistence — keep folder, ignore contents
+rag-service/chroma_db/*
+!rag-service/chroma_db/.gitkeep
+
+# Uploaded documents — keep folder, ignore contents
+rag-service/storage/documents/*
+!rag-service/storage/documents/.gitkeep
+
+# Local model / HuggingFace cache (if anyone places it inside the repo)
+.cache/
+huggingface/
+transformers/
+sentence_transformers/
+torch/
+
+# Stray PowerShell artifact accidentally created in rag-service/
+rag-service/New-Item
+
+# -----------------------------------------------------------------------------
+# Logs
+# -----------------------------------------------------------------------------
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -----------------------------------------------------------------------------
+# IDE / editor
+# -----------------------------------------------------------------------------
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+
+# -----------------------------------------------------------------------------
+# Operating system
+# -----------------------------------------------------------------------------
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.Trash-*
+
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
+*.pid
+docker-compose.override.yml
