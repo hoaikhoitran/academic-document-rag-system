@@ -53,6 +53,23 @@ The MVC layer never talks to ChromaDB directly. It only persists *metadata*
 indexing and question-answering to the Python service via
 [`RagApiClient`](../dotnet-mvc/HoaiKhoi_SE1950_A01/AcademicDocumentRagSystem.Services/RagIntegration/RagApiClient.cs).
 
+#### Layered view
+
+![.NET MVC layered architecture](images/dotnet-mvc-layered-architecture.png)
+
+The three .NET projects map onto a classic layered architecture:
+
+| Layer | Project | Contains |
+| --- | --- | --- |
+| **Presentation** | `AcademicDocumentRagSystem.MVC` | `Controllers/`, `Views/`, `Models/` (view models). |
+| **Business** | `AcademicDocumentRagSystem.Services` | `Interfaces/`, `Implementations/`, `DTOs/`, `RagIntegration/` (HTTP client to the external RAG API). |
+| **Data Access** | `AcademicDocumentRagSystem.DataAccess` | `Repositories/`, `Models/AcademicRagDbContext.cs`, entity models (mapped to SQL Server). |
+
+Dependencies flow downward only — Presentation → Business → Data Access. The
+Business layer is the only one that talks to the **External RAG API** (the
+Python service); the Data Access layer is the only one that talks to **SQL
+Server**.
+
 ### 2. Python RAG service (`rag-service/`)
 
 A FastAPI application that owns the entire RAG pipeline. It is intentionally
