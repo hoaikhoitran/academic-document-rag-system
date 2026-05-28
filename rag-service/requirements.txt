@@ -1,0 +1,34 @@
+# ===============================================================
+# Retrieval-Augmented-Generation-PRN222 - Python dependencies
+# ---------------------------------------------------------------
+# Tested on Python 3.10 and 3.11.
+# ===============================================================
+
+# --- Web framework ---
+fastapi==0.110.0
+uvicorn[standard]==0.27.1
+pydantic==2.6.4
+pydantic-settings==2.2.1
+
+# --- Configuration ---
+python-dotenv==1.0.1
+
+# --- HTTP client (for future LLM provider integration & test client) ---
+httpx==0.27.0
+
+# --- Document loaders ---
+PyMuPDF==1.24.1          # PDF reading
+python-docx==1.1.0       # DOCX reading
+python-pptx==0.6.23      # PPTX reading
+
+# --- Vector database ---
+chromadb==0.4.24
+
+# --- Embedding model (BAAI/bge-m3) ---
+# FlagEmbedding is the official library from BAAI.
+# sentence-transformers is the automatic fallback if FlagEmbedding fails.
+FlagEmbedding==1.2.10
+sentence-transformers==2.6.1
+
+# --- Testing ---
+pytest==8.1.1
