@@ -2,7 +2,17 @@
 
 <h2>Course Management</h2>
 
-<a asp-action="Create" class="btn btn-primary">Create Course</a>
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">Create Course</a>
+
+    <a asp-controller="Documents" asp-action="Upload" class="btn btn-success">
+        Upload Document
+    </a>
+
+    <a asp-controller="Chat" asp-action="Index" class="btn btn-info">
+        Open Chatbot
+    </a>
+</div>
 
 <table class="table table-bordered mt-3">
     <thead>

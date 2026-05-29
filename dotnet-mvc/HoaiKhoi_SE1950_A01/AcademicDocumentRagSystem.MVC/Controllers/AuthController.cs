@@ -50,7 +50,12 @@ public class AuthController : Controller
 
         if (result.RoleName == "Teacher")
         {
-            return RedirectToAction("Index", "Courses");
+            return RedirectToAction("Upload", "Documents");
+        }
+
+        if (result.RoleName == "Student")
+        {
+            return RedirectToAction("Index", "Chat");
         }
 
         return RedirectToAction("Index", "Courses");

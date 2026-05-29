@@ -1,137 +1,145 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\",
+  "WorkspaceRootPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\ragintegration\\iragclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\ragintegration\\iragclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\ragintegration\\ragapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\ragintegration\\ragapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragaskresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragaskresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\chat\\answer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\chat\\answer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\implementations\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\interfaces\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\interfaces\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\chat\\chatanswerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\chat\\chatanswerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\chat\\askquestiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\chat\\askquestiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\chat\\indexeddocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\chat\\indexeddocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\implementations\\chatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\implementations\\chatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\interfaces\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\interfaces\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\implementations\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\implementations\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\interfaces\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\interfaces\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\interfaces\\idocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\interfaces\\idocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragsourcedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragsourcedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragaskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragaskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\implementations\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragindexresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragindexresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragindexrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragindexrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\documents\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\documents\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\documents\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\documents\\documentuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\documents\\documentuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\ragintegration\\iragclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\ragintegration\\iragclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\ragintegration\\ragapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\ragintegration\\ragapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragaskresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragaskresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\chat\\answer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\chat\\answer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\implementations\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\interfaces\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\interfaces\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\chat\\chatanswerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\chat\\chatanswerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\chat\\askquestiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\chat\\askquestiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\chat\\indexeddocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\chat\\indexeddocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\implementations\\chatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\implementations\\chatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\interfaces\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\interfaces\\ichatrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\implementations\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\implementations\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\interfaces\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\interfaces\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\interfaces\\idocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\interfaces\\idocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragsourcedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragsourcedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragaskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragaskrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\implementations\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragindexresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragindexresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\rag\\ragindexrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragindexrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dtos\\documents\\documentuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\documents\\documentuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\implementations\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\implementations\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\implementations\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\prn222\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\interfaces\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\repositories\\interfaces\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\repositories\\interfaces\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -142,7 +150,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -154,50 +162,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ChatMessage.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:34:45.068Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RagAskResponse.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:32:10.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ChatController.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAiwDcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:26:06.613Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAkwC0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T02:54:25.26Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T02:52:44.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "ChatService.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAmwGUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -205,11 +200,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "IChatService.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -217,24 +212,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "IRagClient.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:14:30.091Z",
+              "WhenOpened": "2026-05-28T17:14:30.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAmwDwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T15:45:46.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-28T17:26:38.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Upload.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwCUAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-28T16:56:49.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAiwDcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:26:06.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RagAskResponse.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:32:10.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ChatMessage.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:34:45.068Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Program.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Program.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Program.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Program.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Program.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Program.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAkwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -243,36 +312,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-28T17:26:38.839Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "RagApiClient.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAYwDcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:14:45.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-28T17:14:45.253Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "Answer.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
               "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
               "ViewState": "AgIAAB8AAAAAAAAAAAAiwDcAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -280,11 +336,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "ChatAnswerDto.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -292,11 +348,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "AskQuestionDto.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -304,11 +360,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "IndexedDocumentDto.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -316,11 +372,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -328,11 +384,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "ChatRepository.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -340,11 +396,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "IChatRepository.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -352,11 +408,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "RagSourceDto.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -364,11 +420,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "IDocumentService.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -376,11 +432,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "IDocumentRepository.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -388,11 +444,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "DocumentRepository.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAwwDgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -400,11 +456,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "RagAskRequest.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -412,11 +468,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "RagIndexResponse.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -424,11 +480,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "RagIndexRequest.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -436,11 +492,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "DocumentService.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -448,23 +504,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Upload.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAiwBwAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-28T16:56:49.43Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "DocumentsController.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA8wDYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -472,11 +516,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "DocumentUploadDto.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -484,11 +528,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
               "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -496,23 +540,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAmwD8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T15:45:46.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "AccountService.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAUwD4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -520,11 +552,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "IAccountService.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -532,11 +564,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "AccountRepository.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -544,11 +576,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "IAccountRepository.cs",
-              "DocumentMoniker": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",
-              "ToolTip": "D:\\PRN222\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

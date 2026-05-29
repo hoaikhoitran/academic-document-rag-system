@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\documents\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\documents\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\chat\\answer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\chat\\answer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,10 +115,6 @@
       "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dtos\\rag\\ragindexrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\documents\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\documents\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -113,10 +125,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -142,7 +150,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -154,7 +162,132 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Courses\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAkwC0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T02:54:25.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T02:52:44.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAmwGUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:25:06.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IChatService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:24:53.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IRagClient.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:14:30.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAmwDwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T15:45:46.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-28T17:26:38.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Upload.cshtml",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwCUAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-28T16:56:49.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAiwDcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:26:06.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RagAskResponse.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T17:32:10.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ChatMessage.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Models\\ChatMessage.cs",
@@ -167,66 +300,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "RagAskResponse.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:32:10.299Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChatController.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\ChatController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAiwDcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:26:06.613Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ChatService.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Implementations\\ChatService.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAmwGUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:25:06.854Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IChatService.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Interfaces\\IChatService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:24:53.794Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IRagClient.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\RagIntegration\\IRagClient.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T17:14:30.091Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Program.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Program.cs",
@@ -239,19 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-28T17:26:38.839Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "RagApiClient.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\RagIntegration\\RagApiClient.cs",
@@ -263,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "Answer.cshtml",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Chat\\Answer.cshtml",
@@ -275,7 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "ChatAnswerDto.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\ChatAnswerDto.cs",
@@ -287,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "AskQuestionDto.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\AskQuestionDto.cs",
@@ -299,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "IndexedDocumentDto.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Chat\\IndexedDocumentDto.cs",
@@ -311,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
@@ -323,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "ChatRepository.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\ChatRepository.cs",
@@ -335,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "IChatRepository.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IChatRepository.cs",
@@ -347,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "RagSourceDto.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagSourceDto.cs",
@@ -359,7 +420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "IDocumentService.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Interfaces\\IDocumentService.cs",
@@ -371,7 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "IDocumentRepository.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IDocumentRepository.cs",
@@ -383,7 +444,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "DocumentRepository.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\DocumentRepository.cs",
@@ -395,7 +456,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "RagAskRequest.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagAskRequest.cs",
@@ -407,7 +468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "RagIndexResponse.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexResponse.cs",
@@ -419,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "RagIndexRequest.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Rag\\RagIndexRequest.cs",
@@ -431,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "DocumentService.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
@@ -443,19 +504,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Upload.cshtml",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Views\\Documents\\Upload.cshtml",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAiwBwAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-28T16:56:49.43Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "DocumentsController.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\DocumentsController.cs",
@@ -467,7 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "DocumentUploadDto.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DTOs\\Documents\\DocumentUploadDto.cs",
@@ -479,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Login.cshtml",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Views\\Auth\\Login.cshtml",
@@ -491,19 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAmwD8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T15:45:46.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\AccountService.cs",
@@ -515,7 +552,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "IAccountService.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Interfaces\\IAccountService.cs",
@@ -527,7 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "AccountRepository.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Implementations\\AccountRepository.cs",
@@ -539,7 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "IAccountRepository.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Repositories\\Interfaces\\IAccountRepository.cs",

@@ -5,6 +5,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th>DocumentId</th>
             <th>Title</th>
             <th>Course</th>
             <th>Chapter</th>
@@ -17,6 +18,7 @@
         @foreach (var document in Model)
         {
             <tr>
+                <td>@document.DocumentId</td>
                 <td>@document.Title</td>
                 <td>@document.CourseCode</td>
                 <td>@document.Chapter</td>
