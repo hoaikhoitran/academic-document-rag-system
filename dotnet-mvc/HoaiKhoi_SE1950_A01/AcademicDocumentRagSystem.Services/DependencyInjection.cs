@@ -1,6 +1,7 @@
 ﻿using AcademicDocumentRagSystem.DataAccess.Models;
 using AcademicDocumentRagSystem.DataAccess.Repositories.Implementations;
 using AcademicDocumentRagSystem.DataAccess.Repositories.Interfaces;
+using AcademicDocumentRagSystem.Services.Chunking;
 using AcademicDocumentRagSystem.Services.Implementations;
 using AcademicDocumentRagSystem.Services.Interfaces;
 using AcademicDocumentRagSystem.Services.RagIntegration;
@@ -36,6 +37,9 @@ namespace AcademicDocumentRagSystem.Services
             services.AddScoped<IAccountService, AccountService>();
 
             services.AddScoped<IDocumentRepository, DocumentRepository>();
+            services.AddScoped<IDocumentChunkRepository, DocumentChunkRepository>();
+            services.AddScoped<IDocumentIndexLogRepository, DocumentIndexLogRepository>();
+            services.AddScoped<IChunkPreviewGenerator, ChunkPreviewGenerator>();
             services.AddScoped<IDocumentService, DocumentService>();
             services.AddScoped<IChatRepository, ChatRepository>();
             services.AddScoped<IChatService, ChatService>();

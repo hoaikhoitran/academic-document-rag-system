@@ -26,11 +26,20 @@
         <form asp-action="Upload" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
 
-            <input type="hidden" asp-for="CourseId" />
-            <input type="hidden" asp-for="CourseCode" />
-
             <div class="form-section">
                 <div class="form-section__title">Document info</div>
+
+                <div class="form-field">
+                    <label asp-for="CourseId" class="form-label">Course</label>
+                    <select asp-for="CourseId" class="form-control">
+                        @foreach (var course in Model?.AvailableCourses ?? new())
+                        {
+                            <option value="@course.CourseId">@course.Code - @course.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CourseId" class="text-danger"></span>
+                    <span class="field-hint">You can only upload to your assigned course. Course creation is managed by Admin.</span>
+                </div>
 
                 <div class="form-field">
                     <label asp-for="Title" class="form-label">Title</label>
@@ -81,7 +90,7 @@
             <span class="pipeline-step__number">1</span>
             <div>
                 <strong>Course lock</strong>
-                <span>@(Model?.CourseCode ?? "Assigned course") only</span>
+                <span>You may select a course, but upload is allowed only for your assigned course: @(string.IsNullOrWhiteSpace(Model?.CourseCode) ? "your assigned course" : Model!.CourseCode).</span>
             </div>
         </div>
         <div class="pipeline-step">

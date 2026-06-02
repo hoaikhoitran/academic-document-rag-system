@@ -26,7 +26,12 @@ public class DocumentListItemDto
 
     public string? IndexError { get; set; }
 
+    public string? SubmittedByEmail { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime? IndexedAt { get; set; }
+
+    /// <summary>True when at least one chunk preview row is stored for this document.</summary>
+    public bool HasChunks { get; set; }
 }
