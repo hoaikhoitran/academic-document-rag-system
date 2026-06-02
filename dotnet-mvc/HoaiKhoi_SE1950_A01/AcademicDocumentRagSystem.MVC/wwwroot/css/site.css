@@ -590,6 +590,227 @@ textarea.form-control {
   border-top: 1px solid var(--color-border);
 }
 
+.upload-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(280px, 360px);
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.upload-form-card {
+  max-width: none;
+}
+
+.upload-dropzone {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 104px;
+  padding: 1rem;
+  border: 1px dashed #8b7cf6;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #fbfaff 0%, #f7f8ff 100%);
+  cursor: pointer;
+  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 28px rgba(71, 57, 214, .14);
+  transform: translateY(-1px);
+}
+
+.upload-dropzone__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 12px;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.upload-dropzone__icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.upload-dropzone strong {
+  display: block;
+  color: var(--color-text);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.upload-dropzone small {
+  display: block;
+  color: var(--color-muted);
+  margin-top: .2rem;
+}
+
+.upload-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.upload-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  margin: 1.25rem -1.25rem -1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, .94);
+  border-top: 1px solid var(--color-border);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 -10px 24px rgba(15, 23, 42, .08);
+  backdrop-filter: blur(10px);
+}
+
+.upload-submit {
+  min-width: 170px;
+}
+
+.upload-description {
+  min-height: 76px;
+}
+
+.upload-side-panel {
+  position: sticky;
+  top: 88px;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.upload-side-panel__title {
+  margin-bottom: 1rem;
+  color: var(--color-muted);
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.pipeline-step {
+  display: flex;
+  gap: .85rem;
+  padding: .85rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.pipeline-step:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.pipeline-step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--color-primary);
+  font-size: .85rem;
+  font-weight: 800;
+}
+
+.pipeline-step strong,
+.pipeline-step span {
+  display: block;
+}
+
+.pipeline-step strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.pipeline-step span {
+  color: var(--color-muted);
+  font-size: .9rem;
+  margin-top: .15rem;
+}
+
+.index-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.index-summary-card {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.index-summary-card__label,
+.index-summary-card span {
+  display: block;
+}
+
+.index-summary-card__label {
+  color: var(--color-muted);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.index-summary-card strong {
+  display: block;
+  margin: .35rem 0 .15rem;
+  color: var(--color-text);
+  font-size: 1.85rem;
+  line-height: 1;
+}
+
+.index-summary-card span:last-child {
+  color: var(--color-muted);
+  font-size: .9rem;
+}
+
+@media (max-width: 991.98px) {
+  .upload-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .upload-side-panel {
+    position: static;
+  }
+
+  .index-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .upload-actions {
+    align-items: stretch;
+  }
+
+  .upload-actions .btn {
+    width: 100%;
+  }
+}
+
 /* Validation summary refinement */
 .validation-summary-errors {
   background: #fdf2f2;

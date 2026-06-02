@@ -1,14 +1,20 @@
-﻿using AcademicDocumentRagSystem.Services.DTOs.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AcademicDocumentRagSystem.Services.DTOs.Accounts;
+using AcademicDocumentRagSystem.Services.DTOs.Auth;
 
 namespace AcademicDocumentRagSystem.Services.Interfaces
 {
     public interface IAccountService
     {
         Task<LoginResultDto> LoginAsync(LoginDto dto);
+
+        Task<List<AccountListItemDto>> GetAllAsync(string? searchTerm, int? role, bool? status);
+
+        Task<UpdateAccountDto?> GetForEditAsync(int id);
+
+        Task CreateAsync(CreateAccountDto dto);
+
+        Task UpdateAsync(UpdateAccountDto dto);
+
+        Task DeleteAsync(int id);
     }
 }

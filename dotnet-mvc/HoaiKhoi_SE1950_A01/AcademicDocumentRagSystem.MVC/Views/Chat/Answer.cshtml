@@ -66,6 +66,7 @@ else
 }
 
 <div class="action-bar">
-    <a asp-action="Ask" asp-route-documentId="@Model.DocumentId" class="btn btn-primary">Ask Another Question</a>
+    <a asp-action="Ask" asp-route-documentId="@Model.DocumentId" asp-route-chatSessionId="@Model.ChatSessionId" class="btn btn-primary">Continue This Session</a>
+    <a asp-action="Session" asp-route-id="@Model.ChatSessionId" class="btn btn-secondary">View Session</a>
     <a asp-action="Index" class="btn btn-secondary">Back to Documents</a>
 </div>

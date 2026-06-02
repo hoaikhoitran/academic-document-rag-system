@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Access Denied";
+    var roleName = Context.Session.GetString("RoleName");
+}
+
+<div class="empty-state">
+    <h3>Access denied</h3>
+    <p>Your account does not have permission to open this page.</p>
+    @if (roleName == "Admin")
+    {
+        <a asp-controller="Accounts" asp-action="Index" class="btn btn-primary">Go to Accounts</a>
+    }
+    else if (roleName == "Teacher")
+    {
+        <a asp-controller="Documents" asp-action="Upload" class="btn btn-primary">Go to Upload</a>
+    }
+    else if (roleName == "Student")
+    {
+        <a asp-controller="Chat" asp-action="Index" class="btn btn-primary">Go to Chatbot</a>
+    }
+    else
+    {
+        <a asp-controller="Auth" asp-action="Login" class="btn btn-primary">Back to login</a>
+    }
+</div>

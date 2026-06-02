@@ -21,5 +21,9 @@ namespace AcademicDocumentRagSystem.Services.DTOs.Auth
         public string RoleName { get; set; } = string.Empty;
 
         public int? Role { get; set; }
+
+        public int? CourseId { get; set; }
+
+        public string? CourseCode { get; set; }
     }
 }

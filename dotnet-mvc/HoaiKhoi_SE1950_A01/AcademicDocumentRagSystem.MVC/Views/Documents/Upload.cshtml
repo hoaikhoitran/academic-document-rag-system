@@ -7,7 +7,7 @@
     <div class="page-header__text">
         <h1 class="page-title">Upload Document</h1>
         <p class="page-subtitle">
-            Upload a document and index it so its content can be used to answer questions in the chatbot.
+            Upload a course document and index it so the chatbot can answer from its content.
         </p>
         @if (!string.IsNullOrEmpty(Model?.CourseCode))
         {
@@ -21,46 +21,100 @@
     <div class="alert alert-success">@TempData["Success"]</div>
 }
 
-<div class="form-card" style="max-width:720px;">
-    <form asp-action="Upload" method="post" enctype="multipart/form-data">
-        <div asp-validation-summary="All" class="text-danger"></div>
+<div class="upload-workspace">
+    <div class="form-card upload-form-card">
+        <form asp-action="Upload" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-        <input type="hidden" asp-for="CourseId" />
-        <input type="hidden" asp-for="CourseCode" />
+            <input type="hidden" asp-for="CourseId" />
+            <input type="hidden" asp-for="CourseCode" />
 
-        <div class="form-section">
-            <div class="form-section__title">Document info</div>
+            <div class="form-section">
+                <div class="form-section__title">Document info</div>
 
-            <div class="form-field">
-                <label asp-for="Title" class="form-label">Title</label>
-                <input asp-for="Title" class="form-control" placeholder="e.g. Lecture 1 — Introduction" />
+                <div class="form-field">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="e.g. Lecture 1 - Introduction" />
+                </div>
+
+                <div class="form-field">
+                    <label asp-for="File" class="form-label">File</label>
+                    <label class="upload-dropzone" for="File">
+                        <span class="upload-dropzone__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 16V4" />
+                                <path d="m7 9 5-5 5 5" />
+                                <path d="M20 16.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2.5" />
+                            </svg>
+                        </span>
+                        <span>
+                            <strong id="selected-file-name">Choose PDF, DOCX, PPTX, or TXT</strong>
+                            <small>The file is uploaded, chunked, embedded, then indexed for retrieval.</small>
+                        </span>
+                    </label>
+                    <input asp-for="File" id="File" type="file" class="upload-file-input" accept=".pdf,.docx,.pptx,.txt" />
+                    <span class="field-hint">Teacher uploads are locked to the assigned course and auto-approved for indexing.</span>
+                </div>
+
+                <div class="form-field">
+                    <label asp-for="Description" class="form-label">Description</label>
+                    <textarea asp-for="Description" class="form-control upload-description" placeholder="Optional notes about this document"></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label asp-for="Chapter" class="form-label">Chapter</label>
+                    <input asp-for="Chapter" class="form-control" placeholder="e.g. Chapter 1" />
+                </div>
             </div>
 
-            <div class="form-field">
-                <label asp-for="Description" class="form-label">Description</label>
-                <textarea asp-for="Description" class="form-control" placeholder="Optional notes about this document"></textarea>
+            <div class="form-actions upload-actions">
+                <button type="submit" class="btn btn-primary upload-submit">Upload and Index</button>
+                <a asp-controller="Chat" asp-action="Index" class="btn btn-success">Go to Chatbot</a>
+                <a asp-action="Index" class="btn btn-secondary">My Documents</a>
             </div>
+        </form>
+    </div>
 
-            <div class="form-field">
-                <label asp-for="Chapter" class="form-label">Chapter</label>
-                <input asp-for="Chapter" class="form-control" placeholder="e.g. Chapter 1" />
+    <aside class="upload-side-panel">
+        <div class="upload-side-panel__title">Index pipeline</div>
+        <div class="pipeline-step">
+            <span class="pipeline-step__number">1</span>
+            <div>
+                <strong>Course lock</strong>
+                <span>@(Model?.CourseCode ?? "Assigned course") only</span>
             </div>
         </div>
-
-        <div class="form-section">
-            <div class="form-section__title">File upload</div>
-
-            <div class="form-field">
-                <label asp-for="File" class="form-label">File</label>
-                <input asp-for="File" type="file" class="form-control" />
-                <span class="field-hint">The file will be uploaded and indexed for retrieval.</span>
+        <div class="pipeline-step">
+            <span class="pipeline-step__number">2</span>
+            <div>
+                <strong>Auto approval</strong>
+                <span>Status becomes Approved after upload.</span>
             </div>
         </div>
-
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Upload and Index</button>
-            <a asp-controller="Chat" asp-action="Index" class="btn btn-success">Go to Chatbot</a>
-            <a asp-controller="Courses" asp-action="Index" class="btn btn-secondary">Back to Courses</a>
+        <div class="pipeline-step">
+            <span class="pipeline-step__number">3</span>
+            <div>
+                <strong>Chunk + embed</strong>
+                <span>RAG service reads the file and stores retrievable chunks.</span>
+            </div>
         </div>
-    </form>
+        <div class="pipeline-step">
+            <span class="pipeline-step__number">4</span>
+            <div>
+                <strong>Indexed document</strong>
+                <span>Visible in My Documents and available for Q&amp;A.</span>
+            </div>
+        </div>
+    </aside>
 </div>
+
+@section Scripts {
+    <script>
+        const fileInput = document.getElementById("File");
+        const selectedFileName = document.getElementById("selected-file-name");
+
+        fileInput?.addEventListener("change", () => {
+            selectedFileName.textContent = fileInput.files?.[0]?.name || "Choose PDF, DOCX, PPTX, or TXT";
+        });
+    </script>
+}

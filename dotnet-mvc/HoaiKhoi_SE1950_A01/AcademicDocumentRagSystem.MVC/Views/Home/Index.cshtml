@@ -1,92 +1,172 @@
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
+    var roleName = Context.Session.GetString("RoleName");
+    var fullName = Context.Session.GetString("FullName");
+    var courseCode = Context.Session.GetString("CourseCode");
     var isLoggedIn = Context.Session.GetString("Email") != null;
 }
 
-<section class="landing-hero">
-    <span class="landing-eyebrow">Academic Document RAG</span>
-    <h1>Ask questions and get answers grounded in your course documents.</h1>
-    <p class="landing-lead">
-        Organize courses, upload and index academic documents, then chat with a
-        retrieval-augmented assistant that answers using your material and cites the
-        exact sources it relied on.
-    </p>
+@if (!isLoggedIn)
+{
+    <section class="landing-hero">
+        <span class="landing-eyebrow">Academic Document RAG</span>
+        <h1>Ask questions grounded in course documents.</h1>
+        <p class="landing-lead">
+            Students ask indexed documents, teachers upload material for their assigned course,
+            and admins manage the accounts that keep the system organized.
+        </p>
 
-    <div class="action-bar">
-        @if (isLoggedIn)
-        {
-            <a asp-controller="Courses" asp-action="Index" class="btn btn-primary">Go to Courses</a>
+        <div class="action-bar">
+            <a asp-controller="Auth" asp-action="Login" class="btn btn-primary">Sign in</a>
+        </div>
+
+        <div class="flow-steps">
+            <span class="flow-step"><span class="flow-step__num">1</span> Teacher uploads</span>
+            <span class="flow-arrow">&rarr;</span>
+            <span class="flow-step"><span class="flow-step__num">2</span> RAG indexes</span>
+            <span class="flow-arrow">&rarr;</span>
+            <span class="flow-step"><span class="flow-step__num">3</span> Student asks</span>
+            <span class="flow-arrow">&rarr;</span>
+            <span class="flow-step"><span class="flow-step__num">4</span> Sources returned</span>
+        </div>
+    </section>
+}
+else if (roleName == "Admin")
+{
+    <div class="page-header">
+        <div class="page-header__text">
+            <h1 class="page-title">Admin Workspace</h1>
+            <p class="page-subtitle">Signed in as @fullName. Manage student and teacher accounts for the system.</p>
+        </div>
+        <div class="action-bar">
+            <a asp-controller="Accounts" asp-action="Index" class="btn btn-primary">Manage Accounts</a>
+            <a asp-controller="Accounts" asp-action="Create" class="btn btn-outline-primary">Create Account</a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="feature-card">
+                <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </span>
+                <h3>Account CRUD</h3>
+                <p>Create, edit, search, filter, deactivate, or delete student and teacher accounts.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="feature-card">
+                <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                </span>
+                <h3>Teacher Course Assignment</h3>
+                <p>Assign each teacher to exactly one course so uploads stay scoped to the correct subject.</p>
+            </div>
+        </div>
+    </div>
+}
+else if (roleName == "Teacher")
+{
+    <div class="page-header">
+        <div class="page-header__text">
+            <h1 class="page-title">Teacher Workspace</h1>
+            <p class="page-subtitle">Signed in as @fullName. You can upload documents for your assigned course and ask indexed documents.</p>
+            @if (!string.IsNullOrWhiteSpace(courseCode))
+            {
+                <span class="context-chip mt-2"><span>Assigned course</span> @courseCode</span>
+            }
+        </div>
+        <div class="action-bar">
+            <a asp-controller="Documents" asp-action="Upload" class="btn btn-primary">Upload Document</a>
+            <a asp-controller="Documents" asp-action="Index" class="btn btn-secondary">My Documents</a>
             <a asp-controller="Chat" asp-action="Index" class="btn btn-outline-primary">Open Chatbot</a>
-        }
-        else
-        {
-            <a asp-controller="Auth" asp-action="Login" class="btn btn-primary">Sign in to get started</a>
-        }
-    </div>
-
-    <div class="flow-steps">
-        <span class="flow-step"><span class="flow-step__num">1</span> Manage courses</span>
-        <span class="flow-arrow">&rarr;</span>
-        <span class="flow-step"><span class="flow-step__num">2</span> Upload document</span>
-        <span class="flow-arrow">&rarr;</span>
-        <span class="flow-step"><span class="flow-step__num">3</span> Index document</span>
-        <span class="flow-arrow">&rarr;</span>
-        <span class="flow-step"><span class="flow-step__num">4</span> Ask questions</span>
-        <span class="flow-arrow">&rarr;</span>
-        <span class="flow-step"><span class="flow-step__num">5</span> Grounded answer &amp; sources</span>
-    </div>
-</section>
-
-<div class="row g-4 mt-1">
-    <div class="col-md-6 col-lg-3">
-        <div class="feature-card">
-            <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                </svg>
-            </span>
-            <h3>Course Management</h3>
-            <p>Create and maintain courses with codes, descriptions, and active status to keep your material organized.</p>
+            <a asp-controller="Chat" asp-action="Sessions" class="btn btn-secondary">Chat History</a>
         </div>
     </div>
 
-    <div class="col-md-6 col-lg-3">
-        <div class="feature-card">
-            <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <path d="M17 8l-5-5-5 5" />
-                    <path d="M12 3v12" />
-                </svg>
-            </span>
-            <h3>Document Upload &amp; Indexing</h3>
-            <p>Upload documents to a course and index them so their content becomes searchable for question answering.</p>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="feature-card">
+                <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <path d="M17 8l-5-5-5 5" />
+                        <path d="M12 3v12" />
+                    </svg>
+                </span>
+                <h3>Upload and Index</h3>
+                <p>Upload PDF, DOCX, PPTX, or TXT files. The system indexes them through the RAG service immediately.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="feature-card">
+                <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                </span>
+                <h3>Ask Indexed Documents</h3>
+                <p>Use the same chatbot flow as students to verify indexed material and answers with sources.</p>
+            </div>
+        </div>
+    </div>
+}
+else if (roleName == "Student")
+{
+    <div class="page-header">
+        <div class="page-header__text">
+            <h1 class="page-title">Student Workspace</h1>
+            <p class="page-subtitle">Signed in as @fullName. Choose an indexed document and ask questions grounded in its content.</p>
+        </div>
+        <div class="action-bar">
+            <a asp-controller="Chat" asp-action="Index" class="btn btn-primary">Open Chatbot</a>
+            <a asp-controller="Chat" asp-action="Sessions" class="btn btn-secondary">Chat History</a>
         </div>
     </div>
 
-    <div class="col-md-6 col-lg-3">
-        <div class="feature-card">
-            <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z" />
-                </svg>
-            </span>
-            <h3>RAG Chatbot</h3>
-            <p>Pick an indexed document and ask questions in plain language. The assistant retrieves relevant passages to answer.</p>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="feature-card">
+                <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <path d="M14 2v6h6" />
+                    </svg>
+                </span>
+                <h3>Browse Indexed Documents</h3>
+                <p>Student access is read-only. You can ask documents that teachers have already uploaded and indexed.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-6 col-lg-3">
-        <div class="feature-card">
-            <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 11l3 3L22 4" />
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                </svg>
-            </span>
-            <h3>Source-grounded Answers</h3>
-            <p>Every answer comes with the source passages it used &mdash; file, page, and chunk &mdash; so you can verify it.</p>
+        <div class="col-md-6">
+            <div class="feature-card">
+                <span class="feature-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 11l3 3L22 4" />
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                </span>
+                <h3>Grounded Answers</h3>
+                <p>Answers include source chunks so you can verify what part of the document was used.</p>
+            </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    <div class="empty-state">
+        <h3>Unknown role</h3>
+        <p>Your session role is not recognized. Please sign out and sign in again.</p>
+        <a asp-controller="Auth" asp-action="Logout" class="btn btn-primary">Sign out</a>
+    </div>
+}

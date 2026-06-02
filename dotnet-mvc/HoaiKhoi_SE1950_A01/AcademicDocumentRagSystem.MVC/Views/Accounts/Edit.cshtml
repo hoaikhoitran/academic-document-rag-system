@@ -1,0 +1,68 @@
+@model AcademicDocumentRagSystem.Services.DTOs.Accounts.UpdateAccountDto
+@{
+    ViewData["Title"] = "Edit Account";
+}
+
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Edit Account</h1>
+        <p class="page-subtitle">Update role, status, course assignment, or set a new password.</p>
+    </div>
+</div>
+
+<div class="form-card" style="max-width:720px;">
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" asp-for="AccountId" />
+
+        <div class="form-field">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Password" class="form-label">New password</label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span class="field-hint">Leave blank to keep the current password.</span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="FullName" class="form-label">Full name</label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Role" class="form-label">Role</label>
+            <select asp-for="Role" class="form-control">
+                <option value="1">Student</option>
+                <option value="2">Teacher</option>
+            </select>
+            <span asp-validation-for="Role" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="CourseId" class="form-label">Assigned course</label>
+            <select asp-for="CourseId" asp-items="ViewBag.Courses" class="form-control">
+                <option value="">No course</option>
+            </select>
+            <span class="field-hint">Required for Teacher. Student accounts must use No course.</span>
+        </div>
+
+        <div class="form-field">
+            <label class="check-field">
+                <input asp-for="Status" type="checkbox" />
+                <span class="check-field__text">
+                    <strong>Active</strong>
+                    Active accounts can sign in.
+                </span>
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>

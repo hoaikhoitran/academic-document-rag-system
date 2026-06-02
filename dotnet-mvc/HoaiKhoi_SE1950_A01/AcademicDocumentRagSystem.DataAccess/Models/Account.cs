@@ -15,6 +15,8 @@ public partial class Account
 
     public int Role { get; set; }
 
+    public int? CourseId { get; set; }
+
     public bool Status { get; set; }
 
     public DateTime CreatedAt { get; set; }
@@ -24,6 +26,8 @@ public partial class Account
     public virtual ICollection<ChatMessage> ChatMessages { get; set; } = new List<ChatMessage>();
 
     public virtual ICollection<ChatSession> ChatSessions { get; set; } = new List<ChatSession>();
+
+    public virtual Course? Course { get; set; }
 
     public virtual ICollection<Document> Documents { get; set; } = new List<Document>();
 }

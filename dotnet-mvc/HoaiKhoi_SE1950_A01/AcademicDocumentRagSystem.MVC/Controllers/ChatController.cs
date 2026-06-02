@@ -1,9 +1,11 @@
-﻿using AcademicDocumentRagSystem.Services.DTOs.Chat;
+using AcademicDocumentRagSystem.MVC.Filters;
+using AcademicDocumentRagSystem.Services.DTOs.Chat;
 using AcademicDocumentRagSystem.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AcademicDocumentRagSystem.MVC.Controllers;
 
+[SessionAuthorize("Student", "Teacher")]
 public class ChatController : Controller
 {
     private readonly IChatService _chatService;
@@ -19,15 +21,49 @@ public class ChatController : Controller
         return View(documents);
     }
 
-    public IActionResult Ask(int documentId)
+    public async Task<IActionResult> Sessions()
+    {
+        var accountId = HttpContext.Session.GetInt32("AccountId");
+
+        if (accountId == null)
+        {
+            return RedirectToAction("Login", "Auth");
+        }
+
+        var sessions = await _chatService.GetSessionsAsync(accountId.Value);
+        return View(sessions);
+    }
+
+    public async Task<IActionResult> Session(int id)
+    {
+        var accountId = HttpContext.Session.GetInt32("AccountId");
+
+        if (accountId == null)
+        {
+            return RedirectToAction("Login", "Auth");
+        }
+
+        var session = await _chatService.GetSessionAsync(id, accountId.Value);
+
+        if (session == null)
+        {
+            return NotFound();
+        }
+
+        return View(session);
+    }
+
+    public IActionResult Ask(int documentId, int? chatSessionId)
     {
         return View(new AskQuestionDto
         {
-            DocumentId = documentId
+            DocumentId = documentId,
+            ChatSessionId = chatSessionId
         });
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Ask(AskQuestionDto dto)
     {
         if (!ModelState.IsValid)

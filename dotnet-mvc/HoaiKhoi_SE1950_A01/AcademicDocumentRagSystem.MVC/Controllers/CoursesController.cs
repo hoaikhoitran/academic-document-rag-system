@@ -1,9 +1,11 @@
 ﻿using AcademicDocumentRagSystem.Services.DTOs.Courses;
 using AcademicDocumentRagSystem.Services.Interfaces;
+using AcademicDocumentRagSystem.MVC.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AcademicDocumentRagSystem.MVC.Controllers;
 
+[SessionAuthorize("Admin")]
 public class CoursesController : Controller
 {
     private readonly ICourseService _courseService;

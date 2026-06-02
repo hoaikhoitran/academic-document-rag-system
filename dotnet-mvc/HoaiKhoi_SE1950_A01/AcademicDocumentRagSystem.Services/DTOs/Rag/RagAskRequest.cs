@@ -21,4 +21,7 @@ public class RagAskRequest
 
     [JsonPropertyName("topK")]
     public int TopK { get; set; } = 5;
+
+    [JsonPropertyName("conversationHistory")]
+    public List<RagConversationTurnDto> ConversationHistory { get; set; } = new();
 }

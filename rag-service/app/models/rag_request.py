@@ -43,6 +43,13 @@ class IndexDocumentRequest(BaseModel):
     )
 
 
+class ConversationTurn(BaseModel):
+    """One previous question-answer turn from the same chat session."""
+
+    question: str = Field(default="", description="Previous user question.")
+    answer: str = Field(default="", description="Previous assistant answer.")
+
+
 class AskRequest(BaseModel):
     """Request body for POST /rag/ask."""
 
@@ -70,4 +77,8 @@ class AskRequest(BaseModel):
         le=50,
         description="How many chunks to retrieve. Defaults to DEFAULT_TOP_K.",
         examples=[5],
+    )
+    conversationHistory: list[ConversationTurn] = Field(
+        default_factory=list,
+        description="Previous turns from the same chat session, oldest first.",
     )

@@ -8,6 +8,10 @@
         <h1 class="page-title">Ask a Question</h1>
         <p class="page-subtitle">Ask anything about the selected document. The answer will cite the sources it used.</p>
         <span class="context-chip mt-2"><span>Document</span> #@Model.DocumentId</span>
+        @if (Model.ChatSessionId.HasValue)
+        {
+            <span class="context-chip mt-2"><span>Session</span> #@Model.ChatSessionId</span>
+        }
     </div>
 </div>
 
@@ -16,6 +20,7 @@
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <input type="hidden" asp-for="DocumentId" />
+        <input type="hidden" asp-for="ChatSessionId" />
 
         <div class="form-field">
             <label asp-for="Question" class="form-label">Your question</label>
@@ -26,7 +31,14 @@
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Ask</button>
-            <a asp-action="Index" class="btn btn-secondary">Back</a>
+            @if (Model.ChatSessionId.HasValue)
+            {
+                <a asp-action="Session" asp-route-id="@Model.ChatSessionId" class="btn btn-secondary">Back to Session</a>
+            }
+            else
+            {
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            }
         </div>
     </form>
 </div>

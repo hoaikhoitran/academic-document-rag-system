@@ -11,6 +11,8 @@ namespace AcademicDocumentRagSystem.DataAccess.Repositories.Interfaces
     {
         Task<List<Document>> GetAllAsync();
 
+        Task<List<Document>> GetBySubmitterAsync(int accountId);
+
         Task<Document?> GetByIdAsync(int id);
 
         Task AddAsync(Document document);

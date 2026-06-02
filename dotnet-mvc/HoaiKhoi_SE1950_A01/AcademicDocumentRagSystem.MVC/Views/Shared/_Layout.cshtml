@@ -38,17 +38,34 @@
 
                         @if (Context.Session.GetString("Email") != null)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Courses" asp-action="Index">Courses</a>
-                            </li>
+                            var roleName = Context.Session.GetString("RoleName");
 
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Documents" asp-action="Upload">Upload Document</a>
-                            </li>
+                            if (roleName == "Admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Accounts" asp-action="Index">Accounts</a>
+                                </li>
+                            }
 
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Chat" asp-action="Index">Chatbot</a>
-                            </li>
+                            if (roleName == "Teacher")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Documents" asp-action="Upload">Upload Document</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Documents" asp-action="Index">My Documents</a>
+                                </li>
+                            }
+
+                            if (roleName == "Student" || roleName == "Teacher")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Chat" asp-action="Index">Chatbot</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Chat" asp-action="Sessions">Chat History</a>
+                                </li>
+                            }
                         }
 
                         <li class="nav-item">
