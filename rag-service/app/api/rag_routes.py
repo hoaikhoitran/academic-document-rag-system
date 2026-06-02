@@ -109,6 +109,10 @@ def ask(payload: AskRequest) -> AskResponse:
             document_id=payload.documentId,
             course_code=payload.courseCode,
             top_k=payload.topK,
+            conversation_history=[
+                {"question": turn.question, "answer": turn.answer}
+                for turn in payload.conversationHistory
+            ],
         )
     except ValueError as exc:
         raise HTTPException(

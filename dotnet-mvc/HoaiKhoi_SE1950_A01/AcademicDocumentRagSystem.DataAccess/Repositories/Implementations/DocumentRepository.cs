@@ -26,6 +26,15 @@ namespace AcademicDocumentRagSystem.DataAccess.Repositories.Implementations
                 .ToListAsync();
         }
 
+        public async Task<List<Document>> GetBySubmitterAsync(int accountId)
+        {
+            return await _context.Documents
+                .Include(d => d.Course)
+                .Where(d => d.SubmittedByAccountId == accountId)
+                .OrderByDescending(d => d.CreatedAt)
+                .ToListAsync();
+        }
+
         public async Task<Document?> GetByIdAsync(int id)
         {
             return await _context.Documents

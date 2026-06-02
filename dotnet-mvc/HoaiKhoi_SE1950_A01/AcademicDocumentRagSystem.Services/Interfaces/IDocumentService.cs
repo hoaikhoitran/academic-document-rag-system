@@ -9,7 +9,8 @@ namespace AcademicDocumentRagSystem.Services.Interfaces
 {
     public interface IDocumentService
     {
+        Task<List<DocumentListItemDto>> GetByTeacherAsync(int accountId);
+
         Task UploadAndIndexAsync(DocumentUploadDto dto, int accountId, string email);
-        
     }
 }

@@ -19,12 +19,15 @@ CREATE TABLE Accounts (
     [Password] NVARCHAR(255) NOT NULL,
     FullName NVARCHAR(150) NOT NULL,
     [Role] INT NOT NULL,
+    CourseId INT NULL,
     [Status] BIT NOT NULL DEFAULT 1,
     CreatedAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
     UpdatedAt DATETIME2 NULL,
 
     CONSTRAINT UQ_Accounts_Email UNIQUE (Email),
-    CONSTRAINT CK_Accounts_Role CHECK ([Role] IN (1, 2))
+    CONSTRAINT CK_Accounts_Role CHECK ([Role] IN (1, 2)),
+    CONSTRAINT CK_Accounts_TeacherCourse
+        CHECK (([Role] = 2 AND CourseId IS NOT NULL) OR ([Role] = 1 AND CourseId IS NULL))
 );
 GO
 
@@ -39,6 +42,11 @@ CREATE TABLE Courses (
 
     CONSTRAINT UQ_Courses_Code UNIQUE (Code)
 );
+GO
+
+ALTER TABLE Accounts
+ADD CONSTRAINT FK_Accounts_Courses
+    FOREIGN KEY (CourseId) REFERENCES Courses(CourseId);
 GO
 
 CREATE TABLE Documents (
@@ -133,6 +141,7 @@ CREATE TABLE ChatMessages (
 GO
 
 CREATE INDEX IX_Accounts_Email ON Accounts(Email);
+CREATE INDEX IX_Accounts_CourseId ON Accounts(CourseId);
 CREATE INDEX IX_Courses_Code ON Courses(Code);
 
 CREATE INDEX IX_Documents_CourseId ON Documents(CourseId);
@@ -154,8 +163,8 @@ VALUES
 ('PRN222', 'Programming with .NET', 'Course documents for PRN222');
 GO
 
-INSERT INTO Accounts (Email, [Password], FullName, [Role], [Status])
+INSERT INTO Accounts (Email, [Password], FullName, [Role], CourseId, [Status])
 VALUES
-('teacher@academicrag.org', '@@abc123@@', 'Default Teacher', 2, 1),
-('student@academicrag.org', '@@abc123@@', 'Default Student', 1, 1);
+('teacher@academicrag.org', '@@abc123@@', 'Default Teacher', 2, 1, 1),
+('student@academicrag.org', '@@abc123@@', 'Default Student', 1, NULL, 1);
 GO

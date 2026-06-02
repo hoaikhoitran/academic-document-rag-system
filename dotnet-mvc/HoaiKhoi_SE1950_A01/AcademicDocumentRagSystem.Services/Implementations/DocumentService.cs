@@ -16,21 +16,54 @@ namespace AcademicDocumentRagSystem.Services.Implementations
     public class DocumentService : IDocumentService
     {
         private readonly IDocumentRepository _documentRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly IRagClient _ragClient;
         private readonly IConfiguration _configuration;
 
         public DocumentService(
             IDocumentRepository documentRepository,
+            IAccountRepository accountRepository,
             IRagClient ragClient,
             IConfiguration configuration)
         {
             _documentRepository = documentRepository;
+            _accountRepository = accountRepository;
             _ragClient = ragClient;
             _configuration = configuration;
         }
 
+        public async Task<List<DocumentListItemDto>> GetByTeacherAsync(int accountId)
+        {
+            var documents = await _documentRepository.GetBySubmitterAsync(accountId);
+
+            return documents.Select(d => new DocumentListItemDto
+            {
+                DocumentId = d.DocumentId,
+                Title = d.Title,
+                Description = d.Description,
+                CourseCode = d.CourseCode,
+                Chapter = d.Chapter,
+                OriginalFileName = d.OriginalFileName,
+                FileType = d.FileType,
+                FileSize = d.FileSize,
+                UploadStatus = d.UploadStatus,
+                IndexStatus = d.IndexStatus,
+                TotalChunks = d.TotalChunks,
+                IndexError = d.IndexError,
+                CreatedAt = d.CreatedAt,
+                IndexedAt = d.IndexedAt
+            }).ToList();
+        }
+
         public async Task UploadAndIndexAsync(DocumentUploadDto dto, int accountId, string email)
         {
+            var account = await _accountRepository.GetByIdAsync(accountId);
+
+            if (account == null || account.Role != 2 || account.CourseId != dto.CourseId)
+            {
+                throw new Exception("Teachers can only upload documents for their assigned course.");
+            }
+
             var allowedExtensions = new[] { ".pdf", ".docx", ".pptx", ".txt" };
 
             var extension = Path.GetExtension(dto.File.FileName).ToLower();

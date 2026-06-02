@@ -43,9 +43,19 @@ public class AuthController : Controller
             HttpContext.Session.SetInt32("AccountId", result.AccountId.Value);
         }
 
+        if (result.CourseId.HasValue)
+        {
+            HttpContext.Session.SetInt32("CourseId", result.CourseId.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(result.CourseCode))
+        {
+            HttpContext.Session.SetString("CourseCode", result.CourseCode);
+        }
+
         if (result.RoleName == "Admin")
         {
-            return RedirectToAction("Index", "Courses");
+            return RedirectToAction("Index", "Accounts");
         }
 
         if (result.RoleName == "Teacher")
@@ -65,5 +75,10 @@ public class AuthController : Controller
     {
         HttpContext.Session.Clear();
         return RedirectToAction(nameof(Login));
+    }
+
+    public IActionResult AccessDenied()
+    {
+        return View();
     }
 }

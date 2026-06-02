@@ -137,6 +137,7 @@ def ask(
     document_id: str,
     course_code: str,
     top_k: int | None = None,
+    conversation_history: list[dict[str, str]] | None = None,
 ) -> dict[str, Any]:
     """
     Answer a question using the documents we've already indexed.
@@ -166,9 +167,10 @@ def ask(
         raise ValueError("question must not be empty.")
 
     effective_top_k = top_k if top_k and top_k > 0 else settings.DEFAULT_TOP_K
+    contextual_question = _build_contextual_question(question, conversation_history or [])
 
     # 2. Embed the question.
-    question_embedding = embedding_service.embed_text(question)
+    question_embedding = embedding_service.embed_text(contextual_question)
 
     # 3. Retrieval — the vector store already drops chunks whose distance
     # exceeds RAG_MAX_DISTANCE, so `hits` only contains *relevant* chunks.
@@ -187,12 +189,12 @@ def ask(
             "Relevance gate failed: %d relevant chunks (need >= %d) for question %r",
             len(hits),
             settings.RAG_MIN_RELEVANT_CHUNKS,
-            question[:80],
+            contextual_question[:80],
         )
         return {"answer": INSUFFICIENT_CONTEXT_REPLY, "sources": []}
 
     # 5. Augmentation + Generation.
-    answer = generate_answer(question, hits)
+    answer = generate_answer(contextual_question, hits)
 
     # 6. Build the `sources` array. `distance` is included for debugging /
     # threshold tuning; it stays None if Chroma didn't return one.
@@ -212,6 +214,40 @@ def ask(
         )
 
     return {"answer": answer, "sources": sources}
+
+
+def _build_contextual_question(
+    question: str,
+    conversation_history: list[dict[str, str]],
+) -> str:
+    """
+    Fold recent conversation turns into the retrieval query.
+
+    The vector search is still restricted by documentId/courseCode and the
+    answer is still generated only from retrieved document chunks. History only
+    helps follow-up questions such as "what about the second one?" carry enough
+    context to retrieve the right passage.
+    """
+    recent_turns = conversation_history[-3:]
+
+    if not recent_turns:
+        return question
+
+    lines: list[str] = ["Previous conversation in this session:"]
+
+    for turn in recent_turns:
+        previous_question = (turn.get("question") or "").strip()
+        previous_answer = (turn.get("answer") or "").strip()
+
+        if previous_question:
+            lines.append(f"Student: {previous_question}")
+
+        if previous_answer:
+            lines.append(f"Assistant: {preview(previous_answer, 300)}")
+
+    lines.append(f"Current question: {question}")
+
+    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,39 @@
+@model AcademicDocumentRagSystem.Services.DTOs.Chat.ChatSessionDetailsDto
+@{
+    ViewData["Title"] = "Chat Session";
+}
+
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">@Model.Title</h1>
+        <p class="page-subtitle">Conversation on @Model.DocumentTitle.</p>
+        <span class="context-chip mt-2"><span>Course</span> @Model.CourseCode</span>
+        <span class="context-chip mt-2"><span>Document</span> #@Model.DocumentId</span>
+    </div>
+    <div class="action-bar">
+        <a asp-action="Ask" asp-route-documentId="@Model.DocumentId" asp-route-chatSessionId="@Model.ChatSessionId" class="btn btn-primary">Continue Asking</a>
+        <a asp-action="Sessions" class="btn btn-secondary">All Sessions</a>
+    </div>
+</div>
+
+@if (!Model.Messages.Any())
+{
+    <div class="empty-state">
+        <h3>No messages yet</h3>
+        <p>Continue this session to ask the first question.</p>
+        <a asp-action="Ask" asp-route-documentId="@Model.DocumentId" asp-route-chatSessionId="@Model.ChatSessionId" class="btn btn-primary">Ask Question</a>
+    </div>
+}
+else
+{
+    <div class="stack-sm">
+        @foreach (var message in Model.Messages)
+        {
+            <div class="surface-card">
+                <div class="chat-question__label">@message.CreatedAt.ToLocalTime().ToString("g")</div>
+                <p class="chat-question__text">@message.Question</p>
+                <div class="chat-answer mt-3">@message.Answer</div>
+            </div>
+        }
+    </div>
+}
