@@ -1,56 +1,71 @@
-﻿@model AcademicDocumentRagSystem.Services.DTOs.Chat.ChatAnswerDto
+@model AcademicDocumentRagSystem.Services.DTOs.Chat.ChatAnswerDto
+@{
+    ViewData["Title"] = "Answer";
+}
 
-<h2>Chatbot Answer</h2>
-
-<div class="card mb-3">
-    <div class="card-header">
-        <strong>Your Question</strong>
-    </div>
-    <div class="card-body">
-        @Model.Question
-    </div>
-</div>
-
-<div class="card mb-3">
-    <div class="card-header">
-        <strong>Answer</strong>
-    </div>
-    <div class="card-body">
-        @Model.Answer
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Chatbot Answer</h1>
+        <p class="page-subtitle">A retrieval-augmented answer based on the selected document, with its sources.</p>
     </div>
 </div>
 
-<h4>Sources</h4>
+<div class="surface-card mb-3">
+    <div class="chat-question__label">Your question</div>
+    <p class="chat-question__text">@Model.Question</p>
+</div>
+
+<div class="surface-card mb-4">
+    <div class="chat-question__label">Answer</div>
+    <div class="chat-answer">@Model.Answer</div>
+</div>
+
+<h2 class="page-title" style="font-size:1.2rem; margin-bottom:1rem;">Sources</h2>
 
 @if (Model.Sources == null || !Model.Sources.Any())
 {
-    <p>No sources returned.</p>
+    <div class="empty-state">
+        <span class="empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6" />
+            </svg>
+        </span>
+        <h3>No sources returned</h3>
+        <p>This answer did not reference any specific passages from the document.</p>
+    </div>
 }
 else
 {
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>File</th>
-                <th>Page</th>
-                <th>Chunk</th>
-                <th>Text</th>
-            </tr>
-        </thead>
+    <div class="table-wrap mb-4">
+        <div class="table-responsive-wrap">
+            <table class="table-modern">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Page</th>
+                        <th>Chunk</th>
+                        <th>Text</th>
+                    </tr>
+                </thead>
 
-        <tbody>
-            @foreach (var source in Model.Sources)
-            {
-                <tr>
-                    <td>@source.FileName</td>
-                    <td>@source.PageNumber</td>
-                    <td>@source.ChunkIndex</td>
-                    <td>@source.Text</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                <tbody>
+                    @foreach (var source in Model.Sources)
+                    {
+                        <tr>
+                            <td class="cell-strong">@source.FileName</td>
+                            <td class="cell-id">@source.PageNumber</td>
+                            <td class="cell-id">@source.ChunkIndex</td>
+                            <td><span class="source-text">@source.Text</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 }
 
-<a asp-action="Ask" asp-route-documentId="@Model.DocumentId" class="btn btn-primary">Ask Another Question</a>
-<a asp-action="Index" class="btn btn-secondary">Back to Documents</a>
+<div class="action-bar">
+    <a asp-action="Ask" asp-route-documentId="@Model.DocumentId" class="btn btn-primary">Ask Another Question</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to Documents</a>
+</div>

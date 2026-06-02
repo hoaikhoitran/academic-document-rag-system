@@ -1,21 +1,39 @@
-﻿@model AcademicDocumentRagSystem.Services.DTOs.Auth.LoginDto
+@model AcademicDocumentRagSystem.Services.DTOs.Auth.LoginDto
+@{
+    ViewData["Title"] = "Login";
+}
 
-<h2>Login</h2>
+<div class="auth-wrap">
+    <div class="auth-card form-card">
+        <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 4a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" />
+                <path d="M14 2v6h6" />
+                <path d="M9 13h6M9 17h4" />
+            </svg>
+        </span>
 
-<form asp-action="Login" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
+        <h1 class="page-title" style="font-size:1.4rem;">Sign in</h1>
+        <p class="page-subtitle" style="margin-bottom:1.5rem;">
+            Access your courses, documents, and the RAG chatbot.
+        </p>
 
-    <div class="mb-3">
-        <label>Email</label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-field">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" placeholder="you@example.com" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Sign in</button>
+        </form>
     </div>
-
-    <div class="mb-3">
-        <label>Password</label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</div>

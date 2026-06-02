@@ -1,39 +1,66 @@
-﻿@model AcademicDocumentRagSystem.Services.DTOs.Documents.DocumentUploadDto
+@model AcademicDocumentRagSystem.Services.DTOs.Documents.DocumentUploadDto
+@{
+    ViewData["Title"] = "Upload Document";
+}
 
-<h2>Upload Document</h2>
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Upload Document</h1>
+        <p class="page-subtitle">
+            Upload a document and index it so its content can be used to answer questions in the chatbot.
+        </p>
+        @if (!string.IsNullOrEmpty(Model?.CourseCode))
+        {
+            <span class="context-chip mt-2"><span>Course</span> @Model.CourseCode</span>
+        }
+    </div>
+</div>
 
 @if (TempData["Success"] != null)
 {
     <div class="alert alert-success">@TempData["Success"]</div>
 }
 
-<form asp-action="Upload" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-card" style="max-width:720px;">
+    <form asp-action="Upload" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-    <input type="hidden" asp-for="CourseId" />
-    <input type="hidden" asp-for="CourseCode" />
+        <input type="hidden" asp-for="CourseId" />
+        <input type="hidden" asp-for="CourseCode" />
 
-    <div class="mb-3">
-        <label>Title</label>
-        <input asp-for="Title" class="form-control" />
-    </div>
+        <div class="form-section">
+            <div class="form-section__title">Document info</div>
 
-    <div class="mb-3">
-        <label>Description</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
+            <div class="form-field">
+                <label asp-for="Title" class="form-label">Title</label>
+                <input asp-for="Title" class="form-control" placeholder="e.g. Lecture 1 — Introduction" />
+            </div>
 
-    <div class="mb-3">
-        <label>Chapter</label>
-        <input asp-for="Chapter" class="form-control" />
-    </div>
+            <div class="form-field">
+                <label asp-for="Description" class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control" placeholder="Optional notes about this document"></textarea>
+            </div>
 
-    <div class="mb-3">
-        <label>File</label>
-        <input asp-for="File" type="file" class="form-control" />
-    </div>
+            <div class="form-field">
+                <label asp-for="Chapter" class="form-label">Chapter</label>
+                <input asp-for="Chapter" class="form-control" placeholder="e.g. Chapter 1" />
+            </div>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Upload and Index</button>
-    <a asp-controller="Chat" asp-action="Index" class="btn btn-success">Go to Chatbot</a>
-    <a asp-controller="Courses" asp-action="Index" class="btn btn-secondary">Back to Courses</a>
-</form>
+        <div class="form-section">
+            <div class="form-section__title">File upload</div>
+
+            <div class="form-field">
+                <label asp-for="File" class="form-label">File</label>
+                <input asp-for="File" type="file" class="form-control" />
+                <span class="field-hint">The file will be uploaded and indexed for retrieval.</span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Upload and Index</button>
+            <a asp-controller="Chat" asp-action="Index" class="btn btn-success">Go to Chatbot</a>
+            <a asp-controller="Courses" asp-action="Index" class="btn btn-secondary">Back to Courses</a>
+        </div>
+    </form>
+</div>

@@ -1,35 +1,52 @@
-﻿@model AcademicDocumentRagSystem.Services.DTOs.Courses.UpdateCourseDto
+@model AcademicDocumentRagSystem.Services.DTOs.Courses.UpdateCourseDto
+@{
+    ViewData["Title"] = "Edit Course";
+}
 
-<h2>Edit Course</h2>
-
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="CourseId" />
-
-    <div asp-validation-summary="All" class="text-danger"></div>
-
-    <div class="mb-3">
-        <label>Code</label>
-        <input asp-for="Code" class="form-control" />
-        <span asp-validation-for="Code" class="text-danger"></span>
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Edit Course</h1>
+        <p class="page-subtitle">Update the course details. Changes apply across the system.</p>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label>Name</label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+<div class="form-card" style="max-width:680px;">
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="CourseId" />
 
-    <div class="mb-3">
-        <label>Description</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div class="mb-3">
-        <label>Status</label>
-        <input asp-for="Status" type="checkbox" />
-    </div>
+        <div class="form-field">
+            <label asp-for="Code" class="form-label">Code</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
 
-    <button type="submit" class="btn btn-success">Update</button>
-    <a asp-action="Index" class="btn btn-secondary">Back</a>
-</form>
+        <div class="form-field">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label class="check-field">
+                <input asp-for="Status" type="checkbox" />
+                <span class="check-field__text">
+                    <strong>Active</strong>
+                    Active courses are available for document upload and chat.
+                </span>
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">Update</button>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>

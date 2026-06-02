@@ -1,46 +1,79 @@
-﻿@model List<AcademicDocumentRagSystem.Services.DTOs.Courses.CourseDto>
+@model List<AcademicDocumentRagSystem.Services.DTOs.Courses.CourseDto>
+@{
+    ViewData["Title"] = "Courses";
+}
 
-<h2>Course Management</h2>
-
-<div class="mb-3">
-    <a asp-action="Create" class="btn btn-primary">Create Course</a>
-
-    <a asp-controller="Documents" asp-action="Upload" class="btn btn-success">
-        Upload Document
-    </a>
-
-    <a asp-controller="Chat" asp-action="Index" class="btn btn-info">
-        Open Chatbot
-    </a>
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Course Management</h1>
+        <p class="page-subtitle">Create and manage the courses your documents belong to.</p>
+    </div>
+    <div class="action-bar">
+        <a asp-action="Create" class="btn btn-primary">Create Course</a>
+        <a asp-controller="Documents" asp-action="Upload" class="btn btn-outline-primary">Upload Document</a>
+        <a asp-controller="Chat" asp-action="Index" class="btn btn-outline-primary">Open Chatbot</a>
+    </div>
 </div>
 
-<table class="table table-bordered mt-3">
-    <thead>
-        <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+@if (Model == null || !Model.Any())
+{
+    <div class="empty-state">
+        <span class="empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </svg>
+        </span>
+        <h3>No courses yet</h3>
+        <p>Create your first course to start organizing and uploading documents.</p>
+        <a asp-action="Create" class="btn btn-primary">Create Course</a>
+    </div>
+}
+else
+{
+    <div class="table-wrap">
+        <div class="table-responsive-wrap">
+            <table class="table-modern">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
 
-    <tbody>
-        @foreach (var course in Model)
-        {
-            <tr>
-                <td>@course.Code</td>
-                <td>@course.Name</td>
-                <td>@course.Description</td>
-                <td>@(course.Status ? "Active" : "Inactive")</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@course.CourseId">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@course.CourseId"
-                       onclick="return confirm('Are you sure you want to delete this course?')">
-                        Delete
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                <tbody>
+                    @foreach (var course in Model)
+                    {
+                        <tr>
+                            <td class="cell-strong">@course.Code</td>
+                            <td>@course.Name</td>
+                            <td class="cell-muted">@course.Description</td>
+                            <td>
+                                @if (course.Status)
+                                {
+                                    <span class="status-badge status-badge--active">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge status-badge--inactive">Inactive</span>
+                                }
+                            </td>
+                            <td>
+                                <span class="table-actions">
+                                    <a asp-action="Edit" asp-route-id="@course.CourseId" class="btn btn-secondary btn-sm">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@course.CourseId" class="btn btn-outline-danger btn-sm"
+                                       onclick="return confirm('Are you sure you want to delete this course? This cannot be undone.')">
+                                        Delete
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

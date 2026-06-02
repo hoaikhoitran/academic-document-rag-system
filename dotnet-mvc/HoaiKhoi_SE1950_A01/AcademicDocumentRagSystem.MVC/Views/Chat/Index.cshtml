@@ -1,34 +1,74 @@
-﻿@model List<AcademicDocumentRagSystem.Services.DTOs.Chat.IndexedDocumentDto>
+@model List<AcademicDocumentRagSystem.Services.DTOs.Chat.IndexedDocumentDto>
+@{
+    ViewData["Title"] = "Chatbot";
+}
 
-<h2>Choose a Document to Ask</h2>
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Choose a Document</h1>
+        <p class="page-subtitle">Select an indexed document to ask questions about its content.</p>
+    </div>
+    <div class="action-bar">
+        <a asp-controller="Documents" asp-action="Upload" class="btn btn-outline-primary">Upload Document</a>
+    </div>
+</div>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>DocumentId</th>
-            <th>Title</th>
-            <th>Course</th>
-            <th>Chapter</th>
-            <th>File</th>
-            <th>Action</th>
-        </tr>
-    </thead>
+@if (Model == null || !Model.Any())
+{
+    <div class="empty-state">
+        <span class="empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+        </span>
+        <h3>No indexed documents yet</h3>
+        <p>Upload and index a document first, then come back here to ask questions about it.</p>
+        <a asp-controller="Documents" asp-action="Upload" class="btn btn-primary">Upload Document</a>
+    </div>
+}
+else
+{
+    <div class="table-wrap">
+        <div class="table-responsive-wrap">
+            <table class="table-modern">
+                <thead>
+                    <tr>
+                        <th>DocumentId</th>
+                        <th>Title</th>
+                        <th>Course</th>
+                        <th>Chapter</th>
+                        <th>File</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-    <tbody>
-        @foreach (var document in Model)
-        {
-            <tr>
-                <td>@document.DocumentId</td>
-                <td>@document.Title</td>
-                <td>@document.CourseCode</td>
-                <td>@document.Chapter</td>
-                <td>@document.OriginalFileName</td>
-                <td>
-                    <a asp-action="Ask" asp-route-documentId="@document.DocumentId" class="btn btn-primary">
-                        Ask
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                <tbody>
+                    @foreach (var document in Model)
+                    {
+                        <tr>
+                            <td class="cell-id">@document.DocumentId</td>
+                            <td class="cell-strong">@document.Title</td>
+                            <td><span class="meta-badge">@document.CourseCode</span></td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(document.Chapter))
+                                {
+                                    <span class="meta-badge meta-badge--accent">@document.Chapter</span>
+                                }
+                                else
+                                {
+                                    <span class="cell-muted">&mdash;</span>
+                                }
+                            </td>
+                            <td class="cell-muted">@document.OriginalFileName</td>
+                            <td>
+                                <a asp-action="Ask" asp-route-documentId="@document.DocumentId" class="btn btn-primary btn-sm">
+                                    Ask
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

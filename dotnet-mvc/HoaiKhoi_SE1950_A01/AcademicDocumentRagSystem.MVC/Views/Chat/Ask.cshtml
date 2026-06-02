@@ -1,18 +1,32 @@
-﻿@model AcademicDocumentRagSystem.Services.DTOs.Chat.AskQuestionDto
+@model AcademicDocumentRagSystem.Services.DTOs.Chat.AskQuestionDto
+@{
+    ViewData["Title"] = "Ask a Question";
+}
 
-<h2>Ask Question</h2>
-
-<form asp-action="Ask" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-
-    <input type="hidden" asp-for="DocumentId" />
-
-    <div class="mb-3">
-        <label>Question</label>
-        <textarea asp-for="Question" class="form-control" rows="4"></textarea>
-        <span asp-validation-for="Question" class="text-danger"></span>
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Ask a Question</h1>
+        <p class="page-subtitle">Ask anything about the selected document. The answer will cite the sources it used.</p>
+        <span class="context-chip mt-2"><span>Document</span> #@Model.DocumentId</span>
     </div>
+</div>
 
-    <button type="submit" class="btn btn-success">Ask</button>
-    <a asp-action="Index" class="btn btn-secondary">Back</a>
-</form>
+<div class="form-card" style="max-width:760px;">
+    <form asp-action="Ask" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <input type="hidden" asp-for="DocumentId" />
+
+        <div class="form-field">
+            <label asp-for="Question" class="form-label">Your question</label>
+            <textarea asp-for="Question" class="form-control" rows="4"
+                      placeholder="e.g. Summarize the key concepts in this chapter."></textarea>
+            <span asp-validation-for="Question" class="text-danger"></span>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Ask</button>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>
