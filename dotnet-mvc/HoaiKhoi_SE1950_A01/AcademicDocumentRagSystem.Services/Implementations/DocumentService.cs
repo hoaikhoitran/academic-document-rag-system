@@ -1,33 +1,54 @@
-﻿using AcademicDocumentRagSystem.DataAccess.Models;
+using AcademicDocumentRagSystem.DataAccess.Models;
 using AcademicDocumentRagSystem.DataAccess.Repositories.Interfaces;
+using AcademicDocumentRagSystem.Services.Chunking;
+using AcademicDocumentRagSystem.Services.DTOs.Courses;
 using AcademicDocumentRagSystem.Services.DTOs.Documents;
 using AcademicDocumentRagSystem.Services.DTOs.Rag;
 using AcademicDocumentRagSystem.Services.Interfaces;
-using Microsoft.Extensions.Configuration;
 using AcademicDocumentRagSystem.Services.RagIntegration;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AcademicDocumentRagSystem.Services.Implementations
 {
     public class DocumentService : IDocumentService
     {
+        private const int TeacherRole = 2;
+
+        private const string WrongCourseMessage =
+            "Bạn không có quyền upload tài liệu cho môn học này.";
+
+        private static readonly string[] AllowedExtensions = { ".pdf", ".docx", ".pptx", ".txt" };
+
         private readonly IDocumentRepository _documentRepository;
         private readonly IAccountRepository _accountRepository;
+        private readonly ICourseRepository _courseRepository;
+        private readonly IDocumentChunkRepository _chunkRepository;
+        private readonly IDocumentIndexLogRepository _indexLogRepository;
+        private readonly IChunkPreviewGenerator _chunkPreviewGenerator;
         private readonly IRagClient _ragClient;
         private readonly IConfiguration _configuration;
 
         public DocumentService(
             IDocumentRepository documentRepository,
             IAccountRepository accountRepository,
+            ICourseRepository courseRepository,
+            IDocumentChunkRepository chunkRepository,
+            IDocumentIndexLogRepository indexLogRepository,
+            IChunkPreviewGenerator chunkPreviewGenerator,
             IRagClient ragClient,
             IConfiguration configuration)
         {
             _documentRepository = documentRepository;
             _accountRepository = accountRepository;
+            _courseRepository = courseRepository;
+            _chunkRepository = chunkRepository;
+            _indexLogRepository = indexLogRepository;
+            _chunkPreviewGenerator = chunkPreviewGenerator;
             _ragClient = ragClient;
             _configuration = configuration;
         }
@@ -35,6 +56,9 @@ namespace AcademicDocumentRagSystem.Services.Implementations
         public async Task<List<DocumentListItemDto>> GetByTeacherAsync(int accountId)
         {
             var documents = await _documentRepository.GetBySubmitterAsync(accountId);
+
+            var idsWithChunks = await _chunkRepository.GetDocumentIdsWithChunksAsync(
+                documents.Select(d => d.DocumentId).ToList());
 
             return documents.Select(d => new DocumentListItemDto
             {
@@ -50,25 +74,61 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 IndexStatus = d.IndexStatus,
                 TotalChunks = d.TotalChunks,
                 IndexError = d.IndexError,
+                SubmittedByEmail = d.SubmittedByEmail,
                 CreatedAt = d.CreatedAt,
-                IndexedAt = d.IndexedAt
+                IndexedAt = d.IndexedAt,
+                HasChunks = idsWithChunks.Contains(d.DocumentId)
             }).ToList();
         }
 
-        public async Task UploadAndIndexAsync(DocumentUploadDto dto, int accountId, string email)
+        public async Task<List<CourseDto>> GetUploadCoursesForTeacherAsync(int accountId)
+        {
+            // All active courses are listed so the teacher can browse them, but the
+            // upload itself is still validated against the teacher's assigned course
+            // (see UploadAndIndexAsync). The form value is never trusted.
+            var courses = await _courseRepository.GetAllAsync();
+
+            return courses
+                .Where(c => c.Status)
+                .OrderBy(c => c.Code)
+                .Select(c => new CourseDto
+                {
+                    CourseId = c.CourseId,
+                    Code = c.Code,
+                    Name = c.Name,
+                    Description = c.Description,
+                    Status = c.Status
+                })
+                .ToList();
+        }
+
+        public async Task<int> UploadAndIndexAsync(DocumentUploadDto dto, int accountId, string email)
         {
             var account = await _accountRepository.GetByIdAsync(accountId);
 
-            if (account == null || account.Role != 2 || account.CourseId != dto.CourseId)
+            // Permission: only a teacher, and only for their own assigned course.
+            // CourseId from the form is never trusted: it must match the teacher's course.
+            if (account == null || account.Role != TeacherRole || account.CourseId == null
+                || account.CourseId.Value != dto.CourseId)
             {
-                throw new Exception("Teachers can only upload documents for their assigned course.");
+                throw new Exception(WrongCourseMessage);
             }
 
-            var allowedExtensions = new[] { ".pdf", ".docx", ".pptx", ".txt" };
+            var course = await _courseRepository.GetByIdAsync(dto.CourseId);
 
-            var extension = Path.GetExtension(dto.File.FileName).ToLower();
+            if (course == null)
+            {
+                throw new Exception(WrongCourseMessage);
+            }
 
-            if (!allowedExtensions.Contains(extension))
+            if (dto.File == null || dto.File.Length == 0)
+            {
+                throw new Exception("Please choose a file to upload.");
+            }
+
+            var extension = Path.GetExtension(dto.File.FileName).ToLowerInvariant();
+
+            if (!AllowedExtensions.Contains(extension))
             {
                 throw new Exception("Only PDF, DOCX, PPTX, and TXT files are allowed.");
             }
@@ -94,8 +154,8 @@ namespace AcademicDocumentRagSystem.Services.Implementations
             {
                 Title = dto.Title,
                 Description = dto.Description,
-                CourseId = dto.CourseId,
-                CourseCode = dto.CourseCode,
+                CourseId = course.CourseId,
+                CourseCode = course.Code, // derived from the validated course, not the form
                 Chapter = dto.Chapter,
                 OriginalFileName = dto.File.FileName,
                 StoredFileName = storedFileName,
@@ -113,6 +173,12 @@ namespace AcademicDocumentRagSystem.Services.Implementations
             await _documentRepository.AddAsync(document);
             await _documentRepository.SaveChangesAsync();
 
+            await AddLogAsync(document.DocumentId, "Upload", "Success", accountId, email, null, null);
+
+            // MVC-side chunk preview from the saved file (no embeddings / vector data).
+            await GeneratePreviewChunksAsync(document, fullPath, extension, accountId, email);
+
+            // Existing RAG indexing call (unchanged contract).
             try
             {
                 var ragResponse = await _ragClient.IndexDocumentAsync(new RagIndexRequest
@@ -128,15 +194,234 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 document.TotalChunks = ragResponse.TotalChunks;
                 document.IndexedAt = DateTime.UtcNow;
                 document.IndexError = null;
+
+                _documentRepository.Update(document);
+                await _documentRepository.SaveChangesAsync();
+
+                await AddLogAsync(document.DocumentId, "Index", "Success", accountId, email,
+                    ragResponse.TotalChunks, null);
+            }
+            catch (Exception ex)
+            {
+                // Preview chunks (if any) are intentionally kept.
+                document.IndexStatus = "Failed";
+                document.IndexError = ex.Message;
+
+                _documentRepository.Update(document);
+                await _documentRepository.SaveChangesAsync();
+
+                await AddLogAsync(document.DocumentId, "Index", "Failed", accountId, email, null, ex.Message);
+            }
+
+            return document.DocumentId;
+        }
+
+        public async Task<DocumentDetailsDto?> GetDetailsAsync(int documentId, int? accountId, string roleName)
+        {
+            var document = await _documentRepository.GetByIdAsync(documentId);
+
+            if (document == null)
+            {
+                return null;
+            }
+
+            var isAdmin = roleName == "Admin";
+            var teacherCanAccess = !isAdmin && await TeacherCanAccessAsync(document, accountId, roleName);
+
+            if (!isAdmin && !teacherCanAccess)
+            {
+                return null;
+            }
+
+            var chunks = await _chunkRepository.GetByDocumentAsync(documentId);
+            var logs = await _indexLogRepository.GetByDocumentAsync(documentId);
+
+            string? previewMessage = null;
+            if (chunks.Count == 0)
+            {
+                var failedPreview = logs
+                    .FirstOrDefault(l => l.Action == "Preview" && l.Status == "Failed");
+                previewMessage = failedPreview?.ErrorMessage;
+            }
+
+            return new DocumentDetailsDto
+            {
+                DocumentId = document.DocumentId,
+                Title = document.Title,
+                Description = document.Description,
+                CourseCode = document.CourseCode,
+                CourseName = document.Course?.Name,
+                Chapter = document.Chapter,
+                OriginalFileName = document.OriginalFileName,
+                FileType = document.FileType,
+                FileSize = document.FileSize,
+                UploadStatus = document.UploadStatus,
+                IndexStatus = document.IndexStatus,
+                TotalChunks = document.TotalChunks,
+                IndexError = document.IndexError,
+                SubmittedByEmail = document.SubmittedByEmail,
+                CreatedAt = document.CreatedAt,
+                IndexedAt = document.IndexedAt,
+                PreviewMessage = previewMessage,
+                CanReIndex = isAdmin || teacherCanAccess,
+                Chunks = chunks.Select(c => new DocumentChunkDto
+                {
+                    ChunkIndex = c.ChunkIndex,
+                    PageNumber = c.PageNumber,
+                    ChunkText = c.ChunkText,
+                    CharCount = c.CharCount,
+                    TokenEstimate = c.TokenEstimate
+                }).ToList(),
+                IndexLogs = logs.Select(l => new DocumentIndexLogDto
+                {
+                    DocumentIndexLogId = l.DocumentIndexLogId,
+                    Action = l.Action,
+                    Status = l.Status,
+                    PerformedByAccountId = l.PerformedByAccountId,
+                    PerformedByEmail = l.PerformedByEmail,
+                    PerformedAt = l.PerformedAt,
+                    TotalChunks = l.TotalChunks,
+                    ErrorMessage = l.ErrorMessage
+                }).ToList()
+            };
+        }
+
+        public async Task ReIndexAsync(int documentId, int? accountId, string email, string roleName)
+        {
+            var document = await _documentRepository.GetByIdAsync(documentId);
+
+            if (document == null)
+            {
+                throw new Exception("Document not found.");
+            }
+
+            var isAdmin = roleName == "Admin";
+
+            if (!isAdmin && !await TeacherCanAccessAsync(document, accountId, roleName))
+            {
+                throw new Exception(WrongCourseMessage);
+            }
+
+            document.IndexStatus = "Processing";
+            _documentRepository.Update(document);
+            await _documentRepository.SaveChangesAsync();
+
+            // Remove old preview chunks first so re-index never duplicates SQL chunks.
+            await _chunkRepository.DeleteByDocumentAsync(documentId);
+            await _chunkRepository.SaveChangesAsync();
+
+            await GeneratePreviewChunksAsync(document, document.FilePath, document.FileType, accountId, email);
+
+            try
+            {
+                var ragResponse = await _ragClient.IndexDocumentAsync(new RagIndexRequest
+                {
+                    DocumentId = document.DocumentId.ToString(),
+                    CourseCode = document.CourseCode,
+                    Chapter = document.Chapter,
+                    FilePath = document.FilePath,
+                    FileName = document.OriginalFileName
+                });
+
+                document.IndexStatus = "Indexed";
+                document.TotalChunks = ragResponse.TotalChunks;
+                document.IndexedAt = DateTime.UtcNow;
+                document.IndexError = null;
+
+                _documentRepository.Update(document);
+                await _documentRepository.SaveChangesAsync();
+
+                await AddLogAsync(documentId, "ReIndex", "Success", accountId, email,
+                    ragResponse.TotalChunks, null);
             }
             catch (Exception ex)
             {
                 document.IndexStatus = "Failed";
                 document.IndexError = ex.Message;
+
+                _documentRepository.Update(document);
+                await _documentRepository.SaveChangesAsync();
+
+                await AddLogAsync(documentId, "ReIndex", "Failed", accountId, email, null, ex.Message);
+            }
+        }
+
+        // ----------------------------------------------------------------- //
+        // Helpers
+        // ----------------------------------------------------------------- //
+        private async Task GeneratePreviewChunksAsync(
+            Document document, string filePath, string fileType, int? accountId, string email)
+        {
+            try
+            {
+                var preview = _chunkPreviewGenerator.Generate(filePath, fileType);
+
+                if (!preview.Success || preview.Items.Count == 0)
+                {
+                    await AddLogAsync(document.DocumentId, "Preview", "Failed", accountId, email,
+                        0, preview.ErrorMessage ?? "No text could be extracted for chunk preview.");
+                    return;
+                }
+
+                var now = DateTime.UtcNow;
+                var chunks = preview.Items.Select(i => new DocumentChunk
+                {
+                    DocumentId = document.DocumentId,
+                    ChunkIndex = i.ChunkIndex,
+                    PageNumber = i.PageNumber,
+                    ChunkText = i.ChunkText,
+                    CharCount = i.CharCount,
+                    TokenEstimate = i.TokenEstimate,
+                    CreatedAt = now
+                });
+
+                await _chunkRepository.AddRangeAsync(chunks);
+                await _chunkRepository.SaveChangesAsync();
+
+                await AddLogAsync(document.DocumentId, "Preview", "Success", accountId, email,
+                    preview.Items.Count, null);
+            }
+            catch (Exception ex)
+            {
+                // Preview must never break the upload/indexing flow.
+                await AddLogAsync(document.DocumentId, "Preview", "Failed", accountId, email,
+                    0, $"Chunk preview generation failed: {ex.Message}");
+            }
+        }
+
+        private async Task<bool> TeacherCanAccessAsync(Document document, int? accountId, string roleName)
+        {
+            if (roleName != "Teacher" || accountId == null)
+            {
+                return false;
             }
 
-            _documentRepository.Update(document);
-            await _documentRepository.SaveChangesAsync();
+            if (document.SubmittedByAccountId == accountId)
+            {
+                return true;
+            }
+
+            var account = await _accountRepository.GetByIdAsync(accountId.Value);
+            return account?.CourseId != null && account.CourseId.Value == document.CourseId;
+        }
+
+        private async Task AddLogAsync(
+            int documentId, string action, string status, int? accountId, string email,
+            int? totalChunks, string? errorMessage)
+        {
+            await _indexLogRepository.AddAsync(new DocumentIndexLog
+            {
+                DocumentId = documentId,
+                Action = action,
+                Status = status,
+                PerformedByAccountId = accountId,
+                PerformedByEmail = email ?? string.Empty,
+                PerformedAt = DateTime.UtcNow,
+                TotalChunks = totalChunks,
+                ErrorMessage = errorMessage
+            });
+
+            await _indexLogRepository.SaveChangesAsync();
         }
     }
 }

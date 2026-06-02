@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AcademicDocumentRagSystem.Services.DTOs.Courses;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,15 +16,21 @@ namespace AcademicDocumentRagSystem.Services.DTOs.Documents
 
         public string? Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select a course.")]
         public int CourseId { get; set; }
 
-        [Required]
+        // Derived server-side from the validated course; never trusted from the form.
         public string CourseCode { get; set; } = string.Empty;
 
         public string? Chapter { get; set; }
 
         [Required]
         public IFormFile File { get; set; } = null!;
+
+        /// <summary>
+        /// Courses the current teacher is allowed to upload to. Populated for display
+        /// only (not bound on post); the backend re-validates the chosen course.
+        /// </summary>
+        public List<CourseDto> AvailableCourses { get; set; } = new();
     }
 }

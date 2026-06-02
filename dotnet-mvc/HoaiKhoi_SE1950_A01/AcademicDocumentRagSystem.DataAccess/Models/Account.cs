@@ -30,4 +30,6 @@ public partial class Account
     public virtual Course? Course { get; set; }
 
     public virtual ICollection<Document> Documents { get; set; } = new List<Document>();
+
+    public virtual ICollection<DocumentIndexLog> DocumentIndexLogs { get; set; } = new List<DocumentIndexLog>();
 }

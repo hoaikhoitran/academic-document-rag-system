@@ -1,0 +1,183 @@
+@model AcademicDocumentRagSystem.Services.DTOs.Documents.DocumentDetailsDto
+@{
+    ViewData["Title"] = "Chunk Preview";
+    var roleName = Context.Session.GetString("RoleName");
+}
+
+<style>
+    .chunk-text {
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family: inherit;
+        margin: 0;
+    }
+</style>
+
+<div class="page-header">
+    <div class="page-header__text">
+        <h1 class="page-title">Chunk Preview — @Model.Title</h1>
+        <p class="page-subtitle">How this document was split into preview chunks (text only — no embeddings or vector data).</p>
+    </div>
+    <div class="action-bar">
+        @if (roleName == "Teacher")
+        {
+            <a asp-action="Index" class="btn btn-outline-primary">My Documents</a>
+        }
+        @if (Model.IndexStatus == "Indexed")
+        {
+            <a asp-controller="Chat" asp-action="Ask" asp-route-documentId="@Model.DocumentId" class="btn btn-primary">Ask</a>
+        }
+        @if (Model.CanReIndex)
+        {
+            <form asp-action="ReIndex" asp-route-id="@Model.DocumentId" method="post" class="d-inline">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-secondary"
+                        onclick="return confirm('Re-index this document? Old preview chunks will be rebuilt.')">
+                    Re-index
+                </button>
+            </form>
+        }
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="form-card">
+    <div class="form-section">
+        <div class="form-section__title">Document metadata</div>
+        <div class="index-summary-grid">
+            <div class="index-summary-card">
+                <span class="index-summary-card__label">Course</span>
+                <strong>@Model.CourseCode</strong>
+                <span>@Model.CourseName</span>
+            </div>
+            <div class="index-summary-card">
+                <span class="index-summary-card__label">Chapter</span>
+                <strong>@(string.IsNullOrWhiteSpace(Model.Chapter) ? "-" : Model.Chapter)</strong>
+                <span>Document section</span>
+            </div>
+            <div class="index-summary-card">
+                <span class="index-summary-card__label">Index status</span>
+                <strong>@Model.IndexStatus</strong>
+                <span>RAG total chunks: @Model.TotalChunks</span>
+            </div>
+            <div class="index-summary-card">
+                <span class="index-summary-card__label">Preview chunks</span>
+                <strong>@Model.Chunks.Count</strong>
+                <span>Stored in SQL Server</span>
+            </div>
+        </div>
+
+        <div class="table-responsive-wrap mt-3">
+            <table class="table-modern">
+                <tbody>
+                    <tr><th>File name</th><td>@Model.OriginalFileName (@Model.FileType.ToUpperInvariant())</td></tr>
+                    <tr><th>Uploaded by</th><td>@(string.IsNullOrWhiteSpace(Model.SubmittedByEmail) ? "-" : Model.SubmittedByEmail)</td></tr>
+                    <tr><th>Uploaded at</th><td>@Model.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td></tr>
+                    <tr><th>Indexed at</th><td>@(Model.IndexedAt.HasValue ? Model.IndexedAt.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm") : "-")</td></tr>
+                    @if (!string.IsNullOrWhiteSpace(Model.IndexError))
+                    {
+                        <tr><th>Index error</th><td class="text-danger">@Model.IndexError</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@if (Model.Chunks.Count == 0)
+{
+    <div class="alert alert-warning mt-3">
+        @(string.IsNullOrWhiteSpace(Model.PreviewMessage)
+            ? "Không trích xuất được text từ tài liệu này. Tài liệu có thể là bản scan hoặc ảnh."
+            : Model.PreviewMessage)
+    </div>
+}
+else
+{
+    <div class="form-section__title mt-4">Chunks (@Model.Chunks.Count)</div>
+    <div class="accordion" id="chunkAccordion">
+        @foreach (var chunk in Model.Chunks)
+        {
+            var headingId = $"chunk-heading-{chunk.ChunkIndex}";
+            var collapseId = $"chunk-collapse-{chunk.ChunkIndex}";
+            var expanded = chunk.ChunkIndex == 0;
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="@headingId">
+                    <button class="accordion-button @(expanded ? "" : "collapsed")" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#@collapseId"
+                            aria-expanded="@(expanded ? "true" : "false")" aria-controls="@collapseId">
+                        <span class="meta-badge me-2">Chunk #@chunk.ChunkIndex</span>
+                        @if (chunk.PageNumber.HasValue)
+                        {
+                            <span class="meta-badge meta-badge--accent me-2">Page/Slide @chunk.PageNumber</span>
+                        }
+                        <span class="cell-muted">@chunk.CharCount chars · ~@chunk.TokenEstimate tokens</span>
+                    </button>
+                </h2>
+                <div id="@collapseId" class="accordion-collapse collapse @(expanded ? "show" : "")"
+                     aria-labelledby="@headingId" data-bs-parent="#chunkAccordion">
+                    <div class="accordion-body">
+                        <pre class="chunk-text">@chunk.ChunkText</pre>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<div class="form-card mt-4">
+    <div class="form-section">
+        <div class="form-section__title">Audit log</div>
+        <div class="table-responsive-wrap">
+            <table class="table-modern">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Status</th>
+                        <th>By</th>
+                        <th>When</th>
+                        <th>Chunks</th>
+                        <th>Error</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.IndexLogs.Count == 0)
+                    {
+                        <tr><td colspan="6" class="cell-muted">No audit entries.</td></tr>
+                    }
+                    else
+                    {
+                        @foreach (var log in Model.IndexLogs)
+                        {
+                            <tr>
+                                <td><span class="meta-badge">@log.Action</span></td>
+                                <td>
+                                    @if (log.Status == "Success")
+                                    {
+                                        <span class="status-badge status-badge--active">Success</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="status-badge status-badge--inactive">Failed</span>
+                                    }
+                                </td>
+                                <td class="cell-muted">@log.PerformedByEmail</td>
+                                <td class="cell-muted">@log.PerformedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                                <td class="cell-id">@(log.TotalChunks?.ToString() ?? "-")</td>
+                                <td class="cell-muted">@(string.IsNullOrWhiteSpace(log.ErrorMessage) ? "-" : log.ErrorMessage)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

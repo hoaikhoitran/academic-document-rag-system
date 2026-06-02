@@ -21,6 +21,10 @@ public partial class AcademicRagDbContext : DbContext
 
     public virtual DbSet<Document> Documents { get; set; }
 
+    public virtual DbSet<DocumentChunk> DocumentChunks { get; set; }
+
+    public virtual DbSet<DocumentIndexLog> DocumentIndexLogs { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>
@@ -155,6 +159,50 @@ public partial class AcademicRagDbContext : DbContext
             entity.HasOne(d => d.SubmittedByAccount).WithMany(p => p.Documents)
                 .HasForeignKey(d => d.SubmittedByAccountId)
                 .HasConstraintName("FK_Documents_Accounts");
+        });
+
+        modelBuilder.Entity<DocumentChunk>(entity =>
+        {
+            entity.HasKey(e => e.DocumentChunkId).HasName("PK_DocumentChunks");
+
+            entity.HasIndex(e => new { e.DocumentId, e.ChunkIndex }, "UQ_DocumentChunks_DocumentId_ChunkIndex").IsUnique();
+
+            entity.HasIndex(e => e.DocumentId, "IX_DocumentChunks_DocumentId");
+
+            entity.HasIndex(e => new { e.DocumentId, e.ChunkIndex }, "IX_DocumentChunks_DocumentId_ChunkIndex");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(sysutcdatetime())");
+
+            entity.HasOne(d => d.Document).WithMany(p => p.DocumentChunks)
+                .HasForeignKey(d => d.DocumentId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_DocumentChunks_Documents");
+        });
+
+        modelBuilder.Entity<DocumentIndexLog>(entity =>
+        {
+            entity.HasKey(e => e.DocumentIndexLogId).HasName("PK_DocumentIndexLogs");
+
+            entity.HasIndex(e => e.DocumentId, "IX_DocumentIndexLogs_DocumentId");
+
+            entity.HasIndex(e => e.PerformedAt, "IX_DocumentIndexLogs_PerformedAt");
+
+            entity.HasIndex(e => e.PerformedByAccountId, "IX_DocumentIndexLogs_PerformedByAccountId");
+
+            entity.Property(e => e.Action).HasMaxLength(30);
+            entity.Property(e => e.Status).HasMaxLength(30);
+            entity.Property(e => e.PerformedByEmail).HasMaxLength(255);
+            entity.Property(e => e.PerformedAt).HasDefaultValueSql("(sysutcdatetime())");
+
+            entity.HasOne(d => d.Document).WithMany(p => p.DocumentIndexLogs)
+                .HasForeignKey(d => d.DocumentId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_DocumentIndexLogs_Documents");
+
+            entity.HasOne(d => d.PerformedByAccount).WithMany(p => p.DocumentIndexLogs)
+                .HasForeignKey(d => d.PerformedByAccountId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_DocumentIndexLogs_Accounts");
         });
 
         OnModelCreatingPartial(modelBuilder);

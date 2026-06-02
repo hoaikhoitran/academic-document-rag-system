@@ -53,6 +53,10 @@ public partial class Document
 
     public virtual ICollection<ChatSession> ChatSessions { get; set; } = new List<ChatSession>();
 
+    public virtual ICollection<DocumentChunk> DocumentChunks { get; set; } = new List<DocumentChunk>();
+
+    public virtual ICollection<DocumentIndexLog> DocumentIndexLogs { get; set; } = new List<DocumentIndexLog>();
+
     public virtual Course Course { get; set; } = null!;
 
     public virtual Account? SubmittedByAccount { get; set; }

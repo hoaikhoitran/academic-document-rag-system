@@ -62,6 +62,9 @@ else
                         <th>Index</th>
                         <th>Chunks</th>
                         <th>File</th>
+                        <th>Uploaded by</th>
+                        <th>Uploaded at</th>
+                        <th>Indexed at</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -111,15 +114,24 @@ else
                                 <div class="cell-strong">@document.OriginalFileName</div>
                                 <div class="cell-muted">@document.FileType.ToUpperInvariant() · @(Math.Ceiling(document.FileSize / 1024.0)) KB</div>
                             </td>
+                            <td class="cell-muted">@(string.IsNullOrWhiteSpace(document.SubmittedByEmail) ? "-" : document.SubmittedByEmail)</td>
+                            <td class="cell-muted">@document.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                            <td class="cell-muted">@(document.IndexedAt.HasValue ? document.IndexedAt.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm") : "-")</td>
                             <td>
-                                @if (document.IndexStatus == "Indexed")
-                                {
-                                    <a asp-controller="Chat" asp-action="Ask" asp-route-documentId="@document.DocumentId" class="btn btn-primary btn-sm">Ask</a>
-                                }
-                                else
-                                {
-                                    <span class="cell-muted">Not ready</span>
-                                }
+                                <span class="table-actions">
+                                    @if (document.HasChunks)
+                                    {
+                                        <a asp-action="Details" asp-route-id="@document.DocumentId" class="btn btn-secondary btn-sm">Xem chunks</a>
+                                    }
+                                    @if (document.IndexStatus == "Indexed")
+                                    {
+                                        <a asp-controller="Chat" asp-action="Ask" asp-route-documentId="@document.DocumentId" class="btn btn-primary btn-sm">Ask</a>
+                                    }
+                                    @if (!document.HasChunks && document.IndexStatus != "Indexed")
+                                    {
+                                        <span class="cell-muted">Not ready</span>
+                                    }
+                                </span>
                             </td>
                         </tr>
                     }

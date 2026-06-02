@@ -40,6 +40,8 @@ import logging
 import re
 from typing import Any
 
+import httpx
+
 from app.core.config import settings
 from app.utils.text_utils import preview
 
@@ -55,9 +57,35 @@ SYSTEM_PROMPT = (
     "Do not invent information outside the provided context."
 )
 
+# Strict grounding instruction sent to Gemini as the system_instruction.
+# This is intentionally kept verbatim per the project spec.
+GEMINI_SYSTEM_INSTRUCTION = (
+    "You are an academic assistant for students. "
+    "Answer only based on the provided document context. "
+    "Do not invent information outside the context. "
+    "If the answer cannot be found in the context, say exactly: "
+    "Không đủ thông tin trong tài liệu để trả lời câu hỏi này."
+)
+
 INSUFFICIENT_CONTEXT_REPLY = (
     "Không đủ thông tin trong tài liệu để trả lời câu hỏi này."
 )
+
+# Gemini REST endpoint (no SDK needed — httpx is already a dependency).
+GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
+
+# Hard caps so the prompt only ever contains the retrieved top-K chunks
+# and never balloons into "send the whole document" territory.
+MAX_GEMINI_CHUNKS = 5
+MAX_CHUNK_CHARS = 1200
+
+
+class LLMConfigurationError(RuntimeError):
+    """Raised when the LLM provider is misconfigured (e.g. missing API key)."""
+
+
+class LLMProviderError(RuntimeError):
+    """Raised when the configured LLM provider fails or is unavailable."""
 
 
 def _format_contexts_for_prompt(contexts: list[dict[str, Any]]) -> str:
@@ -263,6 +291,161 @@ def _mock_answer(question: str, contexts: list[dict[str, Any]]) -> str:
     return f"Theo tài liệu {file_name}{page_label}, {relevant_text}"
 
 
+# ---------------------------------------------------------------------------
+# Gemini provider (GENERATION only — Gemini never reads files or embeddings)
+# ---------------------------------------------------------------------------
+
+
+def build_gemini_prompt(question: str, contexts: list[dict[str, Any]]) -> str:
+    """
+    Build the user prompt for Gemini from the question and the already
+    retrieved chunks ONLY.
+
+    Boundaries enforced here:
+      * At most MAX_GEMINI_CHUNKS chunks are included (the retrieved top-K).
+      * Each chunk's text is truncated to MAX_CHUNK_CHARS characters.
+      * Only the chunk text + its (fileName, pageNumber, chunkIndex) metadata
+        are included — never embeddings, never file paths, never raw files.
+
+    `contexts` is exactly what rag_service passes into generate_answer(); we
+    do not load, chunk, or read any document here.
+    """
+    selected = contexts[:MAX_GEMINI_CHUNKS]
+
+    blocks: list[str] = []
+    for i, ctx in enumerate(selected, start=1):
+        meta = ctx.get("metadata") or {}
+
+        file_name = meta.get("fileName", "unknown")
+
+        page_number = meta.get("pageNumber")
+        page_label = (
+            str(page_number) if page_number and page_number > 0 else "n/a"
+        )
+
+        chunk_index = meta.get("chunkIndex")
+        chunk_label = str(chunk_index) if chunk_index is not None else "n/a"
+
+        text = (ctx.get("text") or "").strip()
+        if len(text) > MAX_CHUNK_CHARS:
+            text = text[: MAX_CHUNK_CHARS - 1].rstrip() + "…"
+
+        blocks.append(
+            f"[{i}]\n"
+            f"Source: {file_name}\n"
+            f"Page: {page_label}\n"
+            f"Chunk: {chunk_label}\n"
+            f"Text:\n{text}"
+        )
+
+    context_block = "\n\n".join(blocks)
+
+    return (
+        f"QUESTION:\n{question.strip()}\n\n"
+        f"CONTEXT:\n{context_block}\n\n"
+        "Instructions:\n"
+        "- Answer in Vietnamese.\n"
+        "- Use only the context above.\n"
+        "- Keep the answer concise (about 4-6 sentences unless the user asks "
+        "for more detail).\n"
+        "- If context is insufficient, say exactly:\n"
+        '  "Không đủ thông tin trong tài liệu để trả lời câu hỏi này."'
+    )
+
+
+def _extract_gemini_text(data: dict[str, Any]) -> str:
+    """Pull the answer text out of a Gemini generateContent JSON response."""
+    candidates = data.get("candidates") or []
+    if not candidates:
+        feedback = data.get("promptFeedback") or {}
+        block_reason = feedback.get("blockReason")
+        if block_reason:
+            raise LLMProviderError(f"Gemini blocked the prompt: {block_reason}")
+        raise LLMProviderError("Gemini returned no candidates.")
+
+    parts = (candidates[0].get("content") or {}).get("parts") or []
+    text = "".join(part.get("text", "") for part in parts).strip()
+
+    if not text:
+        raise LLMProviderError("Gemini returned an empty answer.")
+
+    return text
+
+
+def _call_gemini(question: str, contexts: list[dict[str, Any]]) -> str:
+    """
+    Call the Gemini REST API for the GENERATION step.
+
+    Reads LLM_API_KEY and LLM_MODEL_NAME from settings (never hard-coded).
+    The API key is passed as a query parameter and is never logged.
+    """
+    api_key = (settings.LLM_API_KEY or "").strip()
+    if not api_key:
+        raise LLMConfigurationError(
+            "LLM_API_KEY is not set. Add your Gemini API key to rag-service/.env "
+            "to use LLM_PROVIDER=gemini (or set MOCK_LLM=true for local mock mode)."
+        )
+
+    model = (settings.LLM_MODEL_NAME or "").strip()
+    if not model:
+        raise LLMConfigurationError(
+            "LLM_MODEL_NAME is not set. Configure it in rag-service/.env "
+            "(e.g. LLM_MODEL_NAME=gemini-2.5-flash-lite)."
+        )
+
+    prompt = build_gemini_prompt(question, contexts)
+
+    payload = {
+        "system_instruction": {"parts": [{"text": GEMINI_SYSTEM_INSTRUCTION}]},
+        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.2,
+            "maxOutputTokens": 1024,
+        },
+    }
+
+    url = f"{GEMINI_API_BASE}/models/{model}:generateContent"
+
+    # NOTE: only the model name is logged. The API key is sent in the
+    # `x-goog-api-key` header (NOT as a `?key=` query parameter) so it never
+    # appears in httpx's request-URL logging or anywhere else in the logs.
+    logger.info("Calling Gemini model %s with %d retrieved chunks", model, len(contexts))
+
+    try:
+        response = httpx.post(
+            url,
+            json=payload,
+            headers={
+                "Content-Type": "application/json",
+                "x-goog-api-key": api_key,
+            },
+            timeout=60.0,
+        )
+    except httpx.HTTPError as exc:
+        raise LLMProviderError(f"Failed to reach Gemini API: {exc}") from exc
+
+    if response.status_code == 404:
+        # The configured model does not exist / is not available for this key.
+        # Do NOT silently fall back to another model — report a clear error.
+        raise LLMProviderError(
+            f"Gemini model {model!r} is unavailable (HTTP 404). "
+            "Check LLM_MODEL_NAME in .env; the service will not switch models silently."
+        )
+
+    if response.status_code != 200:
+        raise LLMProviderError(
+            f"Gemini API call failed with HTTP {response.status_code}: "
+            f"{preview(response.text, 300)}"
+        )
+
+    try:
+        data = response.json()
+    except ValueError as exc:
+        raise LLMProviderError("Gemini returned a non-JSON response.") from exc
+
+    return _extract_gemini_text(data)
+
+
 def generate_answer(question: str, contexts: list[dict[str, Any]]) -> str:
     """
     Public entry point used by rag_service.
@@ -303,10 +486,7 @@ def generate_answer(question: str, contexts: list[dict[str, Any]]) -> str:
         )
 
     if provider == "gemini":
-        # TODO: implement Google Gemini call here.
-        raise NotImplementedError(
-            "LLM_PROVIDER='gemini' is not wired up yet."
-        )
+        return _call_gemini(question, contexts)
 
     if provider == "ollama":
         # TODO: implement Ollama local call via httpx.
