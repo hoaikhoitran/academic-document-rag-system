@@ -1,0 +1,166 @@
+@model AcademicDocumentRagSystem.Services.DTOs.Chat.ChatWorkspaceDto
+@using AcademicDocumentRagSystem.MVC.ViewModels.Mock
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "Student";
+    var today = DateTime.UtcNow.Date;
+    var sessionsToday = Model.Sessions.Where(s => (s.UpdatedAt ?? s.CreatedAt).Date >= today).ToList();
+    var sessionsEarlier = Model.Sessions.Where(s => (s.UpdatedAt ?? s.CreatedAt).Date < today).ToList();
+    var sidebarDocs = Model.ActiveDocument != null
+        ? Model.Documents.Where(d => d.CourseCode == Model.ActiveDocument.CourseCode).Take(8).ToList()
+        : Model.Documents.Take(8).ToList();
+}
+<div class="chat-layout">
+    <div class="chat-layout__panel">
+        <div class="p-3 border-bottom">
+            @if (Model.SelectedDocumentId.HasValue)
+            {
+                <a asp-controller="@controller" asp-action="NewChat" asp-route-documentId="@Model.SelectedDocumentId" class="btn btn-sm btn-edurag-warm w-100 text-decoration-none">+ Hội thoại mới</a>
+            }
+            else
+            {
+                <a asp-controller="@controller" asp-action="Library" class="btn btn-sm btn-outline-secondary w-100">Chọn tài liệu</a>
+            }
+        </div>
+        <div class="flex-grow-1 overflow-auto p-2">
+            @if (sessionsToday.Any())
+            {
+                <div class="small fw-semibold text-muted-edurag text-uppercase px-2 py-1">Hôm nay</div>
+                @foreach (var s in sessionsToday)
+                {
+                    <a asp-controller="@controller" asp-action="Chat" asp-route-documentId="@s.DocumentId" asp-route-sessionId="@s.ChatSessionId"
+                       class="chat-conv-item @(Model.SelectedSessionId == s.ChatSessionId ? "active" : "")">
+                        <div class="fw-medium text-truncate">@s.Title</div>
+                        <div class="small @(Model.SelectedSessionId == s.ChatSessionId ? "" : "text-muted-edurag")">@s.CourseCode</div>
+                    </a>
+                }
+            }
+            @if (sessionsEarlier.Any())
+            {
+                <div class="small fw-semibold text-muted-edurag text-uppercase px-2 py-1 mt-2">Trước đó</div>
+                @foreach (var s in sessionsEarlier)
+                {
+                    <a asp-controller="@controller" asp-action="Chat" asp-route-documentId="@s.DocumentId" asp-route-sessionId="@s.ChatSessionId"
+                       class="chat-conv-item @(Model.SelectedSessionId == s.ChatSessionId ? "active" : "")">
+                        <div class="fw-medium text-truncate">@s.Title</div>
+                        <div class="small text-muted-edurag">@((s.UpdatedAt ?? s.CreatedAt).ToLocalTime().ToString("dd/MM"))</div>
+                    </a>
+                }
+            }
+            @if (!Model.Sessions.Any())
+            {
+                <p class="small text-muted-edurag px-2">Chưa có hội thoại. Chọn tài liệu và đặt câu hỏi.</p>
+            }
+        </div>
+    </div>
+    <div class="chat-layout__main">
+        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="alert alert-success m-3 mb-0 py-2 small">@Model.SuccessMessage</div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger m-3 mb-0 py-2 small">@Model.ErrorMessage</div>
+        }
+        @if (Model.ShowDocumentPicker && Model.Documents.Any())
+        {
+            <div class="p-4">
+                <h2 class="font-display fw-bold fs-5 mb-3">Chọn tài liệu để hỏi đáp</h2>
+                <div class="row g-2">
+                    @foreach (var d in Model.Documents)
+                    {
+                        <div class="col-md-6">
+                            <a asp-controller="@controller" asp-action="Chat" asp-route-documentId="@d.DocumentId" class="edurag-card p-3 d-block text-decoration-none text-dark">
+                                <div class="fw-semibold">@d.Title</div>
+                                <div class="small text-muted-edurag">@d.CourseCode · @d.Chapter</div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else if (Model.ActiveDocument != null)
+        {
+            <div class="border-bottom px-4 py-3">
+                <div class="font-display fw-bold">@(Model.ActiveSession?.Title ?? Model.ActiveDocument.Title)</div>
+                <div class="small text-muted-edurag">@Model.ActiveDocument.CourseCode · @Model.ActiveDocument.OriginalFileName</div>
+            </div>
+            <div class="flex-grow-1 overflow-auto px-4 py-4 mx-auto w-100" style="max-width:48rem;">
+                @if (Model.ActiveSession?.Messages.Any() == true)
+                {
+                    @foreach (var m in Model.ActiveSession.Messages)
+                    {
+                        <div class="d-flex justify-content-end mb-3">
+                            <div class="chat-bubble-user">@m.Question</div>
+                        </div>
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="rounded-circle bg-gradient-warm text-white d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;">
+                                @{ ViewData["Icon"] = "sparkles"; ViewData["IconSize"] = "16"; }
+                                @await Html.PartialAsync("_Icons")
+                            </div>
+                            <div>
+                                <div class="chat-bubble-assistant">@Html.Raw(MockDataProvider.FormatBoldMarkdown(m.Answer))</div>
+                                @if (m.Sources.Any())
+                                {
+                                    <div class="small fw-semibold text-muted-edurag text-uppercase mt-2 mb-1">Nguồn trích dẫn</div>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        @foreach (var cit in m.Sources)
+                                        {
+                                            <span class="citation-chip">
+                                                @{ ViewData["Icon"] = "quote"; ViewData["IconSize"] = "12"; }
+                                                @await Html.PartialAsync("_Icons")
+                                                @cit.FileName @(cit.PageNumber.HasValue ? $"· tr.{cit.PageNumber}" : "")
+                                            </span>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-muted-edurag text-center py-5">Đặt câu hỏi đầu tiên về tài liệu này.</p>
+                }
+            </div>
+            <div class="border-top p-3">
+                <form asp-controller="@controller" asp-action="Ask" method="post" class="mx-auto position-relative" style="max-width:48rem;">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="DocumentId" value="@Model.AskForm.DocumentId" />
+                    <input type="hidden" name="ChatSessionId" value="@Model.AskForm.ChatSessionId" />
+                    <input type="text" name="Question" class="form-control form-control-lg pe-5" placeholder="Hỏi về tài liệu @Model.ActiveDocument.CourseCode..." required />
+                    <button type="submit" class="btn btn-edurag-warm position-absolute top-50 end-0 translate-middle-y me-1 rounded-3" style="width:40px;height:40px;padding:0;">
+                        @{ ViewData["Icon"] = "send"; ViewData["IconSize"] = "16"; }
+                        @await Html.PartialAsync("_Icons")
+                    </button>
+                </form>
+                <p class="text-center mb-0 mt-2" style="font-size:11px;color:var(--edurag-muted);">Trả lời dựa trên tài liệu đã index (RAG).</p>
+            </div>
+        }
+        else
+        {
+            <div class="p-5 text-center text-muted-edurag">
+                <p>Chưa có tài liệu đã index. Vui lòng liên hệ giảng viên.</p>
+                <a asp-controller="@controller" asp-action="Library" class="btn btn-edurag-warm">Thư viện tài liệu</a>
+            </div>
+        }
+    </div>
+    <div class="chat-layout__panel chat-layout__sources border-start">
+        <div class="p-4 border-bottom">
+            <div class="small fw-semibold text-muted-edurag text-uppercase">Nguồn dữ liệu</div>
+            @if (Model.ActiveDocument != null)
+            {
+                <div class="font-display fw-bold">Môn @Model.ActiveDocument.CourseCode</div>
+                <div class="small text-muted-edurag">@sidebarDocs.Count tài liệu</div>
+            }
+        </div>
+        <div class="p-2">
+            @foreach (var d in sidebarDocs)
+            {
+                <a asp-controller="@controller" asp-action="Chat" asp-route-documentId="@d.DocumentId" class="edurag-card p-3 mb-2 d-block text-decoration-none text-dark small">
+                    <div class="fw-semibold text-truncate">@d.Title</div>
+                    <div class="text-muted-edurag">@d.Chapter</div>
+                </a>
+            }
+        </div>
+    </div>
+</div>

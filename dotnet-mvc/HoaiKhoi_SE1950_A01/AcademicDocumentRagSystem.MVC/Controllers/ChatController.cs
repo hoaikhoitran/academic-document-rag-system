@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AcademicDocumentRagSystem.MVC.Controllers;
 
+/// <summary>Legacy routes — redirect to EduRAG Student/Teacher chat workspace.</summary>
 [SessionAuthorize("Student", "Teacher")]
 public class ChatController : Controller
 {
@@ -15,64 +16,43 @@ public class ChatController : Controller
         _chatService = chatService;
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        var documents = await _chatService.GetIndexedDocumentsAsync();
-        return View(documents);
+        return RedirectToRoleChat();
     }
 
-    public async Task<IActionResult> Sessions()
+    public IActionResult Sessions()
     {
-        var accountId = HttpContext.Session.GetInt32("AccountId");
-
-        if (accountId == null)
-        {
-            return RedirectToAction("Login", "Auth");
-        }
-
-        var sessions = await _chatService.GetSessionsAsync(accountId.Value);
-        return View(sessions);
+        return RedirectToRoleChat();
     }
 
-    public async Task<IActionResult> Session(int id)
+    public IActionResult Session(int id)
     {
-        var accountId = HttpContext.Session.GetInt32("AccountId");
-
-        if (accountId == null)
+        var role = HttpContext.Session.GetString("RoleName");
+        if (role == "Teacher")
         {
-            return RedirectToAction("Login", "Auth");
+            return RedirectToAction("Chat", "Teacher", new { sessionId = id });
         }
 
-        var session = await _chatService.GetSessionAsync(id, accountId.Value);
-
-        if (session == null)
-        {
-            return NotFound();
-        }
-
-        return View(session);
+        return RedirectToAction("Chat", "Student", new { sessionId = id });
     }
 
     public IActionResult Ask(int documentId, int? chatSessionId)
     {
-        return View(new AskQuestionDto
+        var role = HttpContext.Session.GetString("RoleName");
+        if (role == "Teacher")
         {
-            DocumentId = documentId,
-            ChatSessionId = chatSessionId
-        });
+            return RedirectToAction("Chat", "Teacher", new { documentId, sessionId = chatSessionId });
+        }
+
+        return RedirectToAction("Chat", "Student", new { documentId, sessionId = chatSessionId });
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Ask(AskQuestionDto dto)
     {
-        if (!ModelState.IsValid)
-        {
-            return View(dto);
-        }
-
         var accountId = HttpContext.Session.GetInt32("AccountId");
-
         if (accountId == null)
         {
             return RedirectToAction("Login", "Auth");
@@ -81,12 +61,29 @@ public class ChatController : Controller
         try
         {
             var result = await _chatService.AskAsync(dto, accountId.Value);
-            return View("Answer", result);
+            var role = HttpContext.Session.GetString("RoleName");
+            if (role == "Teacher")
+            {
+                return RedirectToAction("Chat", "Teacher", new { documentId = result.DocumentId, sessionId = result.ChatSessionId });
+            }
+
+            return RedirectToAction("Chat", "Student", new { documentId = result.DocumentId, sessionId = result.ChatSessionId });
         }
         catch (Exception ex)
         {
-            ModelState.AddModelError(string.Empty, ex.Message);
-            return View(dto);
+            TempData["Error"] = ex.Message;
+            return RedirectToAction("Ask", new { documentId = dto.DocumentId, chatSessionId = dto.ChatSessionId });
         }
+    }
+
+    private IActionResult RedirectToRoleChat()
+    {
+        var role = HttpContext.Session.GetString("RoleName");
+        if (role == "Teacher")
+        {
+            return RedirectToAction("Chat", "Teacher");
+        }
+
+        return RedirectToAction("Chat", "Student");
     }
 }

@@ -1,0 +1,55 @@
+@model AcademicDocumentRagSystem.MVC.ViewModels.Mock.AdminResearchViewModel
+@{
+    ViewData["Title"] = "Module RBL";
+    Layout = "_LayoutDashboard";
+}
+<div class="p-4 p-md-5">
+    <div class="d-flex flex-wrap justify-content-between mb-4 gap-3">
+        <div>
+            <h1 class="font-display fs-2 fw-bold mb-1">Module nghiên cứu RBL</h1>
+            <p class="text-muted-edurag mb-0">So sánh RAG vs Fine-tuning · Chunking strategies</p>
+        </div>
+        <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-secondary">Tải báo cáo PDF</button>
+            <button type="button" class="btn btn-edurag-warm">Chạy lại benchmark</button>
+        </div>
+    </div>
+    <div class="row g-3 mb-4">
+        @foreach (var s in new[] { ("0.89", "RAG Faithfulness"), ("0.84", "Best Chunking"), ("4", "Embedding models") })
+        {
+            <div class="col-md-4"><div class="edurag-card p-4 bg-gradient-warm text-white"><div class="font-display fs-3 fw-bold">@s.Item1</div><div class="small opacity-85">@s.Item2</div></div></div>
+        }
+    </div>
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="edurag-card p-4">
+                <h3 class="font-display fw-bold fs-6 mb-3">RAG vs Fine-tuned</h3>
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Metric</th><th>RAG</th><th>Fine-tuned</th></tr></thead>
+                    <tbody>
+                        @foreach (var r in Model.RagVsFinetune)
+                        {
+                            <tr>
+                                <td>@r.Metric</td>
+                                <td class="fw-semibold" style="color:var(--edurag-primary);">@r.Rag.ToString("0.00")</td>
+                                <td class="text-muted-edurag">@r.FineTuned.ToString("0.00")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="edurag-card p-4">
+                <h3 class="font-display fw-bold fs-6 mb-3">Chunking strategies</h3>
+                @foreach (var c in Model.ChunkingData)
+                {
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between small mb-1"><span>@c.Strategy</span><span class="fw-semibold">@c.Score.ToString("0.00")</span></div>
+                        <div class="progress rounded-pill" style="height:8px;"><div class="progress-bar bg-gradient-warm" style="width:@(c.Score * 100)%"></div></div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

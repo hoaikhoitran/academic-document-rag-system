@@ -1,0 +1,51 @@
+@model AcademicDocumentRagSystem.MVC.ViewModels.Mock.AdminBenchmarkViewModel
+@{
+    ViewData["Title"] = "Benchmark RAGAS";
+    Layout = "_LayoutDashboard";
+}
+<div class="p-4 p-md-5">
+    <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+            <h1 class="font-display fs-2 fw-bold mb-1">Benchmark RAGAS</h1>
+            <p class="text-muted-edurag mb-0">So sánh embedding models trên test set 50 câu</p>
+        </div>
+        <button type="button" class="btn btn-outline-secondary">Export CSV</button>
+    </div>
+    @if (Model.Winner != null)
+    {
+        <div class="edurag-card p-4 mb-4 border border-2" style="border-color:var(--edurag-primary)!important;">
+            <span class="badge bg-gradient-warm text-white mb-2">Winner</span>
+            <div class="font-display fs-4 fw-bold">@Model.Winner.Model</div>
+            <div class="small text-muted-edurag">Faithfulness @Model.Winner.Faithfulness.ToString("0.00") · Latency @Model.Winner.Latency ms</div>
+        </div>
+    }
+    <div class="edurag-card p-4 mb-4">
+        <h3 class="font-display fw-bold fs-6 mb-3">Faithfulness theo model</h3>
+        @foreach (var b in Model.BenchmarkData)
+        {
+            <div class="mb-2">
+                <div class="d-flex justify-content-between small"><span>@b.Model</span><span>@b.Faithfulness.ToString("0.00")</span></div>
+                <div class="progress rounded-pill" style="height:10px;"><div class="progress-bar bg-gradient-warm" style="width:@(b.Faithfulness * 100)%"></div></div>
+            </div>
+        }
+    </div>
+    <div class="edurag-card overflow-hidden">
+        <table class="table table-hover table-modern mb-0">
+            <thead class="table-light">
+                <tr><th>Model</th><th>Faithfulness</th><th>Answer Rel.</th><th>Ctx Precision</th><th>Latency (ms)</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model.BenchmarkData)
+                {
+                    <tr>
+                        <td class="fw-semibold">@b.Model</td>
+                        <td>@b.Faithfulness.ToString("0.00")</td>
+                        <td>@b.AnswerRelevancy.ToString("0.00")</td>
+                        <td>@b.ContextPrecision.ToString("0.00")</td>
+                        <td>@b.Latency</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

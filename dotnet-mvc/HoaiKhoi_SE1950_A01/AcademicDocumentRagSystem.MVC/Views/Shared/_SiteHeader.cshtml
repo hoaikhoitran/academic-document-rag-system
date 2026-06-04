@@ -1,0 +1,21 @@
+<header class="edurag-header">
+    <div class="edurag-container d-flex align-items-center justify-content-between" style="height:4rem;">
+        <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
+            <span class="edurag-logo-mark bg-gradient-warm shadow-glow text-white">
+                @{ ViewData["Icon"] = "sparkles"; ViewData["IconSize"] = "20"; }
+                @await Html.PartialAsync("_Icons")
+            </span>
+            <span class="font-display fw-bold fs-5 mb-0">EduRAG</span>
+        </a>
+        <nav class="d-none d-md-flex align-items-center gap-4 small fw-medium text-muted-edurag">
+            <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-muted-edurag">Trang chủ</a>
+            <a href="/#features" class="text-decoration-none text-muted-edurag">Tính năng</a>
+            <a href="/#research" class="text-decoration-none text-muted-edurag">Nghiên cứu</a>
+            <a asp-controller="Home" asp-action="Contact" class="text-decoration-none text-muted-edurag">Liên hệ</a>
+        </nav>
+        <div class="d-flex align-items-center gap-2">
+            <a asp-controller="Auth" asp-action="Login" class="btn btn-link btn-sm text-decoration-none">Đăng nhập</a>
+            <a asp-controller="Home" asp-action="Register" class="btn btn-sm btn-edurag-warm">Bắt đầu</a>
+        </div>
+    </div>
+</header>

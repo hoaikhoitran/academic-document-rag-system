@@ -1,25 +1,25 @@
 @{
-    ViewData["Title"] = "Access Denied";
-    var roleName = Context.Session.GetString("RoleName");
+    ViewData["Title"] = "Truy cập bị từ chối";
+    Layout = "_LayoutMinimal";
+    var role = Context.Session.GetString("RoleName");
 }
-
-<div class="empty-state">
-    <h3>Access denied</h3>
-    <p>Your account does not have permission to open this page.</p>
-    @if (roleName == "Admin")
+<div class="text-center py-5">
+    <h1 class="font-display fw-bold mb-3">Truy cập bị từ chối</h1>
+    <p class="text-muted-edurag mb-4">Bạn không có quyền truy cập trang này.</p>
+    @if (role == "Admin")
     {
-        <a asp-controller="Accounts" asp-action="Index" class="btn btn-primary">Go to Accounts</a>
+        <a asp-controller="Admin" asp-action="Dashboard" class="btn btn-edurag-warm">Về Dashboard</a>
     }
-    else if (roleName == "Teacher")
+    else if (role == "Teacher")
     {
-        <a asp-controller="Documents" asp-action="Upload" class="btn btn-primary">Go to Upload</a>
+        <a asp-controller="Teacher" asp-action="Courses" class="btn btn-edurag-warm">Về Môn học</a>
     }
-    else if (roleName == "Student")
+    else if (role == "Student")
     {
-        <a asp-controller="Chat" asp-action="Index" class="btn btn-primary">Go to Chatbot</a>
+        <a asp-controller="Student" asp-action="Chat" class="btn btn-edurag-warm">Về Hỏi đáp</a>
     }
     else
     {
-        <a asp-controller="Auth" asp-action="Login" class="btn btn-primary">Back to login</a>
+        <a asp-controller="Auth" asp-action="Login" class="btn btn-edurag-warm">Đăng nhập</a>
     }
 </div>

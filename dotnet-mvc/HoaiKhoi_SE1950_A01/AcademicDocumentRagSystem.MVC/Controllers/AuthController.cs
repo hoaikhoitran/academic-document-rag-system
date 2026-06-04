@@ -55,20 +55,20 @@ public class AuthController : Controller
 
         if (result.RoleName == "Admin")
         {
-            return RedirectToAction("Index", "Accounts");
+            return RedirectToAction("Dashboard", "Admin");
         }
 
         if (result.RoleName == "Teacher")
         {
-            return RedirectToAction("Upload", "Documents");
+            return RedirectToAction("Courses", "Teacher");
         }
 
         if (result.RoleName == "Student")
         {
-            return RedirectToAction("Index", "Chat");
+            return RedirectToAction("Chat", "Student");
         }
 
-        return RedirectToAction("Index", "Courses");
+        return RedirectToAction("Index", "Home");
     }
 
     public IActionResult Logout()

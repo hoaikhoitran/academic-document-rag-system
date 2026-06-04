@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Đăng ký";
+    Layout = "_LayoutPublic";
+}
+<div class="min-vh-100 d-flex align-items-center justify-content-center p-4">
+    <div class="w-100 edurag-card p-4 p-md-5 shadow-soft" style="max-width:28rem;">
+        <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center gap-2 mb-4 text-decoration-none text-dark">
+            <span class="edurag-logo-mark bg-gradient-warm text-white d-inline-flex align-items-center justify-content-center">
+                @{ ViewData["Icon"] = "sparkles"; ViewData["IconSize"] = "20"; }
+                @await Html.PartialAsync("_Icons")
+            </span>
+            <span class="font-display fw-bold fs-5">EduRAG</span>
+        </a>
+        <h1 class="font-display fs-2 fw-bold mb-2">Đăng ký</h1>
+        <p class="text-muted-edurag mb-4">Tạo tài khoản sinh viên (demo UI)</p>
+        <form class="vstack gap-3">
+            <div>
+                <label class="form-label">Họ và tên</label>
+                <input type="text" class="form-control" placeholder="Nguyễn Văn A" />
+            </div>
+            <div>
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="ten@university.edu.vn" />
+            </div>
+            <div>
+                <label class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" placeholder="••••••••" />
+            </div>
+            <a asp-controller="Student" asp-action="Chat" class="btn btn-lg btn-edurag-warm w-100">Đăng ký (demo)</a>
+        </form>
+        <p class="text-center small text-muted-edurag mt-4 mb-0">
+            Đã có tài khoản? <a asp-controller="Auth" asp-action="Login" class="fw-semibold text-decoration-none" style="color:var(--edurag-primary);">Đăng nhập</a>
+        </p>
+    </div>
+</div>

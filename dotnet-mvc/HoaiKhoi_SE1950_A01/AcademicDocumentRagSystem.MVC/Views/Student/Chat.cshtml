@@ -1,0 +1,6 @@
+@model AcademicDocumentRagSystem.Services.DTOs.Chat.ChatWorkspaceDto
+@{
+    ViewData["Title"] = "Hỏi đáp";
+    Layout = "_LayoutDashboard";
+}
+@await Html.PartialAsync("_ChatWorkspace", Model)

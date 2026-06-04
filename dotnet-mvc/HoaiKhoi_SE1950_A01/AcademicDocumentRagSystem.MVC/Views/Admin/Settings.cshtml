@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Cấu hình hệ thống";
+    Layout = "_LayoutDashboard";
+}
+<div class="p-4 p-md-5" style="max-width:48rem;">
+    <h1 class="font-display fs-2 fw-bold mb-4">Cấu hình hệ thống</h1>
+    <div class="edurag-card p-4 mb-4">
+        <h2 class="fs-6 fw-semibold mb-3">RAG Pipeline</h2>
+        <div class="row g-3 mb-3">
+            <div class="col-md-6"><label class="form-label small">Embedding mặc định</label><select class="form-select"><option>bge-m3</option><option>PhoBERT-base</option></select></div>
+            <div class="col-md-6"><label class="form-label small">Chunking strategy</label><select class="form-select"><option>Semantic</option><option>Recursive</option></select></div>
+            <div class="col-6 col-md-3"><label class="form-label small">Top-K</label><input type="number" class="form-control" value="5" /></div>
+            <div class="col-6 col-md-3"><label class="form-label small">Chunk size</label><input type="number" class="form-control" value="512" /></div>
+            <div class="col-6 col-md-3"><label class="form-label small">Overlap</label><input type="number" class="form-control" value="64" /></div>
+            <div class="col-6 col-md-3"><label class="form-label small">Temperature</label><input type="number" class="form-control" value="0.2" step="0.1" /></div>
+        </div>
+    </div>
+    <div class="edurag-card p-4 mb-4">
+        <h2 class="fs-6 fw-semibold mb-3">Tính năng</h2>
+        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="f1" /><label class="form-check-label" for="f1">Bật trích dẫn nguồn</label></div>
+        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="f2" /><label class="form-check-label" for="f2">Lưu lịch sử chat</label></div>
+        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" id="f3" /><label class="form-check-label" for="f3">Cho phép đăng ký công khai</label></div>
+        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked id="f4" /><label class="form-check-label" for="f4">Ghi log benchmark</label></div>
+    </div>
+    <button type="button" class="btn btn-edurag-warm">Lưu cấu hình</button>
+</div>

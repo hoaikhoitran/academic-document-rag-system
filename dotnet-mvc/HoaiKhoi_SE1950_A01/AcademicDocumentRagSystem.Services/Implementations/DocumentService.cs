@@ -227,8 +227,11 @@ namespace AcademicDocumentRagSystem.Services.Implementations
 
             var isAdmin = roleName == "Admin";
             var teacherCanAccess = !isAdmin && await TeacherCanAccessAsync(document, accountId, roleName);
+            var studentCanAccess = roleName == "Student" && accountId != null
+                && document.IndexStatus == "Indexed"
+                && await StudentCanAccessAsync(document, accountId.Value);
 
-            if (!isAdmin && !teacherCanAccess)
+            if (!isAdmin && !teacherCanAccess && !studentCanAccess)
             {
                 return null;
             }
@@ -402,6 +405,12 @@ namespace AcademicDocumentRagSystem.Services.Implementations
             }
 
             var account = await _accountRepository.GetByIdAsync(accountId.Value);
+            return account?.CourseId != null && account.CourseId.Value == document.CourseId;
+        }
+
+        private async Task<bool> StudentCanAccessAsync(Document document, int accountId)
+        {
+            var account = await _accountRepository.GetByIdAsync(accountId);
             return account?.CourseId != null && account.CourseId.Value == document.CourseId;
         }
 

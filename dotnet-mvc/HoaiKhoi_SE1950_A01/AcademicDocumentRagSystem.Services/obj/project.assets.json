@@ -3372,24 +3372,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ACER\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\taste\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj",
+      "projectUniqueName": "c:\\Users\\taste\\Desktop\\Code\\FPT\\PRN222\\Project\\academic-document-rag-system\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj",
       "projectName": "AcademicDocumentRagSystem.Services",
-      "projectPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj",
-      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\obj\\",
+      "projectPath": "c:\\Users\\taste\\Desktop\\Code\\FPT\\PRN222\\Project\\academic-document-rag-system\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj",
+      "packagesPath": "C:\\Users\\taste\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\taste\\Desktop\\Code\\FPT\\PRN222\\Project\\academic-document-rag-system\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\taste\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3403,8 +3398,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj": {
-              "projectPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj"
+            "c:\\Users\\taste\\Desktop\\Code\\FPT\\PRN222\\Project\\academic-document-rag-system\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj": {
+              "projectPath": "c:\\Users\\taste\\Desktop\\Code\\FPT\\PRN222\\Project\\academic-document-rag-system\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj"
             }
           }
         }
@@ -3419,7 +3414,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -3474,7 +3469,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

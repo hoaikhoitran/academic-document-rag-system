@@ -1,0 +1,50 @@
+@model AcademicDocumentRagSystem.Services.DTOs.Documents.DocumentDetailsDto
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "_LayoutDashboard";
+}
+<div class="p-4 p-md-5">
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <a asp-action="IndexStatus" class="btn btn-sm btn-outline-secondary">← Trạng thái index</a>
+        @if (Model.CanReIndex)
+        {
+            <form asp-action="ReIndex" asp-route-id="@Model.DocumentId" method="post" class="d-inline">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-sm btn-outline-primary">Re-index</button>
+            </form>
+        }
+        <a asp-action="Chat" asp-route-documentId="@Model.DocumentId" class="btn btn-sm btn-edurag-warm">Thử chatbot</a>
+    </div>
+    <h1 class="font-display fs-3 fw-bold mb-2">@Model.Title</h1>
+    <p class="text-muted-edurag">@Model.CourseCode · @Model.OriginalFileName · <span class="badge @(Model.IndexStatus == "Indexed" ? "status-badge-indexed" : "status-badge-processing")">@Model.IndexStatus</span></p>
+    @if (!string.IsNullOrEmpty(Model.PreviewMessage))
+    {
+        <div class="alert alert-warning">@Model.PreviewMessage</div>
+    }
+    <div class="row g-4 mt-2">
+        <div class="col-lg-8">
+            <div class="edurag-card p-4">
+                <h2 class="fs-6 fw-semibold mb-3">Chunk preview (@Model.Chunks.Count)</h2>
+                @foreach (var c in Model.Chunks.Take(10))
+                {
+                    <div class="border rounded p-3 mb-2 small">
+                        <div class="fw-semibold mb-1">Chunk #@c.ChunkIndex @(c.PageNumber.HasValue ? $"· tr.{c.PageNumber}" : "")</div>
+                        <div style="white-space:pre-wrap;max-height:120px;overflow:hidden;">@c.ChunkText</div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="edurag-card p-4">
+                <h2 class="fs-6 fw-semibold mb-3">Nhật ký index</h2>
+                @foreach (var log in Model.IndexLogs.OrderByDescending(l => l.PerformedAt).Take(8))
+                {
+                    <div class="small mb-2 pb-2 border-bottom">
+                        <span class="fw-semibold">@log.Action</span> — @log.Status
+                        <div class="text-muted-edurag">@log.PerformedAt.ToLocalTime().ToString("g")</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+@model List<AcademicDocumentRagSystem.Services.DTOs.Chat.IndexedDocumentDto>
+@{
+    ViewData["Title"] = "Thư viện tài liệu";
+    Layout = "_LayoutDashboard";
+    var filterCourse = ViewBag.FilterCourse as string;
+    var allCodes = ViewBag.AllCourseCodes as List<string> ?? new List<string>();
+}
+<div class="p-4 p-md-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+        <div>
+            <h1 class="font-display fs-2 fw-bold mb-1">Thư viện tài liệu</h1>
+            <p class="text-muted-edurag mb-0">Tài liệu đã index — @(ViewBag.CourseCode ?? "tất cả môn")</p>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <a asp-action="Library" class="btn btn-sm @(string.IsNullOrEmpty(filterCourse) ? "btn-edurag-warm" : "btn-outline-secondary")">Tất cả</a>
+        @foreach (var code in allCodes)
+        {
+            <a asp-action="Library" asp-route-course="@code" class="btn btn-sm @(filterCourse == code ? "btn-edurag-warm" : "btn-outline-secondary")">@code</a>
+        }
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="edurag-card p-5 text-center text-muted-edurag">Chưa có tài liệu indexed cho môn của bạn.</div>
+    }
+    else
+    {
+        <div class="row g-3">
+            @foreach (var d in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="edurag-card p-4 h-100 feature-card">
+                        <h3 class="fs-6 fw-semibold mb-1">@d.Title</h3>
+                        <p class="small text-muted-edurag mb-3">@d.CourseCode · @d.Chapter · @d.OriginalFileName</p>
+                        <div class="d-flex gap-2">
+                            <a asp-action="Document" asp-route-id="@d.DocumentId" class="btn btn-sm btn-outline-secondary">Xem</a>
+                            <a asp-action="Chat" asp-route-documentId="@d.DocumentId" class="btn btn-sm btn-edurag-warm">Hỏi đáp</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

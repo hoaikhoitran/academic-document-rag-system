@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Cài đặt";
+    Layout = "_LayoutDashboard";
+    var fullName = Context.Session.GetString("FullName") ?? "Nguyễn Văn A";
+}
+<div class="p-4 p-md-5" style="max-width:40rem;">
+    <h1 class="font-display fs-2 fw-bold mb-4">Cài đặt</h1>
+    <div class="edurag-card p-4 mb-4">
+        <h2 class="fs-6 fw-semibold mb-3">Hồ sơ</h2>
+        <div class="mb-3"><label class="form-label">Họ và tên</label><input class="form-control" value="@fullName" /></div>
+        <div class="mb-3"><label class="form-label">MSSV</label><input class="form-control" value="SE123456" /></div>
+        <div class="mb-3"><label class="form-label">Email</label><input class="form-control" value="@(Context.Session.GetString("Email") ?? "vana@uni.edu.vn")" /></div>
+        <button type="button" class="btn btn-edurag-warm">Lưu thay đổi</button>
+    </div>
+    <div class="edurag-card p-4">
+        <h2 class="fs-6 fw-semibold mb-3">Tùy chọn</h2>
+        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="c1" /><label class="form-check-label" for="c1">Hiển thị trích dẫn nguồn</label></div>
+        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" id="c2" /><label class="form-check-label" for="c2">Thông báo email</label></div>
+        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="c3" /><label class="form-check-label" for="c3">Giao diện tối (sắp có)</label></div>
+    </div>
+</div>

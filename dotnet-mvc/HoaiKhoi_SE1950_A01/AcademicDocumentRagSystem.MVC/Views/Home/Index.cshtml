@@ -1,172 +1,162 @@
 @{
-    ViewData["Title"] = "Home";
-    var roleName = Context.Session.GetString("RoleName");
-    var fullName = Context.Session.GetString("FullName");
-    var courseCode = Context.Session.GetString("CourseCode");
-    var isLoggedIn = Context.Session.GetString("Email") != null;
+    ViewData["Title"] = "Trang chủ";
+    Layout = "_LayoutPublic";
 }
+@await Html.PartialAsync("_SiteHeader")
 
-@if (!isLoggedIn)
-{
-    <section class="landing-hero">
-        <span class="landing-eyebrow">Academic Document RAG</span>
-        <h1>Ask questions grounded in course documents.</h1>
-        <p class="landing-lead">
-            Students ask indexed documents, teachers upload material for their assigned course,
-            and admins manage the accounts that keep the system organized.
-        </p>
-
-        <div class="action-bar">
-            <a asp-controller="Auth" asp-action="Login" class="btn btn-primary">Sign in</a>
-        </div>
-
-        <div class="flow-steps">
-            <span class="flow-step"><span class="flow-step__num">1</span> Teacher uploads</span>
-            <span class="flow-arrow">&rarr;</span>
-            <span class="flow-step"><span class="flow-step__num">2</span> RAG indexes</span>
-            <span class="flow-arrow">&rarr;</span>
-            <span class="flow-step"><span class="flow-step__num">3</span> Student asks</span>
-            <span class="flow-arrow">&rarr;</span>
-            <span class="flow-step"><span class="flow-step__num">4</span> Sources returned</span>
-        </div>
-    </section>
-}
-else if (roleName == "Admin")
-{
-    <div class="page-header">
-        <div class="page-header__text">
-            <h1 class="page-title">Admin Workspace</h1>
-            <p class="page-subtitle">Signed in as @fullName. Manage student and teacher accounts for the system.</p>
-        </div>
-        <div class="action-bar">
-            <a asp-controller="Accounts" asp-action="Index" class="btn btn-primary">Manage Accounts</a>
-            <a asp-controller="Accounts" asp-action="Create" class="btn btn-outline-primary">Create Account</a>
+<section class="position-relative overflow-hidden">
+    <div class="position-absolute top-0 start-0 w-100 h-100 grid-bg"></div>
+    <div class="edurag-container position-relative pt-5 pb-5" style="padding-top:6rem!important;">
+        <div class="col-lg-10">
+            <span class="badge-edurag-accent d-inline-flex align-items-center gap-2 mb-4">
+                @{ ViewData["Icon"] = "sparkles"; ViewData["IconSize"] = "14"; }
+                @await Html.PartialAsync("_Icons")
+                Research-Based Learning · RAG vs Fine-tuning
+            </span>
+            <h1 class="font-display display-3 fw-bold lh-sm mb-4">
+                Trợ lý học tập <span class="text-gradient-warm">thông minh</span> dựa trên tài liệu môn học của bạn.
+            </h1>
+            <p class="fs-5 text-muted-edurag mb-4" style="max-width:40rem;">
+                Hỏi đáp tự nhiên bằng tiếng Việt. Mọi câu trả lời đều trích dẫn nguồn từ slide,
+                giáo trình, PDF mà giảng viên upload. Không bịa, không lan man.
+            </p>
+            <div class="d-flex flex-wrap gap-2 mb-5">
+                <a asp-controller="Student" asp-action="Chat" class="btn btn-lg btn-edurag-warm">Vào với vai Sinh viên @{ ViewData["Icon"] = "arrow-right"; ViewData["IconSize"] = "16"; } @await Html.PartialAsync("_Icons")</a>
+                <a asp-controller="Teacher" asp-action="Courses" class="btn btn-lg btn-outline-secondary">Vai Giảng viên</a>
+                <a asp-controller="Admin" asp-action="Dashboard" class="btn btn-lg btn-link">Vai Admin</a>
+            </div>
+            <div class="row g-4" style="max-width:36rem;">
+                @foreach (var s in new[] { ("4", "Embedding models so sánh"), ("50", "Câu hỏi ground-truth"), ("0.91", "RAGAS faithfulness (bge-m3)"), ("3", "Vai trò người dùng") })
+                {
+                    <div class="col-6 col-md-3">
+                        <div class="font-display fs-3 fw-bold text-gradient-warm">@s.Item1</div>
+                        <div class="small text-muted-edurag">@s.Item2</div>
+                    </div>
+                }
+            </div>
         </div>
     </div>
+</section>
 
+<section class="edurag-container position-relative" style="margin-top:-3rem;z-index:2;">
+    <div class="edurag-card shadow-glow overflow-hidden rounded-4">
+        <div class="d-flex align-items-center gap-2 px-3 py-2 border-bottom small text-muted-edurag font-monospace bg-light">
+            <span class="rounded-circle bg-danger opacity-50" style="width:12px;height:12px;"></span>
+            <span class="rounded-circle bg-warning opacity-50" style="width:12px;height:12px;"></span>
+            <span class="rounded-circle bg-success opacity-50" style="width:12px;height:12px;"></span>
+            <span class="ms-2">edurag.app/student/chat</span>
+        </div>
+        <div class="row g-0" style="min-height:420px;">
+            <div class="col-md-4 border-end p-3" style="background:var(--edurag-sidebar);">
+                <div class="small fw-semibold text-muted-edurag text-uppercase mb-2">Hội thoại gần đây</div>
+                <div class="chat-conv-item active mb-1">Sự khác nhau AI/ML</div>
+                <div class="chat-conv-item mb-1">Thuật toán A*</div>
+                <div class="chat-conv-item">Tóm tắt chương 2</div>
+            </div>
+            <div class="col-md-8 p-4">
+                <div class="d-flex justify-content-end mb-3">
+                    <div class="chat-bubble-user">Sự khác nhau giữa AI và Machine Learning là gì ạ?</div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="rounded-circle bg-gradient-warm text-white d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;">
+                        @{ ViewData["Icon"] = "sparkles"; ViewData["IconSize"] = "16"; }
+                        @await Html.PartialAsync("_Icons")
+                    </div>
+                    <div>
+                        <div class="chat-bubble-assistant mb-2">AI là lĩnh vực rộng nghiên cứu cách tạo hệ thống thông minh, còn ML là một nhánh con tập trung vào việc học từ dữ liệu...</div>
+                        <span class="citation-chip me-1">Chương 1 - Giới thiệu AI.pdf · tr.12</span>
+                        <span class="citation-chip">Russell & Norvig.pdf · tr.4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="edurag-container py-5 my-5">
+    <p class="small fw-semibold text-uppercase mb-2" style="color:var(--edurag-primary);">Tính năng</p>
+    <h2 class="font-display display-5 fw-bold mb-5">Đầy đủ cho một lớp học hiện đại.</h2>
     <div class="row g-4">
-        <div class="col-md-6">
-            <div class="feature-card">
-                <span class="feature-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                </span>
-                <h3>Account CRUD</h3>
-                <p>Create, edit, search, filter, deactivate, or delete student and teacher accounts.</p>
+        @foreach (var f in new[] { ("Quản lý tài liệu", "Upload PDF, DOCX, slide. Tự động chunk & embed theo môn / chương."),
+            ("Chat có trích dẫn", "Trả lời tự nhiên kèm nguồn gốc. Giới hạn trong phạm vi tài liệu."),
+            ("Benchmark RAG vs FT", "Dashboard so sánh chunking, embedding, RAGAS metrics."),
+            ("Đa embedding model", "multilingual-e5, OpenAI, PhoBERT, bge-m3 trên cùng test set."),
+            ("Lịch sử hội thoại", "Lưu phiên theo môn học, dễ dàng quay lại tra cứu."),
+            ("Test set 50 câu", "Ground-truth chuẩn bị bởi giảng viên để đánh giá độ chính xác.") })
+        {
+            <div class="col-md-4">
+                <div class="edurag-card p-4 h-100 feature-card">
+                    <div class="edurag-logo-mark bg-gradient-warm text-white mb-3 d-inline-flex align-items-center justify-content-center shadow-glow" style="width:48px;height:48px;">
+                        @{ ViewData["Icon"] = "sparkles"; ViewData["IconSize"] = "24"; }
+                        @await Html.PartialAsync("_Icons")
+                    </div>
+                    <h3 class="font-display fw-bold fs-5 mb-2">@f.Item1</h3>
+                    <p class="small text-muted-edurag mb-0">@f.Item2</p>
+                </div>
             </div>
-        </div>
+        }
+    </div>
+</section>
 
-        <div class="col-md-6">
-            <div class="feature-card">
-                <span class="feature-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                    </svg>
-                </span>
-                <h3>Teacher Course Assignment</h3>
-                <p>Assign each teacher to exactly one course so uploads stay scoped to the correct subject.</p>
+<section class="bg-gradient-soft py-5">
+    <div class="edurag-container">
+        <div class="text-center mb-5">
+            <p class="small fw-semibold text-uppercase mb-2" style="color:var(--edurag-primary);">Ba vai trò</p>
+            <h2 class="font-display display-5 fw-bold">Một nền tảng, ba trải nghiệm riêng biệt.</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a asp-controller="Student" asp-action="Chat" class="edurag-card p-4 d-block text-decoration-none text-dark feature-card h-100">
+                    <h3 class="font-display fw-bold fs-4">Sinh viên</h3>
+                    <p class="small text-muted-edurag">Chat với tài liệu, xem giáo trình, lưu hội thoại theo môn.</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a asp-controller="Teacher" asp-action="Courses" class="edurag-card p-4 d-block text-decoration-none text-dark feature-card h-100">
+                    <h3 class="font-display fw-bold fs-4">Giảng viên</h3>
+                    <p class="small text-muted-edurag">Tạo môn, upload tài liệu, xem trạng thái index, kiểm thử chatbot.</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a asp-controller="Admin" asp-action="Dashboard" class="edurag-card p-4 d-block text-decoration-none text-dark feature-card h-100">
+                    <h3 class="font-display fw-bold fs-4">Admin</h3>
+                    <p class="small text-muted-edurag">Dashboard tổng quan, benchmark RAG vs fine-tune.</p>
+                </a>
             </div>
         </div>
     </div>
-}
-else if (roleName == "Teacher")
-{
-    <div class="page-header">
-        <div class="page-header__text">
-            <h1 class="page-title">Teacher Workspace</h1>
-            <p class="page-subtitle">Signed in as @fullName. You can upload documents for your assigned course and ask indexed documents.</p>
-            @if (!string.IsNullOrWhiteSpace(courseCode))
-            {
-                <span class="context-chip mt-2"><span>Assigned course</span> @courseCode</span>
-            }
-        </div>
-        <div class="action-bar">
-            <a asp-controller="Documents" asp-action="Upload" class="btn btn-primary">Upload Document</a>
-            <a asp-controller="Documents" asp-action="Index" class="btn btn-secondary">My Documents</a>
-            <a asp-controller="Chat" asp-action="Index" class="btn btn-outline-primary">Open Chatbot</a>
-            <a asp-controller="Chat" asp-action="Sessions" class="btn btn-secondary">Chat History</a>
-        </div>
-    </div>
+</section>
 
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="feature-card">
-                <span class="feature-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <path d="M17 8l-5-5-5 5" />
-                        <path d="M12 3v12" />
-                    </svg>
-                </span>
-                <h3>Upload and Index</h3>
-                <p>Upload PDF, DOCX, PPTX, or TXT files. The system indexes them through the RAG service immediately.</p>
+<section id="research" class="edurag-container py-5">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+            <p class="small fw-semibold text-uppercase mb-2" style="color:var(--edurag-primary);">Module nghiên cứu</p>
+            <h2 class="font-display display-5 fw-bold mb-4">So sánh RAG vs Fine-tuning trong bối cảnh tiếng Việt.</h2>
+            <p class="text-muted-edurag fs-5">Benchmark trên test set 50 câu với 4 embedding model và 5 chiến lược chunking. Báo cáo qua RAGAS.</p>
+        </div>
+        <div class="col-lg-6">
+            <div class="rounded-4 p-1 bg-gradient-hero shadow-glow">
+                <div class="edurag-card rounded-4 p-4">
+                    @foreach (var m in new[] { ("bge-m3", 0.91), ("text-embedding-3-small", 0.88), ("PhoBERT-base", 0.86), ("multilingual-e5-base", 0.82) })
+                    {
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small mb-1"><span class="fw-semibold">@m.Item1</span><span style="color:var(--edurag-primary);">@m.Item2</span></div>
+                            <div class="progress rounded-pill" style="height:8px;"><div class="progress-bar bg-gradient-warm" style="width:@(m.Item2 * 100)%"></div></div>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="col-md-6">
-            <div class="feature-card">
-                <span class="feature-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                    </svg>
-                </span>
-                <h3>Ask Indexed Documents</h3>
-                <p>Use the same chatbot flow as students to verify indexed material and answers with sources.</p>
-            </div>
-        </div>
+<section class="edurag-container pb-5">
+    <div class="rounded-4 bg-gradient-hero text-white text-center p-5 shadow-glow">
+        <h2 class="font-display display-5 fw-bold mb-3">Sẵn sàng học thông minh hơn?</h2>
+        <p class="opacity-85 mb-4 mx-auto" style="max-width:32rem;">Đăng nhập với vai trò của bạn và bắt đầu trải nghiệm trợ lý học tập RAG.</p>
+        <a asp-controller="Auth" asp-action="Login" class="btn btn-light btn-lg me-2">Đăng nhập</a>
+        <a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light btn-lg">Liên hệ</a>
     </div>
-}
-else if (roleName == "Student")
-{
-    <div class="page-header">
-        <div class="page-header__text">
-            <h1 class="page-title">Student Workspace</h1>
-            <p class="page-subtitle">Signed in as @fullName. Choose an indexed document and ask questions grounded in its content.</p>
-        </div>
-        <div class="action-bar">
-            <a asp-controller="Chat" asp-action="Index" class="btn btn-primary">Open Chatbot</a>
-            <a asp-controller="Chat" asp-action="Sessions" class="btn btn-secondary">Chat History</a>
-        </div>
-    </div>
+</section>
 
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="feature-card">
-                <span class="feature-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <path d="M14 2v6h6" />
-                    </svg>
-                </span>
-                <h3>Browse Indexed Documents</h3>
-                <p>Student access is read-only. You can ask documents that teachers have already uploaded and indexed.</p>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="feature-card">
-                <span class="feature-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 11l3 3L22 4" />
-                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                    </svg>
-                </span>
-                <h3>Grounded Answers</h3>
-                <p>Answers include source chunks so you can verify what part of the document was used.</p>
-            </div>
-        </div>
-    </div>
-}
-else
-{
-    <div class="empty-state">
-        <h3>Unknown role</h3>
-        <p>Your session role is not recognized. Please sign out and sign in again.</p>
-        <a asp-controller="Auth" asp-action="Logout" class="btn btn-primary">Sign out</a>
-    </div>
-}
+@await Html.PartialAsync("_SiteFooter")

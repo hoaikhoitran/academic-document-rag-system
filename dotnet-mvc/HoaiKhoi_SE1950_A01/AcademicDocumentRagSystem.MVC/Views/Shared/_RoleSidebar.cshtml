@@ -1,0 +1,50 @@
+@using AcademicDocumentRagSystem.MVC.ViewModels
+@{
+    var accent = ViewBag.SidebarAccent as string ?? "";
+    var navItems = ViewBag.NavItems as List<SidebarNavItem> ?? new List<SidebarNavItem>();
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var fullName = Context.Session.GetString("FullName") ?? "Người dùng";
+    var roleName = Context.Session.GetString("RoleName") ?? ViewBag.SidebarRole ?? "";
+    var initial = !string.IsNullOrEmpty(fullName) ? fullName[0].ToString().ToUpper() : "U";
+}
+<aside class="role-sidebar">
+    <div class="role-sidebar__brand">
+        <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
+            <span class="edurag-logo-mark bg-gradient-warm shadow-glow text-white d-inline-flex align-items-center justify-content-center">
+                @{ ViewData["Icon"] = "sparkles"; ViewData["IconSize"] = "20"; }
+                @await Html.PartialAsync("_Icons")
+            </span>
+            <div>
+                <div class="font-display fw-bold lh-1">EduRAG</div>
+                <div class="text-uppercase text-muted-edurag" style="font-size:11px;letter-spacing:.08em;">@accent</div>
+            </div>
+        </a>
+    </div>
+    <nav class="role-sidebar__nav">
+        @foreach (var item in navItems)
+        {
+            var isActive = string.Equals(currentController, item.Controller, StringComparison.OrdinalIgnoreCase)
+                && string.Equals(currentAction, item.Action, StringComparison.OrdinalIgnoreCase);
+            <a asp-controller="@item.Controller" asp-action="@item.Action"
+               class="role-sidebar__link @(isActive ? "active" : "")">
+                @{ ViewData["Icon"] = item.Icon; ViewData["IconSize"] = "16"; }
+                @await Html.PartialAsync("_Icons")
+                @item.Label
+            </a>
+        }
+    </nav>
+    <div class="role-sidebar__footer">
+        <div class="d-flex align-items-center gap-3 px-2 py-2 rounded-3" style="background:rgba(0,0,0,.03);">
+            <div class="rounded-circle bg-gradient-warm text-white d-flex align-items-center justify-content-center fw-semibold" style="width:36px;height:36px;font-size:14px;">@initial</div>
+            <div class="flex-grow-1 min-width-0">
+                <div class="small fw-semibold text-truncate">@fullName</div>
+                <div class="text-muted-edurag" style="font-size:12px;">@roleName</div>
+            </div>
+            <a asp-controller="Auth" asp-action="Logout" class="text-muted-edurag" title="Đăng xuất">
+                @{ ViewData["Icon"] = "logout"; ViewData["IconSize"] = "16"; }
+                @await Html.PartialAsync("_Icons")
+            </a>
+        </div>
+    </div>
+</aside>
