@@ -45,6 +45,7 @@ else
                         <th>File</th>
                         <th>Page</th>
                         <th>Chunk</th>
+                        <th>Uploaded by</th>
                         <th>Text</th>
                     </tr>
                 </thead>
@@ -52,10 +53,13 @@ else
                 <tbody>
                     @foreach (var source in Model.Sources)
                     {
+                        var uploader = AcademicDocumentRagSystem.Services.DTOs.Documents.UploaderDisplay
+                            .Format(source.UploadedByFullName, source.UploadedByEmail);
                         <tr>
                             <td class="cell-strong">@source.FileName</td>
                             <td class="cell-id">@source.PageNumber</td>
                             <td class="cell-id">@source.ChunkIndex</td>
+                            <td class="cell-muted">@uploader</td>
                             <td><span class="source-text">@source.Text</span></td>
                         </tr>
                     }

@@ -10,6 +10,15 @@ namespace AcademicDocumentRagSystem.Services.Interfaces
         Task<List<DocumentListItemDto>> GetByTeacherAsync(int accountId);
 
         /// <summary>
+        /// All documents (optionally filtered by course / status) for the admin
+        /// document management list, enriched with uploader full name and email.
+        /// </summary>
+        Task<List<DocumentListItemDto>> GetAllForAdminAsync(DocumentFilterDto filter);
+
+        /// <summary>All courses offered as options in the admin document filter.</summary>
+        Task<List<CourseDto>> GetCourseFilterOptionsAsync();
+
+        /// <summary>
         /// Validates teacher/course permission, saves the file, generates MVC-side
         /// chunk preview rows, calls the RAG index service and writes audit logs.
         /// Returns the new document id so the caller can redirect to the preview page.

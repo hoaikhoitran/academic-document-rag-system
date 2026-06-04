@@ -4,6 +4,7 @@ using AcademicDocumentRagSystem.DataAccess.Repositories.Interfaces;
 using AcademicDocumentRagSystem.Services.Chunking;
 using AcademicDocumentRagSystem.Services.Implementations;
 using AcademicDocumentRagSystem.Services.Interfaces;
+using AcademicDocumentRagSystem.Services.Maintenance;
 using AcademicDocumentRagSystem.Services.RagIntegration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -43,6 +44,9 @@ namespace AcademicDocumentRagSystem.Services
             services.AddScoped<IDocumentService, DocumentService>();
             services.AddScoped<IChatRepository, ChatRepository>();
             services.AddScoped<IChatService, ChatService>();
+
+            // One-time startup migration: real SHA-256 backfill + unique index.
+            services.AddScoped<DocumentFileHashBackfiller>();
 
             return services;
         }

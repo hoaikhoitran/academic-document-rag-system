@@ -31,7 +31,18 @@ namespace AcademicDocumentRagSystem.Services.DTOs.Documents
 
         public string? IndexError { get; set; }
 
+        public int? SubmittedByAccountId { get; set; }
+
+        public string? SubmittedByFullName { get; set; }
+
         public string? SubmittedByEmail { get; set; }
+
+        /// <summary>
+        /// Uploader shown as "Full Name &lt;email&gt;", falling back to email (or "-")
+        /// when the full name is not available.
+        /// </summary>
+        public string SubmittedByDisplay =>
+            UploaderDisplay.Format(SubmittedByFullName, SubmittedByEmail);
 
         public DateTime CreatedAt { get; set; }
 

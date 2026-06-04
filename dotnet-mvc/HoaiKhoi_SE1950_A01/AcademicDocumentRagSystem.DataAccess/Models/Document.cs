@@ -25,6 +25,8 @@ public partial class Document
 
     public string FileType { get; set; } = null!;
 
+    public string FileHashSha256 { get; set; } = null!;
+
     public string? ContentType { get; set; }
 
     public long FileSize { get; set; }

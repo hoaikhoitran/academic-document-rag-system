@@ -114,7 +114,7 @@ else
                                 <div class="cell-strong">@document.OriginalFileName</div>
                                 <div class="cell-muted">@document.FileType.ToUpperInvariant() · @(Math.Ceiling(document.FileSize / 1024.0)) KB</div>
                             </td>
-                            <td class="cell-muted">@(string.IsNullOrWhiteSpace(document.SubmittedByEmail) ? "-" : document.SubmittedByEmail)</td>
+                            <td class="cell-muted">@document.SubmittedByDisplay</td>
                             <td class="cell-muted">@document.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                             <td class="cell-muted">@(document.IndexedAt.HasValue ? document.IndexedAt.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm") : "-")</td>
                             <td>

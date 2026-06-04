@@ -28,6 +28,17 @@ public class DocumentsController : Controller
         return View(documents);
     }
 
+    [SessionAuthorize("Admin")]
+    public async Task<IActionResult> All(DocumentFilterDto filter)
+    {
+        var documents = await _documentService.GetAllForAdminAsync(filter);
+
+        ViewBag.Courses = await _documentService.GetCourseFilterOptionsAsync();
+        ViewBag.Filter = filter;
+
+        return View(documents);
+    }
+
     [SessionAuthorize("Teacher")]
     public async Task<IActionResult> Upload()
     {

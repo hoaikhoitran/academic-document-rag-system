@@ -6,11 +6,13 @@ using AcademicDocumentRagSystem.Services.DTOs.Documents;
 using AcademicDocumentRagSystem.Services.DTOs.Rag;
 using AcademicDocumentRagSystem.Services.Interfaces;
 using AcademicDocumentRagSystem.Services.RagIntegration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace AcademicDocumentRagSystem.Services.Implementations
@@ -21,6 +23,9 @@ namespace AcademicDocumentRagSystem.Services.Implementations
 
         private const string WrongCourseMessage =
             "Bạn không có quyền upload tài liệu cho môn học này.";
+
+        private const string DuplicateFileMessage =
+            "This document file has already been uploaded for this course.";
 
         private static readonly string[] AllowedExtensions = { ".pdf", ".docx", ".pptx", ".txt" };
 
@@ -56,7 +61,36 @@ namespace AcademicDocumentRagSystem.Services.Implementations
         public async Task<List<DocumentListItemDto>> GetByTeacherAsync(int accountId)
         {
             var documents = await _documentRepository.GetBySubmitterAsync(accountId);
+            return await MapListItemsAsync(documents);
+        }
 
+        public async Task<List<DocumentListItemDto>> GetAllForAdminAsync(DocumentFilterDto filter)
+        {
+            var documents = await _documentRepository.GetForAdminAsync(
+                filter.CourseId, filter.CourseCode, filter.UploadStatus, filter.IndexStatus);
+
+            return await MapListItemsAsync(documents);
+        }
+
+        public async Task<List<CourseDto>> GetCourseFilterOptionsAsync()
+        {
+            var courses = await _courseRepository.GetAllAsync();
+
+            return courses
+                .OrderBy(c => c.Code)
+                .Select(c => new CourseDto
+                {
+                    CourseId = c.CourseId,
+                    Code = c.Code,
+                    Name = c.Name,
+                    Description = c.Description,
+                    Status = c.Status
+                })
+                .ToList();
+        }
+
+        private async Task<List<DocumentListItemDto>> MapListItemsAsync(List<Document> documents)
+        {
             var idsWithChunks = await _chunkRepository.GetDocumentIdsWithChunksAsync(
                 documents.Select(d => d.DocumentId).ToList());
 
@@ -66,6 +100,7 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 Title = d.Title,
                 Description = d.Description,
                 CourseCode = d.CourseCode,
+                CourseName = d.Course?.Name,
                 Chapter = d.Chapter,
                 OriginalFileName = d.OriginalFileName,
                 FileType = d.FileType,
@@ -74,6 +109,8 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 IndexStatus = d.IndexStatus,
                 TotalChunks = d.TotalChunks,
                 IndexError = d.IndexError,
+                SubmittedByAccountId = d.SubmittedByAccountId,
+                SubmittedByFullName = d.SubmittedByAccount?.FullName,
                 SubmittedByEmail = d.SubmittedByEmail,
                 CreatedAt = d.CreatedAt,
                 IndexedAt = d.IndexedAt,
@@ -133,6 +170,18 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 throw new Exception("Only PDF, DOCX, PPTX, and TXT files are allowed.");
             }
 
+            // Compute the content hash before touching disk so a duplicate upload never
+            // creates a stray physical file. Duplicate detection is by content, not name.
+            var fileHashSha256 = await ComputeFileHashAsync(dto.File);
+
+            var existingDuplicate =
+                await _documentRepository.GetActiveByCourseAndFileHashAsync(course.CourseId, fileHashSha256);
+
+            if (existingDuplicate != null)
+            {
+                throw new Exception(DuplicateFileMessage);
+            }
+
             var folder = _configuration["FileStorage:DocumentFolder"];
 
             if (string.IsNullOrWhiteSpace(folder))
@@ -161,6 +210,7 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 StoredFileName = storedFileName,
                 FilePath = fullPath,
                 FileType = extension,
+                FileHashSha256 = fileHashSha256,
                 ContentType = dto.File.ContentType,
                 FileSize = dto.File.Length,
                 UploadStatus = "Approved",
@@ -171,7 +221,19 @@ namespace AcademicDocumentRagSystem.Services.Implementations
             };
 
             await _documentRepository.AddAsync(document);
-            await _documentRepository.SaveChangesAsync();
+
+            try
+            {
+                await _documentRepository.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                // Race condition: another concurrent upload inserted the same content
+                // first and the unique filtered index rejected this row. Roll back the
+                // physical file and surface the same friendly duplicate message.
+                TryDeleteFile(fullPath);
+                throw new Exception(DuplicateFileMessage);
+            }
 
             await AddLogAsync(document.DocumentId, "Upload", "Success", accountId, email, null, null);
 
@@ -259,6 +321,8 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 IndexStatus = document.IndexStatus,
                 TotalChunks = document.TotalChunks,
                 IndexError = document.IndexError,
+                SubmittedByAccountId = document.SubmittedByAccountId,
+                SubmittedByFullName = document.SubmittedByAccount?.FullName,
                 SubmittedByEmail = document.SubmittedByEmail,
                 CreatedAt = document.CreatedAt,
                 IndexedAt = document.IndexedAt,
@@ -349,6 +413,29 @@ namespace AcademicDocumentRagSystem.Services.Implementations
         // ----------------------------------------------------------------- //
         // Helpers
         // ----------------------------------------------------------------- //
+        private static async Task<string> ComputeFileHashAsync(Microsoft.AspNetCore.Http.IFormFile file)
+        {
+            using var stream = file.OpenReadStream();
+            using var sha = SHA256.Create();
+            var hashBytes = await sha.ComputeHashAsync(stream);
+            return Convert.ToHexString(hashBytes).ToLowerInvariant();
+        }
+
+        private static void TryDeleteFile(string path)
+        {
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+            catch
+            {
+                // Best-effort cleanup; never mask the original error.
+            }
+        }
+
         private async Task GeneratePreviewChunksAsync(
             Document document, string filePath, string fileType, int? accountId, string email)
         {

@@ -21,4 +21,15 @@ public class RagSourceDto
 
     [JsonPropertyName("distance")]
     public double? Distance { get; set; }
+
+    /// <summary>
+    /// Uploader full name, enriched on the .NET side from SQL document metadata
+    /// after the RAG service responds. Not produced by the Python RAG service.
+    /// </summary>
+    [JsonPropertyName("uploadedByFullName")]
+    public string? UploadedByFullName { get; set; }
+
+    /// <summary>Uploader email, enriched on the .NET side from SQL document metadata.</summary>
+    [JsonPropertyName("uploadedByEmail")]
+    public string? UploadedByEmail { get; set; }
 }

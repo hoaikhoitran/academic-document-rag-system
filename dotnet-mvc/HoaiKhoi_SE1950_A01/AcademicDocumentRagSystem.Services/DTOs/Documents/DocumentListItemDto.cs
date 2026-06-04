@@ -26,7 +26,13 @@ public class DocumentListItemDto
 
     public string? IndexError { get; set; }
 
+    public int? SubmittedByAccountId { get; set; }
+
+    public string? SubmittedByFullName { get; set; }
+
     public string? SubmittedByEmail { get; set; }
+
+    public string? CourseName { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
@@ -34,4 +40,11 @@ public class DocumentListItemDto
 
     /// <summary>True when at least one chunk preview row is stored for this document.</summary>
     public bool HasChunks { get; set; }
+
+    /// <summary>
+    /// Uploader shown as "Full Name &lt;email&gt;", falling back to email (or "-")
+    /// when the full name is not available.
+    /// </summary>
+    public string SubmittedByDisplay =>
+        UploaderDisplay.Format(SubmittedByFullName, SubmittedByEmail);
 }
