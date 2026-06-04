@@ -30,15 +30,59 @@ namespace AcademicDocumentRagSystem.DataAccess.Repositories.Implementations
         {
             return await _context.Documents
                 .Include(d => d.Course)
+                .Include(d => d.SubmittedByAccount)
                 .Where(d => d.SubmittedByAccountId == accountId)
                 .OrderByDescending(d => d.CreatedAt)
                 .ToListAsync();
+        }
+
+        public async Task<List<Document>> GetForAdminAsync(
+            int? courseId, string? courseCode, string? uploadStatus, string? indexStatus)
+        {
+            var query = _context.Documents
+                .Include(d => d.Course)
+                .Include(d => d.SubmittedByAccount)
+                .AsQueryable();
+
+            if (courseId.HasValue)
+            {
+                query = query.Where(d => d.CourseId == courseId.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(courseCode))
+            {
+                query = query.Where(d => d.CourseCode == courseCode);
+            }
+
+            if (!string.IsNullOrWhiteSpace(uploadStatus))
+            {
+                query = query.Where(d => d.UploadStatus == uploadStatus);
+            }
+
+            if (!string.IsNullOrWhiteSpace(indexStatus))
+            {
+                query = query.Where(d => d.IndexStatus == indexStatus);
+            }
+
+            return await query
+                .OrderByDescending(d => d.CreatedAt)
+                .ToListAsync();
+        }
+
+        public async Task<Document?> GetActiveByCourseAndFileHashAsync(int courseId, string fileHashSha256)
+        {
+            return await _context.Documents
+                .FirstOrDefaultAsync(d =>
+                    d.CourseId == courseId &&
+                    d.FileHashSha256 == fileHashSha256 &&
+                    d.UploadStatus != "Deleted");
         }
 
         public async Task<Document?> GetByIdAsync(int id)
         {
             return await _context.Documents
                 .Include(d => d.Course)
+                .Include(d => d.SubmittedByAccount)
                 .FirstOrDefaultAsync(d => d.DocumentId == id);
         }
 

@@ -13,6 +13,18 @@ namespace AcademicDocumentRagSystem.DataAccess.Repositories.Interfaces
 
         Task<List<Document>> GetBySubmitterAsync(int accountId);
 
+        /// <summary>
+        /// All documents (optionally filtered) for the admin document list, including
+        /// course and uploader navigation properties.
+        /// </summary>
+        Task<List<Document>> GetForAdminAsync(int? courseId, string? courseCode, string? uploadStatus, string? indexStatus);
+
+        /// <summary>
+        /// Returns the existing active (non-deleted) document with the same content hash
+        /// in the given course, or null when the file content has not been uploaded yet.
+        /// </summary>
+        Task<Document?> GetActiveByCourseAndFileHashAsync(int courseId, string fileHashSha256);
+
         Task<Document?> GetByIdAsync(int id);
 
         Task AddAsync(Document document);

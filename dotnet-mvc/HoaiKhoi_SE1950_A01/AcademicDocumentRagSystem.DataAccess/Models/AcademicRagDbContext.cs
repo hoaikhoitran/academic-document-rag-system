@@ -133,7 +133,14 @@ public partial class AcademicRagDbContext : DbContext
 
             entity.HasIndex(e => e.UploadStatus, "IX_Documents_UploadStatus");
 
+            // Database-level guard against re-uploading the same file content into the
+            // same course. Filtered so soft-deleted documents do not block a re-upload.
+            entity.HasIndex(e => new { e.CourseId, e.FileHashSha256 }, "UX_Documents_Course_FileHash_Active")
+                .IsUnique()
+                .HasFilter("[UploadStatus] <> 'Deleted'");
+
             entity.Property(e => e.Chapter).HasMaxLength(100);
+            entity.Property(e => e.FileHashSha256).HasMaxLength(64).IsFixedLength();
             entity.Property(e => e.ContentType).HasMaxLength(255);
             entity.Property(e => e.CourseCode).HasMaxLength(50);
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(sysutcdatetime())");
