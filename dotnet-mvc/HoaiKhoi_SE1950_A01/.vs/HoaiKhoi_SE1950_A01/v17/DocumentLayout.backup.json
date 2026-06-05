@@ -9,14 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.dataaccess\\models\\academicragdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2661AFF4-F231-4692-BA1B-986F975B482A}|AcademicDocumentRagSystem.DataAccess\\AcademicDocumentRagSystem.DataAccess.csproj|solutionrelative:academicdocumentragsystem.dataaccess\\models\\academicragdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.mvc\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B89401C6-13DC-4946-ABCE-BF3A212FE796}|AcademicDocumentRagSystem.MVC\\AcademicDocumentRagSystem.MVC.csproj|solutionrelative:academicdocumentragsystem.mvc\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -44,9 +36,9 @@
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T08:39:07.163Z",
+              "WhenOpened": "2026-06-05T05:47:53.637Z",
               "EditorCaption": ""
             },
             {
@@ -57,33 +49,10 @@
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\appsettings.json",
               "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\appsettings.json",
               "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-29T08:39:00.645Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AcademicRagDbContext.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Models\\AcademicRagDbContext.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.DataAccess\\Models\\AcademicRagDbContext.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.DataAccess\\Models\\AcademicRagDbContext.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.DataAccess\\Models\\AcademicRagDbContext.cs",
-              "ViewState": "AgIAAHAAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T08:38:48.971Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CoursesController.cs",
-              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\CoursesController.cs",
-              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\Controllers\\CoursesController.cs",
-              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\Controllers\\CoursesController.cs",
-              "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\Controllers\\CoursesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T08:38:20.722Z"
+              "WhenOpened": "2026-05-29T08:39:00.645Z",
+              "EditorCaption": ""
             }
           ]
         }

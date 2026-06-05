@@ -116,6 +116,12 @@ a:hover {
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Give the navbar a little more horizontal room than the page body so the
+   menu fits on a single row on desktop. */
+.app-navbar .app-shell {
+  max-width: 1280px;
+}
+
 .app-navbar .navbar-brand {
   display: inline-flex;
   align-items: center;
@@ -124,6 +130,7 @@ a:hover {
   font-size: 1.0625rem;
   color: #111827;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .app-navbar .navbar-brand:hover {
@@ -148,11 +155,18 @@ a:hover {
   height: 20px;
 }
 
+/* Keep all menu items on one vertically-centered row on desktop. */
+.app-navbar .navbar-nav {
+  align-items: center;
+}
+
 .app-navbar .navbar-nav .nav-link {
   color: var(--color-muted);
   font-weight: 500;
-  padding: .4rem .75rem;
+  font-size: .95rem;
+  padding: .4rem .6rem;
   border-radius: var(--radius-sm);
+  white-space: nowrap;
   transition: color .15s ease, background-color .15s ease;
 }
 
@@ -591,10 +605,9 @@ textarea.form-control {
 }
 
 .upload-workspace {
-  display: grid;
-  grid-template-columns: minmax(0, 760px) minmax(280px, 360px);
-  align-items: start;
-  gap: 1.25rem;
+  display: block;
+  max-width: 920px;
+  margin: 0 auto;
 }
 
 .upload-form-card {

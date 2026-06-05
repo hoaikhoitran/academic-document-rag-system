@@ -151,3 +151,4 @@ D:\Basic-Retrieval-Augmented-Generation\dotnet-mvc\HoaiKhoi_SE1950_A01\AcademicD
 D:\Basic-Retrieval-Augmented-Generation\dotnet-mvc\HoaiKhoi_SE1950_A01\AcademicDocumentRagSystem.MVC\obj\Debug\net8.0\AcademicDocumentRagSystem.MVC.pdb
 D:\Basic-Retrieval-Augmented-Generation\dotnet-mvc\HoaiKhoi_SE1950_A01\AcademicDocumentRagSystem.MVC\obj\Debug\net8.0\AcademicDocumentRagSystem.MVC.genruntimeconfig.cache
 D:\Basic-Retrieval-Augmented-Generation\dotnet-mvc\HoaiKhoi_SE1950_A01\AcademicDocumentRagSystem.MVC\obj\Debug\net8.0\ref\AcademicDocumentRagSystem.MVC.dll
+D:\Basic-Retrieval-Augmented-Generation\dotnet-mvc\HoaiKhoi_SE1950_A01\AcademicDocumentRagSystem.MVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
