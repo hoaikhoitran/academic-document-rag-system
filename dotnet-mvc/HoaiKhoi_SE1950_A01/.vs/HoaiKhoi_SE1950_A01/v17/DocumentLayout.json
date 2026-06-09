@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\implementations\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\implementations\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|d:\\basic-retrieval-augmented-generation\\dotnet-mvc\\hoaikhoi_se1950_a01\\academicdocumentragsystem.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1637D1F9-61C5-4BEF-9A5D-8D1A2C774CAC}|AcademicDocumentRagSystem.Services\\AcademicDocumentRagSystem.Services.csproj|solutionrelative:academicdocumentragsystem.services\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DocumentService.cs",
+              "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
+              "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
+              "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
+              "RelativeToolTip": "AcademicDocumentRagSystem.Services\\Implementations\\DocumentService.cs",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAwwJEAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T07:50:43.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
@@ -43,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.MVC\\appsettings.json",
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.MVC\\appsettings.json",
