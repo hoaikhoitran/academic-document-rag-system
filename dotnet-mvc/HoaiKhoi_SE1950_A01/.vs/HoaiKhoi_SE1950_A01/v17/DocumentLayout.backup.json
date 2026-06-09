@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "ToolTip": "D:\\Basic-Retrieval-Augmented-Generation\\dotnet-mvc\\HoaiKhoi_SE1950_A01\\AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
               "RelativeToolTip": "AcademicDocumentRagSystem.Services\\DependencyInjection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-05T05:47:53.637Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "AcademicDocumentRagSystem.MVC\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-29T08:39:00.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-29T08:39:00.645Z"
             }
           ]
         }
