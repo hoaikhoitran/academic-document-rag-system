@@ -1,8 +1,13 @@
 # Database Overview
 
-The MVC application persists relational metadata in **Microsoft SQL Server**.
+The .NET applications persist relational metadata in **Microsoft SQL Server**.
 Vectors (embeddings) are kept separately by the Python RAG service inside
 ChromaDB.
+
+> **Both** the MVC app (Assignment 01) and the Razor Pages app (Assignment 02)
+> use the **same** `AcademicRagManagement` database, the same `AcademicRagDbContext`,
+> and the same entities/repositories. The Razor version required **no schema
+> change** — it reuses the existing tables as-is.
 
 * Database name: `AcademicRagManagement`
 * DDL script: [`database/AcademicRagManagement.sql`](../database/AcademicRagManagement.sql)

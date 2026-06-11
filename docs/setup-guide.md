@@ -183,3 +183,63 @@ If anything goes wrong, see the
 [troubleshooting section](../rag-service/README.md#troubleshooting)
 in the RAG service README — it has detailed solutions for the most common
 issues (model download, file paths, threshold tuning, API-key errors).
+
+---
+
+## 5. Start the .NET Razor Pages web app (Assignment 02)
+
+The Razor Pages app is an independent solution that reuses the same Services and
+DataAccess projects and the **same database**. The MVC app does not need to be
+running.
+
+```powershell
+# from the repository root
+dotnet restore dotnet-razor/HoaiKhoi_SE1950_A02/HoaiKhoi_SE1950_A02.sln
+dotnet build   dotnet-razor/HoaiKhoi_SE1950_A02/HoaiKhoi_SE1950_A02.sln
+dotnet run --project dotnet-razor/HoaiKhoi_SE1950_A02/AcademicDocumentRagSystem.RazorPages
+```
+
+Open `https://localhost:7150/` (or the URL `dotnet run` prints). The **Login page
+is the default start page**.
+
+### Test accounts
+
+| Role | Email | Password | Source |
+| --- | --- | --- | --- |
+| Admin | `admin@AcademicDocumentRagSystem.org` | `@@abc123@@` | `appsettings.json → AdminAccount` |
+| Teacher | `teacher@academicrag.org` | `@@abc123@@` | seeded by the SQL script |
+| Student | `student@academicrag.org` | `@@abc123@@` | seeded by the SQL script |
+
+(An additional demo lecturer, `teacher.demo@academicrag.local` / `Teacher@123`,
+may exist if the screenshot automation was run; you can delete it from the
+Accounts page.)
+
+### Configuration (`appsettings.json`)
+
+Same keys as the MVC app, plus two Razor-specific sections. **Secrets are blank
+placeholders** — fill them via `appsettings.Development.json` or user-secrets:
+
+```jsonc
+{
+  "ConnectionStrings": { "DefaultConnection": "server=(local); database=AcademicRagManagement; Trusted_Connection=True; TrustServerCertificate=True;" },
+  "AdminAccount": { "Email": "admin@AcademicDocumentRagSystem.org", "Password": "@@abc123@@" },
+  "RagService":  { "BaseUrl": "http://localhost:8000", "ApiKey": "" },
+  "App":  { "LoginUrl": "https://localhost:7150/Auth/Login" },
+  "Smtp": { "Host": "", "Port": 587, "EnableSsl": true, "UserName": "", "Password": "", "FromEmail": "", "FromName": "Academic Document RAG System" }
+}
+```
+
+* SignalR real-time course updates — see [`signalr.md`](signalr.md).
+* SMTP lecturer onboarding email — see [`smtp.md`](smtp.md) (how to configure
+  Gmail/Outlook via user-secrets).
+* Full feature/page reference — see [`razor-pages-a02.md`](razor-pages-a02.md).
+
+### Razor smoke test
+
+1. Log in as **Admin** → **Courses** → *Create Course* (modal) → the course is
+   saved, a success message shows, and it appears in the list. A duplicate code
+   shows a clear in-modal error.
+2. Open `/Teacher/Courses` as a lecturer in another browser; create/delete a
+   course as admin — the lecturer's list updates live (no refresh).
+3. As Admin → **Accounts** → create a Teacher; with SMTP configured the lecturer
+   receives the onboarding email, otherwise a warning shows (account still made).

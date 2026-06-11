@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <title>Welcome to Academic Document RAG System</title>
+</head>
+<body style="margin:0; padding:0; background-color:#eef2ff; -webkit-font-smoothing:antialiased; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <!-- Preheader (hidden) -->
+    <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+        Your Academic Document RAG System lecturer account is ready.
+    </div>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eef2ff; padding:24px 12px;">
+        <tr>
+            <td align="center">
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0"
+                       style="width:600px; max-width:600px; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(79,70,229,0.12);">
+
+                    <!-- Header -->
+                    <tr>
+                        <td style="background:linear-gradient(135deg,#4f46e5 0%,#6366f1 60%,#818cf8 100%); padding:36px 40px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:#c7d2fe; font-weight:600;">
+                                        Academic Document RAG System
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:10px; font-size:26px; line-height:1.25; color:#ffffff; font-weight:700;">
+                                        Welcome to Academic&nbsp;Document RAG System
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Welcome -->
+                    <tr>
+                        <td style="padding:32px 40px 8px 40px;">
+                            <p style="margin:0 0 14px 0; font-size:18px; color:#111827; font-weight:600;">Hello {{TeacherName}},</p>
+                            <p style="margin:0; font-size:15px; line-height:1.65; color:#4b5563;">
+                                An administrator has created a <strong>Lecturer</strong> account for you on the
+                                Academic Document RAG System. You can now upload course documents and use the
+                                retrieval-augmented chatbot. Your sign-in details are below.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Account info card -->
+                    <tr>
+                        <td style="padding:24px 40px 8px 40px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                                   style="background-color:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;">
+                                <tr>
+                                    <td style="padding:20px 24px;">
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td style="padding:6px 0; font-size:13px; color:#6b7280; width:160px;">Email</td>
+                                                <td style="padding:6px 0; font-size:15px; color:#111827; font-weight:600;">{{Email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:6px 0; font-size:13px; color:#6b7280;">Temporary Password</td>
+                                                <td style="padding:6px 0;">
+                                                    <span style="display:inline-block; font-family:'Courier New', monospace; font-size:15px; color:#3730a3; background-color:#e0e7ff; padding:4px 10px; border-radius:6px; font-weight:700;">{{Password}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:6px 0; font-size:13px; color:#6b7280;">Role</td>
+                                                <td style="padding:6px 0; font-size:15px; color:#111827; font-weight:600;">Teacher / Lecturer</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:6px 0; font-size:13px; color:#6b7280;">Assigned Course</td>
+                                                <td style="padding:6px 0; font-size:15px; color:#111827; font-weight:600;">{{CourseName}}</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Security notice -->
+                    <tr>
+                        <td style="padding:16px 40px 8px 40px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                                   style="background-color:#fffbeb; border:1px solid #fde68a; border-radius:12px;">
+                                <tr>
+                                    <td style="padding:16px 20px;">
+                                        <p style="margin:0 0 8px 0; font-size:14px; color:#92400e; font-weight:700;">Security notice</p>
+                                        <ul style="margin:0; padding-left:18px; font-size:13px; line-height:1.6; color:#92400e;">
+                                            <li>Change your password right after your first login.</li>
+                                            <li>Do not share these credentials with anyone.</li>
+                                            <li>Contact your administrator if you did not expect this email.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- CTA -->
+                    <tr>
+                        <td align="center" style="padding:24px 40px 32px 40px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center" style="border-radius:10px; background:linear-gradient(135deg,#4f46e5,#6366f1);">
+                                        <a href="{{LoginUrl}}" target="_blank"
+                                           style="display:inline-block; padding:14px 38px; font-size:15px; font-weight:700; color:#ffffff; text-decoration:none; border-radius:10px;">
+                                            Login to System
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="margin:14px 0 0 0; font-size:12px; color:#9ca3af;">
+                                Or paste this link into your browser:<br />
+                                <a href="{{LoginUrl}}" target="_blank" style="color:#6366f1;">{{LoginUrl}}</a>
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color:#f8fafc; border-top:1px solid #e2e8f0; padding:24px 40px;">
+                            <p style="margin:0 0 4px 0; font-size:13px; color:#6b7280; font-weight:600;">Academic Document RAG System</p>
+                            <p style="margin:0; font-size:12px; color:#9ca3af; line-height:1.6;">
+                                This message was generated automatically — please do not reply.<br />
+                                &copy; {{CurrentYear}} Academic Document RAG System. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
