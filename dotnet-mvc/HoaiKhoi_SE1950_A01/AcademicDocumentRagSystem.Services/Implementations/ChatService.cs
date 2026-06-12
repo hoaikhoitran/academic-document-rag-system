@@ -92,6 +92,20 @@ public class ChatService : IChatService
         }
 
         var session = await GetOrCreateSessionAsync(dto, accountId, document);
+
+        var uploaderFullName = document.SubmittedByAccount?.FullName;
+        var uploaderEmail = document.SubmittedByEmail ?? document.SubmittedByAccount?.Email;
+
+        // "Who uploaded this document?" is provenance metadata, not document content.
+        // Answer it directly from SQL instead of letting the grounded RAG flow handle it
+        // (which would correctly say the answer is not in the document).
+        if (IsUploaderQuestion(dto.Question))
+        {
+            var uploaderAnswer = BuildUploaderAnswer(document, uploaderFullName, uploaderEmail);
+            return await SaveAndBuildAnswerAsync(session, accountId, document, dto.Question,
+                uploaderAnswer, new List<RagSourceDto>());
+        }
+
         var history = BuildConversationHistory(session);
 
         var ragResponse = await _ragClient.AskAsync(new RagAskRequest
@@ -105,15 +119,31 @@ public class ChatService : IChatService
             ConversationHistory = history
         });
 
-        var sourcesJson = JsonSerializer.Serialize(ragResponse.Sources);
+        // Enrich each citation with uploader provenance from SQL. All retrieved chunks
+        // belong to the single selected document, so they share its uploader.
+        foreach (var source in ragResponse.Sources)
+        {
+            source.UploadedByFullName = uploaderFullName;
+            source.UploadedByEmail = uploaderEmail;
+        }
+
+        return await SaveAndBuildAnswerAsync(session, accountId, document, dto.Question,
+            ragResponse.Answer, ragResponse.Sources);
+    }
+
+    private async Task<ChatAnswerDto> SaveAndBuildAnswerAsync(
+        ChatSession session, int accountId, Document document,
+        string question, string answer, List<RagSourceDto> sources)
+    {
+        var sourcesJson = JsonSerializer.Serialize(sources);
 
         var message = new ChatMessage
         {
             ChatSessionId = session.ChatSessionId,
             AccountId = accountId,
             DocumentId = document.DocumentId,
-            Question = dto.Question,
-            Answer = ragResponse.Answer,
+            Question = question,
+            Answer = answer,
             SourcesJson = sourcesJson,
             CreatedAt = DateTime.UtcNow
         };
@@ -129,10 +159,45 @@ public class ChatService : IChatService
         {
             ChatSessionId = session.ChatSessionId,
             DocumentId = document.DocumentId,
-            Question = dto.Question,
-            Answer = ragResponse.Answer,
-            Sources = ragResponse.Sources
+            Question = question,
+            Answer = answer,
+            Sources = sources
         };
+    }
+
+    private static readonly string[] UploaderQuestionPhrases =
+    {
+        "who uploaded", "who submitted", "who added", "uploaded by", "submitted by",
+        "who is the uploader", "ai upload", "ai đã upload", "ai tải lên", "ai đã tải lên",
+        "người upload", "người tải lên", "ai đăng", "ai đã đăng"
+    };
+
+    private static bool IsUploaderQuestion(string question)
+    {
+        if (string.IsNullOrWhiteSpace(question))
+        {
+            return false;
+        }
+
+        var normalized = question.ToLowerInvariant();
+        return UploaderQuestionPhrases.Any(p => normalized.Contains(p));
+    }
+
+    private static string BuildUploaderAnswer(Document document, string? fullName, string? email)
+    {
+        var hasName = !string.IsNullOrWhiteSpace(fullName);
+        var hasEmail = !string.IsNullOrWhiteSpace(email);
+
+        if (!hasName && !hasEmail)
+        {
+            return $"Uploader information is not available for \"{document.Title}\".";
+        }
+
+        var who = hasName && hasEmail
+            ? $"{fullName} <{email}>"
+            : (hasName ? fullName! : email!);
+
+        return $"\"{document.Title}\" was uploaded by {who}.";
     }
 
     private async Task<ChatSession> GetOrCreateSessionAsync(AskQuestionDto dto, int accountId, Document document)

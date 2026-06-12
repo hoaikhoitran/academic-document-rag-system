@@ -79,7 +79,7 @@
             <table class="table-modern">
                 <tbody>
                     <tr><th>File name</th><td>@Model.OriginalFileName (@Model.FileType.ToUpperInvariant())</td></tr>
-                    <tr><th>Uploaded by</th><td>@(string.IsNullOrWhiteSpace(Model.SubmittedByEmail) ? "-" : Model.SubmittedByEmail)</td></tr>
+                    <tr><th>Uploaded by</th><td>@Model.SubmittedByDisplay</td></tr>
                     <tr><th>Uploaded at</th><td>@Model.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td></tr>
                     <tr><th>Indexed at</th><td>@(Model.IndexedAt.HasValue ? Model.IndexedAt.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm") : "-")</td></tr>
                     @if (!string.IsNullOrWhiteSpace(Model.IndexError))

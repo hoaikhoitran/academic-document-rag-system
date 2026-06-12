@@ -55,7 +55,7 @@ indexing and question-answering to the Python service via
 
 #### Layered view
 
-![.NET MVC layered architecture](images/dotnet-mvc-layered-architecture.png)
+![.NET layered architecture](images/Achiteture.png)
 
 The three .NET projects map onto a classic layered architecture:
 
@@ -143,3 +143,29 @@ Student → POST /Chat/Ask                  (.NET MVC)
 * **Persistence** — SQL Server for relational metadata, ChromaDB for vectors.
 * **Idempotency** — re-indexing the same `documentId` removes its old chunks
   first, so repeating the operation never duplicates data.
+
+## Two presentation layers, one core
+
+There are **two** interchangeable .NET front-ends over the **same** `Services`
+and `DataAccess` layers and the **same** database:
+
+```
+        ┌───────────────────────────┐   ┌────────────────────────────┐
+        │  ASP.NET Core 8 MVC        │   │  ASP.NET Core 8 Razor Pages│
+        │  dotnet-mvc (Assignment 01)│   │  dotnet-razor (Assign. 02) │
+        │  Controllers + Views       │   │  PageModels + Pages        │
+        │                            │   │  + SignalR (live courses)  │
+        │                            │   │  + SMTP (lecturer email)   │
+        └─────────────┬──────────────┘   └──────────────┬─────────────┘
+                      └───────────────┬──────────────────┘
+                                      ▼
+                  AcademicDocumentRagSystem.Services
+                                      ▼
+                  AcademicDocumentRagSystem.DataAccess → SQL Server / RAG service
+```
+
+Both apps depend on `Services → DataAccess`; neither front-end touches the
+`DbContext` directly. The Razor app (Assignment 02) adds two capabilities on top
+of the shared core — real-time course updates (SignalR) and lecturer onboarding
+email (SMTP). See [`razor-pages-a02.md`](razor-pages-a02.md),
+[`signalr.md`](signalr.md), and [`smtp.md`](smtp.md).

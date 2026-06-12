@@ -9,10 +9,6 @@
         <p class="page-subtitle">
             Upload a course document and index it so the chatbot can answer from its content.
         </p>
-        @if (!string.IsNullOrEmpty(Model?.CourseCode))
-        {
-            <span class="context-chip mt-2"><span>Course</span> @Model.CourseCode</span>
-        }
     </div>
 </div>
 
@@ -83,38 +79,6 @@
             </div>
         </form>
     </div>
-
-    <aside class="upload-side-panel">
-        <div class="upload-side-panel__title">Index pipeline</div>
-        <div class="pipeline-step">
-            <span class="pipeline-step__number">1</span>
-            <div>
-                <strong>Course lock</strong>
-                <span>You may select a course, but upload is allowed only for your assigned course: @(string.IsNullOrWhiteSpace(Model?.CourseCode) ? "your assigned course" : Model!.CourseCode).</span>
-            </div>
-        </div>
-        <div class="pipeline-step">
-            <span class="pipeline-step__number">2</span>
-            <div>
-                <strong>Auto approval</strong>
-                <span>Status becomes Approved after upload.</span>
-            </div>
-        </div>
-        <div class="pipeline-step">
-            <span class="pipeline-step__number">3</span>
-            <div>
-                <strong>Chunk + embed</strong>
-                <span>RAG service reads the file and stores retrievable chunks.</span>
-            </div>
-        </div>
-        <div class="pipeline-step">
-            <span class="pipeline-step__number">4</span>
-            <div>
-                <strong>Indexed document</strong>
-                <span>Visible in My Documents and available for Q&amp;A.</span>
-            </div>
-        </div>
-    </aside>
 </div>
 
 @section Scripts {
