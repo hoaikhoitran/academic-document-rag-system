@@ -10,14 +10,22 @@
             <p class="text-muted-edurag mb-0">So sánh RAG vs Fine-tuning · Chunking strategies</p>
         </div>
         <div class="d-flex gap-2">
-            <button type="button" class="btn btn-outline-secondary">Tải báo cáo PDF</button>
-            <button type="button" class="btn btn-edurag-warm">Chạy lại benchmark</button>
+            <button type="button" class="btn btn-edurag-outline d-inline-flex align-items-center gap-1">
+                @{ ViewData["Icon"] = "download"; ViewData["IconSize"] = "14"; }
+                @await Html.PartialAsync("_Icons")
+                Tải báo cáo PDF
+            </button>
+            <button type="button" class="btn btn-edurag-warm d-inline-flex align-items-center gap-1">
+                @{ ViewData["Icon"] = "play"; ViewData["IconSize"] = "14"; }
+                @await Html.PartialAsync("_Icons")
+                Chạy lại benchmark
+            </button>
         </div>
     </div>
     <div class="row g-3 mb-4">
         @foreach (var s in new[] { ("0.89", "RAG Faithfulness"), ("0.84", "Best Chunking"), ("4", "Embedding models") })
         {
-            <div class="col-md-4"><div class="edurag-card p-4 bg-gradient-warm text-white"><div class="font-display fs-3 fw-bold">@s.Item1</div><div class="small opacity-85">@s.Item2</div></div></div>
+            <div class="col-md-4"><div class="edurag-card p-4 bg-gradient-hero text-white border-0 shadow-glow"><div class="font-display fs-3 fw-bold">@s.Item1</div><div class="small opacity-85">@s.Item2</div></div></div>
         }
     </div>
     <div class="row g-4">

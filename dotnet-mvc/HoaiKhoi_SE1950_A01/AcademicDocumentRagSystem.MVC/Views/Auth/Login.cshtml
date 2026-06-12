@@ -24,6 +24,7 @@
                 <li class="mb-2">• Trích dẫn nguồn rõ ràng</li>
                 <li>• Lưu lịch sử hội thoại theo phiên</li>
             </ul>
+            <p class="small text-white opacity-75 mt-3 mb-0">Tài khoản demo dùng mật khẩu <strong>123456</strong></p>
         </div>
         <div class="position-relative small text-white opacity-70">© 2026 EduRAG · RBL Project</div>
     </div>
@@ -47,7 +48,10 @@
                     <span asp-validation-for="Email" class="text-danger small"></span>
                 </div>
                 <div>
-                    <label asp-for="Password" class="form-label">Mật khẩu</label>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label asp-for="Password" class="form-label">Mật khẩu</label>
+                        <span class="small text-muted-edurag">Quên mật khẩu?</span>
+                    </div>
                     <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="••••••••" />
                     <span asp-validation-for="Password" class="text-danger small"></span>
                 </div>

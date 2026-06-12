@@ -41,6 +41,10 @@
                 <div class="small fw-semibold text-truncate">@fullName</div>
                 <div class="text-muted-edurag" style="font-size:12px;">@roleName</div>
             </div>
+            <a asp-controller="@(ViewBag.SidebarRole as string ?? "Home")" asp-action="Settings" class="text-muted-edurag" title="Cài đặt">
+                @{ ViewData["Icon"] = "settings"; ViewData["IconSize"] = "16"; }
+                @await Html.PartialAsync("_Icons")
+            </a>
             <a asp-controller="Auth" asp-action="Logout" class="text-muted-edurag" title="Đăng xuất">
                 @{ ViewData["Icon"] = "logout"; ViewData["IconSize"] = "16"; }
                 @await Html.PartialAsync("_Icons")

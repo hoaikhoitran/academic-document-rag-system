@@ -3,24 +3,36 @@
     Layout = "_LayoutDashboard";
 }
 <div class="p-4 p-md-5" style="max-width:48rem;">
-    <h1 class="font-display fs-2 fw-bold mb-4">Cấu hình hệ thống</h1>
+    <h1 class="font-display fs-2 fw-bold mb-1">Cấu hình hệ thống</h1>
+    <p class="text-muted-edurag mb-4">Tham số RAG pipeline và tính năng toàn hệ thống</p>
     <div class="edurag-card p-4 mb-4">
-        <h2 class="fs-6 fw-semibold mb-3">RAG Pipeline</h2>
-        <div class="row g-3 mb-3">
-            <div class="col-md-6"><label class="form-label small">Embedding mặc định</label><select class="form-select"><option>bge-m3</option><option>PhoBERT-base</option></select></div>
-            <div class="col-md-6"><label class="form-label small">Chunking strategy</label><select class="form-select"><option>Semantic</option><option>Recursive</option></select></div>
-            <div class="col-6 col-md-3"><label class="form-label small">Top-K</label><input type="number" class="form-control" value="5" /></div>
-            <div class="col-6 col-md-3"><label class="form-label small">Chunk size</label><input type="number" class="form-control" value="512" /></div>
-            <div class="col-6 col-md-3"><label class="form-label small">Overlap</label><input type="number" class="form-control" value="64" /></div>
-            <div class="col-6 col-md-3"><label class="form-label small">Temperature</label><input type="number" class="form-control" value="0.2" step="0.1" /></div>
+        <h2 class="font-display fs-6 fw-bold mb-3">RAG Pipeline</h2>
+        <div class="row g-3 mb-2">
+            <div class="col-md-6"><label class="form-label small fw-semibold">Embedding mặc định</label><select class="form-select"><option>bge-m3</option><option>text-embedding-3-small</option><option>PhoBERT-base</option><option>multilingual-e5-base</option></select></div>
+            <div class="col-md-6"><label class="form-label small fw-semibold">Chunking strategy</label><select class="form-select"><option>Semantic</option><option>Recursive</option><option>Fixed-size</option></select></div>
+            <div class="col-6 col-md-3"><label class="form-label small fw-semibold">Top-K</label><input type="number" class="form-control" value="5" /></div>
+            <div class="col-6 col-md-3"><label class="form-label small fw-semibold">Chunk size</label><input type="number" class="form-control" value="512" /></div>
+            <div class="col-6 col-md-3"><label class="form-label small fw-semibold">Overlap</label><input type="number" class="form-control" value="64" /></div>
+            <div class="col-6 col-md-3"><label class="form-label small fw-semibold">Temperature</label><input type="number" class="form-control" value="0.2" step="0.1" /></div>
         </div>
     </div>
     <div class="edurag-card p-4 mb-4">
-        <h2 class="fs-6 fw-semibold mb-3">Tính năng</h2>
-        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="f1" /><label class="form-check-label" for="f1">Bật trích dẫn nguồn</label></div>
-        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="f2" /><label class="form-check-label" for="f2">Lưu lịch sử chat</label></div>
-        <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" id="f3" /><label class="form-check-label" for="f3">Cho phép đăng ký công khai</label></div>
-        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked id="f4" /><label class="form-check-label" for="f4">Ghi log benchmark</label></div>
+        <h2 class="font-display fs-6 fw-bold mb-3">Tính năng</h2>
+        @foreach (var f in new[] {
+            ("Bật trích dẫn nguồn", "Gắn nguồn tài liệu vào câu trả lời", true, false),
+            ("Lưu lịch sử chat", "Lưu phiên hội thoại của người dùng", true, false),
+            ("Cho phép đăng ký công khai", "Người dùng tự tạo tài khoản", false, false),
+            ("Ghi log benchmark", "Lưu kết quả mỗi lần chạy RAGAS", true, false) })
+        {
+            <div class="d-flex align-items-center justify-content-between py-2">
+                <div>
+                    <div class="small fw-semibold">@f.Item1</div>
+                    <div class="text-muted-edurag" style="font-size:12px;">@f.Item2</div>
+                </div>
+                <label class="edurag-switch"><input type="checkbox" checked="@f.Item3" /><span class="slider"></span></label>
+            </div>
+            <hr class="my-2" />
+        }
     </div>
     <button type="button" class="btn btn-edurag-warm">Lưu cấu hình</button>
 </div>

@@ -1,19 +1,23 @@
 @model AcademicDocumentRagSystem.Services.DTOs.Documents.DocumentDetailsDto
 @{
     ViewData["Title"] = Model.Title;
-    Layout = "_LayoutDashboard";
+    Layout = "_LayoutStudent";
     var firstChunk = Model.Chunks.FirstOrDefault();
 }
 <div class="d-flex flex-column" style="min-height:100vh;">
     <div class="border-bottom px-4 py-2 d-flex align-items-center gap-3 flex-wrap">
-        <a asp-action="Library" class="btn btn-sm btn-outline-secondary">← Thư viện</a>
-        <span class="badge status-badge-indexed">@Model.IndexStatus</span>
+        <a asp-action="Library" class="btn btn-sm btn-edurag-ghost d-inline-flex align-items-center gap-1">
+            @{ ViewData["Icon"] = "arrow-left"; ViewData["IconSize"] = "14"; }
+            @await Html.PartialAsync("_Icons")
+            Thư viện
+        </a>
+        <span class="status-badge-indexed">@Model.IndexStatus</span>
         <span class="small text-muted-edurag">@Model.CourseCode · @Model.Chapter</span>
         <a asp-action="Chat" asp-route-documentId="@Model.DocumentId" class="btn btn-sm btn-edurag-warm ms-auto">Hỏi đáp RAG</a>
     </div>
     <div class="row g-0 flex-grow-1">
-        <div class="col-lg-8 border-end p-4 overflow-auto bg-light">
-            <div class="edurag-card p-4 p-md-5 mx-auto" style="max-width:720px;">
+        <div class="col-lg-8 border-end p-4 overflow-auto bg-muted-edurag">
+            <div class="doc-paper">
                 <h2 class="font-display fw-bold mb-2">@Model.Title</h2>
                 <p class="small text-muted-edurag mb-4">@Model.OriginalFileName · @Model.TotalChunks chunks</p>
                 @if (!string.IsNullOrEmpty(Model.PreviewMessage))
@@ -22,7 +26,7 @@
                 }
                 @if (firstChunk != null)
                 {
-                    <div class="border rounded p-3 small" style="white-space:pre-wrap;max-height:480px;overflow:auto;">@firstChunk.ChunkText</div>
+                    <div class="border rounded-3 p-3 small" style="white-space:pre-wrap;max-height:480px;overflow:auto;">@firstChunk.ChunkText</div>
                     @if (Model.Chunks.Count > 1)
                     {
                         <p class="small text-muted-edurag mt-2">Hiển thị chunk @firstChunk.ChunkIndex / @Model.Chunks.Count</p>
@@ -35,16 +39,19 @@
             </div>
         </div>
         <div class="col-lg-4 p-4 overflow-auto" style="background:var(--edurag-sidebar);">
-            <h3 class="font-display fw-bold fs-6 mb-3">Hỏi nhanh</h3>
-            <a asp-action="Chat" asp-route-documentId="@Model.DocumentId" class="btn btn-edurag-warm w-100">Mở chat đầy đủ</a>
+            <h3 class="font-display fw-bold fs-6 mb-1">Hỏi về tài liệu này</h3>
+            <p class="small text-muted-edurag mb-3">Trợ lý chỉ trả lời trong phạm vi nội dung đã index.</p>
+            <a asp-action="Chat" asp-route-documentId="@Model.DocumentId" class="btn btn-edurag-warm w-100 mb-3">Mở chat đầy đủ</a>
             @if (Model.Chunks.Any())
             {
                 <hr />
-                <p class="small fw-semibold text-muted-edurag">Các chunk</p>
+                <p class="small fw-semibold text-muted-edurag text-uppercase" style="letter-spacing:.05em;">Các chunk</p>
                 <ul class="list-unstyled small">
-                    @foreach (var c in Model.Chunks.Take(5))
+                    @foreach (var c in Model.Chunks.Take(6))
                     {
-                        <li class="mb-2 text-truncate">#@c.ChunkIndex @(c.PageNumber.HasValue ? $"tr.{c.PageNumber}" : "")</li>
+                        <li class="mb-2 text-truncate">
+                            <span class="citation-chip">#@c.ChunkIndex @(c.PageNumber.HasValue ? $"· tr.{c.PageNumber}" : "")</span>
+                        </li>
                     }
                 </ul>
             }

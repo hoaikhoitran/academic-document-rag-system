@@ -1,32 +1,32 @@
 @{
     ViewData["Title"] = "Cài đặt";
-    Layout = "_LayoutStudent";
-    var fullName = Context.Session.GetString("FullName") ?? "Nguyễn Văn A";
+    Layout = "_LayoutDashboard";
+    var fullName = Context.Session.GetString("FullName") ?? "Trần Thị B";
 }
 <div class="p-4 p-md-5" style="max-width:42rem;">
     <h1 class="font-display fs-2 fw-bold mb-1">Cài đặt</h1>
-    <p class="text-muted-edurag mb-4">Quản lý hồ sơ và tuỳ chọn cá nhân</p>
+    <p class="text-muted-edurag mb-4">Quản lý hồ sơ giảng viên và tuỳ chọn</p>
     <div class="edurag-card p-4 mb-4">
         <h2 class="font-display fs-6 fw-bold mb-3">Hồ sơ</h2>
         <div class="mb-3"><label class="form-label small fw-semibold">Họ và tên</label><input class="form-control" value="@fullName" /></div>
-        <div class="mb-3"><label class="form-label small fw-semibold">MSSV</label><input class="form-control" value="SE123456" /></div>
-        <div class="mb-3"><label class="form-label small fw-semibold">Email</label><input class="form-control" value="@(Context.Session.GetString("Email") ?? "vana@uni.edu.vn")" readonly /></div>
+        <div class="mb-3"><label class="form-label small fw-semibold">Email</label><input class="form-control" value="@(Context.Session.GetString("Email") ?? "teacher@uni.edu.vn")" readonly /></div>
+        <div class="mb-3"><label class="form-label small fw-semibold">Môn phụ trách</label><input class="form-control" value="@(Context.Session.GetString("CourseCode") ?? "—")" readonly /></div>
         <button type="button" class="btn btn-edurag-warm">Lưu thay đổi</button>
     </div>
     <div class="edurag-card p-4 mb-4">
         <h2 class="font-display fs-6 fw-bold mb-3">Tuỳ chọn</h2>
         <div class="d-flex align-items-center justify-content-between py-2">
             <div>
-                <div class="small fw-semibold">Hiển thị trích dẫn nguồn</div>
-                <div class="text-muted-edurag" style="font-size:12px;">Gắn nguồn tài liệu vào mỗi câu trả lời</div>
+                <div class="small fw-semibold">Thông báo khi index hoàn tất</div>
+                <div class="text-muted-edurag" style="font-size:12px;">Email khi pipeline xử lý xong tài liệu</div>
             </div>
             <label class="edurag-switch"><input type="checkbox" checked /><span class="slider"></span></label>
         </div>
         <hr class="my-2" />
         <div class="d-flex align-items-center justify-content-between py-2">
             <div>
-                <div class="small fw-semibold">Thông báo email</div>
-                <div class="text-muted-edurag" style="font-size:12px;">Nhận thông báo khi có tài liệu mới</div>
+                <div class="small fw-semibold">Tự động re-index khi cập nhật</div>
+                <div class="text-muted-edurag" style="font-size:12px;">Chạy lại pipeline khi file thay đổi</div>
             </div>
             <label class="edurag-switch"><input type="checkbox" /><span class="slider"></span></label>
         </div>

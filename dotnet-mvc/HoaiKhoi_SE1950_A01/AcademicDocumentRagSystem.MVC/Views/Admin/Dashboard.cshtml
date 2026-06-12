@@ -9,20 +9,34 @@
             <h1 class="font-display fs-2 fw-bold mb-1">Bảng điều khiển</h1>
             <p class="text-muted-edurag mb-0">Mock data · demo UI</p>
         </div>
-        <div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-outline-secondary">7 ngày</button>
-            <button type="button" class="btn btn-edurag-warm">30 ngày</button>
-            <button type="button" class="btn btn-outline-secondary">90 ngày</button>
+        <div class="d-flex gap-2">
+            <span class="pill-filter">7 ngày</span>
+            <span class="pill-filter active">30 ngày</span>
+            <span class="pill-filter">90 ngày</span>
         </div>
     </div>
     <div class="row g-3 mb-4">
-        @foreach (var s in new[] { ("1,284", "Người dùng hoạt động", "+12.4%"), ("3,402", "Câu hỏi / ngày", "+8.2%"), ("847", "Tài liệu đã index", "+3.1%"), ("0.89", "RAGAS faithfulness", "+0.04") })
+        @foreach (var s in new[] {
+            ("1,284", "Người dùng hoạt động", "+12.4%", "users"),
+            ("3,402", "Câu hỏi / ngày", "+8.2%", "message"),
+            ("847", "Tài liệu đã index", "+3.1%", "file"),
+            ("0.89", "RAGAS faithfulness", "+0.04", "trending-up") })
         {
-            <div class="col-md-3">
+            <div class="col-md-3 col-6">
                 <div class="edurag-card p-4">
-                    <div class="small text-success fw-semibold mb-2">↑ @s.Item3</div>
-                    <div class="font-display fs-3 fw-bold">@s.Item1</div>
-                    <div class="small text-muted-edurag text-uppercase">@s.Item2</div>
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="stat-icon-box bg-gradient-warm text-white shadow-glow">
+                            @{ ViewData["Icon"] = s.Item4; ViewData["IconSize"] = "18"; }
+                            @await Html.PartialAsync("_Icons")
+                        </span>
+                        <span class="kpi-delta">
+                            @{ ViewData["Icon"] = "arrow-up"; ViewData["IconSize"] = "11"; }
+                            @await Html.PartialAsync("_Icons")
+                            @s.Item3
+                        </span>
+                    </div>
+                    <div class="font-display fs-3 fw-bold lh-1">@s.Item1</div>
+                    <div class="small text-muted-edurag mt-1">@s.Item2</div>
                 </div>
             </div>
         }

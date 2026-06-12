@@ -5,12 +5,12 @@
 }
 <div class="p-4 p-md-5">
     <div class="d-flex flex-wrap gap-2 mb-4">
-        <a asp-action="IndexStatus" class="btn btn-sm btn-outline-secondary">← Trạng thái index</a>
+        <a asp-action="IndexStatus" class="btn btn-sm btn-edurag-ghost">← Trạng thái index</a>
         @if (Model.CanReIndex)
         {
             <form asp-action="ReIndex" asp-route-id="@Model.DocumentId" method="post" class="d-inline">
                 @Html.AntiForgeryToken()
-                <button type="submit" class="btn btn-sm btn-outline-primary">Re-index</button>
+                <button type="submit" class="btn btn-sm btn-edurag-outline">Re-index</button>
             </form>
         }
         <a asp-action="Chat" asp-route-documentId="@Model.DocumentId" class="btn btn-sm btn-edurag-warm">Thử chatbot</a>

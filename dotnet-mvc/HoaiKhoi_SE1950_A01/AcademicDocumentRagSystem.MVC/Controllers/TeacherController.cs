@@ -104,6 +104,44 @@ public class TeacherController : Controller
         }
     }
 
+    public async Task<IActionResult> Library(string? course, string? q)
+    {
+        SetSidebar();
+        var accountId = RequireAccountId();
+        if (accountId == null) return RedirectToAction("Login", "Auth");
+
+        var all = await _documentService.GetByTeacherAsync(accountId.Value);
+        var docs = all.AsEnumerable();
+
+        if (!string.IsNullOrWhiteSpace(course))
+        {
+            docs = docs.Where(d => string.Equals(d.CourseCode, course, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (!string.IsNullOrWhiteSpace(q))
+        {
+            docs = docs.Where(d => d.Title.Contains(q, StringComparison.OrdinalIgnoreCase)
+                || (d.Chapter?.Contains(q, StringComparison.OrdinalIgnoreCase) ?? false)
+                || (d.OriginalFileName?.Contains(q, StringComparison.OrdinalIgnoreCase) ?? false));
+        }
+
+        ViewBag.FilterCourse = course;
+        ViewBag.SearchQuery = q;
+        ViewBag.AllCourseCodes = all.Select(d => d.CourseCode).Distinct().OrderBy(c => c).ToList();
+        return View(docs.ToList());
+    }
+
+    public IActionResult Settings()
+    {
+        SetSidebar();
+        return View();
+    }
+
+    public IActionResult NewChat(int documentId)
+    {
+        return RedirectToAction(nameof(Chat), new { documentId });
+    }
+
     public async Task<IActionResult> IndexStatus(int? highlight)
     {
         SetSidebar();

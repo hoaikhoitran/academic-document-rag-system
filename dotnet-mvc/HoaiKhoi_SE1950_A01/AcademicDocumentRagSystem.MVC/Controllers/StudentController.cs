@@ -1,5 +1,4 @@
 using AcademicDocumentRagSystem.MVC.Filters;
-using AcademicDocumentRagSystem.MVC.ViewModels;
 using AcademicDocumentRagSystem.Services.DTOs.Chat;
 using AcademicDocumentRagSystem.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -18,22 +17,25 @@ public class StudentController : Controller
         _documentService = documentService;
     }
 
-    private void SetSidebar()
+    private async Task LoadSidebarAsync(int? selectedSessionId = null)
     {
-        ViewBag.SidebarAccent = "Sinh viên";
-        ViewBag.SidebarRole = "Student";
-        ViewBag.NavItems = SidebarNav.Student;
+        var accountId = RequireAccountId();
+        ViewBag.RecentSessions = accountId.HasValue
+            ? await _chatService.GetSessionsAsync(accountId.Value)
+            : new List<ChatSessionDto>();
+        ViewBag.SelectedSessionId = selectedSessionId;
     }
 
     public async Task<IActionResult> Chat(int? documentId, int? sessionId)
     {
-        SetSidebar();
         var accountId = RequireAccountId();
         if (accountId == null) return RedirectToAction("Login", "Auth");
 
         var workspace = await _chatService.GetWorkspaceAsync(accountId.Value, documentId, sessionId);
         workspace.SuccessMessage = TempData["Success"] as string;
         workspace.ErrorMessage = TempData["Error"] as string;
+        ViewBag.RecentSessions = workspace.Sessions;
+        ViewBag.SelectedSessionId = workspace.SelectedSessionId;
         return View(workspace);
     }
 
@@ -41,7 +43,6 @@ public class StudentController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Ask(AskQuestionDto dto)
     {
-        SetSidebar();
         var accountId = RequireAccountId();
         if (accountId == null) return RedirectToAction("Login", "Auth");
 
@@ -50,13 +51,14 @@ public class StudentController : Controller
             var invalidWorkspace = await _chatService.GetWorkspaceAsync(accountId.Value, dto.DocumentId, dto.ChatSessionId);
             invalidWorkspace.AskForm = dto;
             invalidWorkspace.ErrorMessage = "Vui lòng nhập câu hỏi.";
+            ViewBag.RecentSessions = invalidWorkspace.Sessions;
+            ViewBag.SelectedSessionId = invalidWorkspace.SelectedSessionId;
             return View("Chat", invalidWorkspace);
         }
 
         try
         {
             var result = await _chatService.AskAsync(dto, accountId.Value);
-            TempData["Success"] = "Đã nhận câu trả lời từ RAG.";
             return RedirectToAction(nameof(Chat), new { documentId = result.DocumentId, sessionId = result.ChatSessionId });
         }
         catch (Exception ex)
@@ -71,9 +73,9 @@ public class StudentController : Controller
         return RedirectToAction(nameof(Chat), new { documentId });
     }
 
-    public async Task<IActionResult> Library(string? course)
+    public async Task<IActionResult> Library(string? course, string? q)
     {
-        SetSidebar();
+        await LoadSidebarAsync();
         var all = await _chatService.GetIndexedDocumentsAsync();
         var courseId = HttpContext.Session.GetInt32("CourseId");
         var courseCode = HttpContext.Session.GetString("CourseCode");
@@ -90,22 +92,29 @@ public class StudentController : Controller
             docs = docs.Where(d => string.Equals(d.CourseCode, course, StringComparison.OrdinalIgnoreCase));
         }
 
+        if (!string.IsNullOrWhiteSpace(q))
+        {
+            docs = docs.Where(d => d.Title.Contains(q, StringComparison.OrdinalIgnoreCase)
+                || (d.Chapter?.Contains(q, StringComparison.OrdinalIgnoreCase) ?? false));
+        }
+
         ViewBag.CourseCode = courseCode;
         ViewBag.FilterCourse = course;
+        ViewBag.SearchQuery = q;
         ViewBag.AllCourseCodes = all.Select(d => d.CourseCode).Distinct().OrderBy(c => c).ToList();
         return View(docs.ToList());
     }
 
-    public IActionResult Document()
+    public async Task<IActionResult> Document(int? id)
     {
-        return RedirectToAction(nameof(Library));
-    }
+        if (!id.HasValue)
+        {
+            return RedirectToAction(nameof(Library));
+        }
 
-    public async Task<IActionResult> Document(int id)
-    {
-        SetSidebar();
+        await LoadSidebarAsync();
         var accountId = HttpContext.Session.GetInt32("AccountId");
-        var details = await _documentService.GetDetailsAsync(id, accountId, "Student");
+        var details = await _documentService.GetDetailsAsync(id.Value, accountId, "Student");
         if (details == null)
         {
             return NotFound();
@@ -114,9 +123,9 @@ public class StudentController : Controller
         return View(details);
     }
 
-    public IActionResult Settings()
+    public async Task<IActionResult> Settings()
     {
-        SetSidebar();
+        await LoadSidebarAsync();
         return View();
     }
 

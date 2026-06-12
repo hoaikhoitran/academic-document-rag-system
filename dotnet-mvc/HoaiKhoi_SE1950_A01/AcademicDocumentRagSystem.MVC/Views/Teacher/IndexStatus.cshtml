@@ -4,47 +4,71 @@
     Layout = "_LayoutDashboard";
     var highlightId = ViewBag.HighlightId as int?;
     var indexed = Model.Count(d => d.IndexStatus == "Indexed");
-    var processing = Model.Count(d => d.IndexStatus == "Processing");
+    var processing = Model.Count(d => d.IndexStatus != "Indexed" && d.IndexStatus != "Failed");
 }
 <div class="p-4 p-md-5">
     <div class="d-flex flex-wrap justify-content-between align-items-start mb-4 gap-3">
         <div>
             <h1 class="font-display fs-2 fw-bold mb-1">Trạng thái index</h1>
-            <p class="text-muted-edurag mb-0">Tài liệu bạn đã upload</p>
+            <p class="text-muted-edurag mb-0">Theo dõi pipeline chunk &amp; embedding của tài liệu</p>
         </div>
-        <a asp-action="Upload" class="btn btn-edurag-warm">+ Upload</a>
+        <a asp-action="Upload" class="btn btn-edurag-warm btn-sm">+ Upload</a>
     </div>
     @if (ViewBag.Success != null) { <div class="alert alert-success">@ViewBag.Success</div> }
     @if (ViewBag.Error != null) { <div class="alert alert-danger">@ViewBag.Error</div> }
     <div class="row g-3 mb-4">
-        <div class="col-md-3"><div class="edurag-card p-4"><div class="font-display fs-3 fw-bold">@Model.Count</div><div class="small text-muted-edurag">Tổng file</div></div></div>
-        <div class="col-md-3"><div class="edurag-card p-4"><div class="font-display fs-3 fw-bold text-success">@indexed</div><div class="small text-muted-edurag">Indexed</div></div></div>
-        <div class="col-md-3"><div class="edurag-card p-4"><div class="font-display fs-3 fw-bold text-warning">@processing</div><div class="small text-muted-edurag">Processing</div></div></div>
-        <div class="col-md-3"><div class="edurag-card p-4"><div class="font-display fs-3 fw-bold">@Model.Sum(d => d.TotalChunks)</div><div class="small text-muted-edurag">Chunks</div></div></div>
+        @foreach (var s in new[] {
+            (Model.Count.ToString(), "Tổng tài liệu", "database"),
+            (indexed.ToString(), "Đã index", "check-circle"),
+            (processing.ToString(), "Đang xử lý", "clock"),
+            (Model.Sum(d => d.TotalChunks).ToString("N0"), "Tổng chunks", "layers") })
+        {
+            <div class="col-md-3 col-6">
+                <div class="edurag-card p-4 d-flex align-items-center gap-3">
+                    <span class="stat-icon-box bg-gradient-warm text-white shadow-glow">
+                        @{ ViewData["Icon"] = s.Item3; ViewData["IconSize"] = "18"; }
+                        @await Html.PartialAsync("_Icons")
+                    </span>
+                    <div>
+                        <div class="font-display fs-4 fw-bold lh-1">@s.Item1</div>
+                        <div class="small text-muted-edurag">@s.Item2</div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
     <div class="edurag-card overflow-hidden">
         <div class="table-responsive">
-            <table class="table table-hover table-modern mb-0">
-                <thead class="table-light"><tr><th>Tài liệu</th><th>Môn</th><th>Chunks</th><th>Trạng thái</th><th></th></tr></thead>
+            <table class="table-edurag">
+                <thead><tr><th>Tài liệu</th><th>Môn</th><th>Chunks</th><th>Trạng thái</th><th></th></tr></thead>
                 <tbody>
                     @foreach (var d in Model)
                     {
-                        <tr class="@(highlightId == d.DocumentId ? "table-warning" : "")">
-                            <td class="fw-semibold">@d.Title<br /><span class="small text-muted-edurag">@d.OriginalFileName</span></td>
+                        var statusClass = d.IndexStatus == "Indexed" ? "status-badge-indexed" : d.IndexStatus == "Failed" ? "status-badge-failed" : "status-badge-processing";
+                        var statusLabel = d.IndexStatus == "Indexed" ? "Đã index" : d.IndexStatus == "Failed" ? "Lỗi" : "Đang xử lý";
+                        <tr class="@(highlightId == d.DocumentId ? "highlight" : "")">
+                            <td>
+                                <div class="fw-semibold">@d.Title</div>
+                                <div class="small text-muted-edurag">@d.OriginalFileName</div>
+                            </td>
                             <td>@d.CourseCode</td>
                             <td>@d.TotalChunks</td>
                             <td>
-                                <span class="badge @(d.IndexStatus == "Indexed" ? "status-badge-indexed" : d.IndexStatus == "Failed" ? "bg-danger" : "status-badge-processing")">@d.IndexStatus</span>
+                                <span class="@statusClass">@statusLabel</span>
                                 @if (!string.IsNullOrEmpty(d.IndexError)) { <div class="small text-danger">@d.IndexError</div> }
                             </td>
                             <td class="text-end text-nowrap">
-                                <a asp-action="DocumentDetails" asp-route-id="@d.DocumentId" class="btn btn-sm btn-outline-secondary">Chi tiết</a>
+                                <a asp-action="DocumentDetails" asp-route-id="@d.DocumentId" class="btn btn-sm btn-edurag-ghost">Chi tiết</a>
                                 <form asp-action="ReIndex" asp-route-id="@d.DocumentId" method="post" class="d-inline">
                                     @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-sm btn-outline-primary">Re-index</button>
+                                    <button type="submit" class="btn btn-sm btn-edurag-outline">Re-index</button>
                                 </form>
                             </td>
                         </tr>
+                    }
+                    @if (!Model.Any())
+                    {
+                        <tr><td colspan="5" class="text-center text-muted-edurag py-4">Chưa có tài liệu nào.</td></tr>
                     }
                 </tbody>
             </table>

@@ -20,9 +20,10 @@ public static class SidebarNav
     public static List<SidebarNavItem> Teacher { get; } = new()
     {
         new() { Controller = "Teacher", Action = "Courses", Label = "Môn học", Icon = "book" },
+        new() { Controller = "Teacher", Action = "Library", Label = "Thư viện tài liệu", Icon = "file" },
         new() { Controller = "Teacher", Action = "Upload", Label = "Upload tài liệu", Icon = "upload" },
         new() { Controller = "Teacher", Action = "IndexStatus", Label = "Trạng thái index", Icon = "database" },
-        new() { Controller = "Teacher", Action = "Chat", Label = "Thử chatbot", Icon = "message" },
+        new() { Controller = "Teacher", Action = "Chat", Label = "Chatbot", Icon = "message" },
         new() { Controller = "Teacher", Action = "Overview", Label = "Tổng quan", Icon = "dashboard" },
     };
 

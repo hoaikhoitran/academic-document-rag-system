@@ -7,28 +7,54 @@
     <h1 class="font-display fs-2 fw-bold mb-1">Tổng quan giảng dạy</h1>
     <p class="text-muted-edurag mb-4">Mock data · demo UI</p>
     <div class="row g-3 mb-4">
-        @foreach (var s in new[] { ("24", "Tài liệu"), ("21", "Indexed"), ("1,840", "Chunks"), ("48", "Phiên chat") })
+        @foreach (var s in new[] { ("24", "Tài liệu", "file"), ("21", "Đã index", "check-circle"), ("1,840", "Chunks", "layers"), ("48", "Phiên chat", "message") })
         {
-            <div class="col-md-3">
-                <div class="edurag-card p-4">
-                    <div class="font-display fs-4 fw-bold">@s.Item1</div>
-                    <div class="small text-muted-edurag">@s.Item2</div>
+            <div class="col-md-3 col-6">
+                <div class="edurag-card p-4 d-flex align-items-center gap-3">
+                    <span class="stat-icon-box bg-gradient-warm text-white shadow-glow">
+                        @{ ViewData["Icon"] = s.Item3; ViewData["IconSize"] = "18"; }
+                        @await Html.PartialAsync("_Icons")
+                    </span>
+                    <div>
+                        <div class="font-display fs-4 fw-bold lh-1">@s.Item1</div>
+                        <div class="small text-muted-edurag">@s.Item2</div>
+                    </div>
                 </div>
             </div>
         }
     </div>
-    <div class="edurag-card p-4">
-        <h2 class="font-display fw-bold fs-6 mb-3">Hoạt động hỏi đáp (7 ngày)</h2>
-        <div class="chart-bars">
-            @foreach (var u in Model.UsageData)
-            {
-                var h = Model.MaxQueries > 0 ? (int)(u.Queries * 100.0 / Model.MaxQueries) : 4;
-                <div class="chart-bar-col">
-                    <div class="chart-bar-fill" style="height:@(Math.Max(h, 8))%;"></div>
-                    <span class="small text-muted-edurag">@u.Day</span>
-                    <span class="small fw-semibold">@u.Queries</span>
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <div class="edurag-card p-4 h-100">
+                <h2 class="font-display fw-bold fs-6 mb-3">Câu hỏi mỗi ngày (7 ngày)</h2>
+                <div class="chart-bars">
+                    @foreach (var u in Model.UsageData)
+                    {
+                        var h = Model.MaxQueries > 0 ? (int)(u.Queries * 100.0 / Model.MaxQueries) : 4;
+                        <div class="chart-bar-col">
+                            <div class="chart-bar-fill" style="height:@(Math.Max(h, 8))%;"></div>
+                            <span class="small text-muted-edurag">@u.Day</span>
+                            <span class="small fw-semibold">@u.Queries</span>
+                        </div>
+                    }
                 </div>
-            }
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="edurag-card p-4 h-100">
+                <h2 class="font-display fw-bold fs-6 mb-3">Sinh viên hoạt động</h2>
+                <div class="chart-bars">
+                    @foreach (var u in Model.UsageData)
+                    {
+                        var h = Model.MaxUsers > 0 ? (int)(u.Users * 100.0 / Model.MaxUsers) : 4;
+                        <div class="chart-bar-col">
+                            <div class="chart-bar-fill secondary" style="height:@(Math.Max(h, 8))%;"></div>
+                            <span class="small text-muted-edurag">@u.Day</span>
+                            <span class="small fw-semibold">@u.Users</span>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
