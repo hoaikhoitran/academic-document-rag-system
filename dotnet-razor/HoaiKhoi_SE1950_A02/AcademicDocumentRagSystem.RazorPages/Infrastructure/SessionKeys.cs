@@ -12,5 +12,6 @@ namespace AcademicDocumentRagSystem.RazorPages.Infrastructure
         public const string AccountId = "AccountId";
         public const string CourseId = "CourseId";
         public const string CourseCode = "CourseCode";
+        public const string CourseName = "CourseName";
     }
 }

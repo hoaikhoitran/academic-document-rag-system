@@ -9,9 +9,13 @@
         <h1 class="page-title">Welcome, @Model.FullName</h1>
         <p class="page-subtitle">
             Lecturer dashboard.
-            @if (!string.IsNullOrWhiteSpace(Model.CourseCode))
+            @if (!string.IsNullOrWhiteSpace(Model.CourseDisplay))
             {
-                <text>Assigned course: <span class="meta-badge meta-badge--accent">@Model.CourseCode</span></text>
+                <text>Assigned course: <span class="meta-badge meta-badge--accent">@Model.CourseDisplay</span></text>
+            }
+            else
+            {
+                <text>No course has been assigned to your account yet. Please contact your administrator.</text>
             }
         </p>
     </div>

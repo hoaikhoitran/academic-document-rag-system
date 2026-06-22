@@ -64,6 +64,11 @@ namespace AcademicDocumentRagSystem.RazorPages.Pages.Auth
                 HttpContext.Session.SetString(SessionKeys.CourseCode, result.CourseCode);
             }
 
+            if (!string.IsNullOrWhiteSpace(result.CourseName))
+            {
+                HttpContext.Session.SetString(SessionKeys.CourseName, result.CourseName);
+            }
+
             return RedirectToDashboard(result.RoleName);
         }
 
