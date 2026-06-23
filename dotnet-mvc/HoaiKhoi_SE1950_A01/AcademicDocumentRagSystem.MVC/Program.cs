@@ -1,3 +1,4 @@
+using AcademicDocumentRagSystem.MVC.Hubs;
 using AcademicDocumentRagSystem.Services;
 using AcademicDocumentRagSystem.Services.Maintenance;
 
@@ -12,6 +13,7 @@ namespace AcademicDocumentRagSystem.MVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession();
+            builder.Services.AddSignalR();
             builder.Services.AddApplicationServices(builder.Configuration);
 
             var app = builder.Build();
@@ -53,6 +55,8 @@ namespace AcademicDocumentRagSystem.MVC
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapHub<CourseHub>("/hubs/courses");
 
             app.Run();
         }

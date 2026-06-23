@@ -24,7 +24,6 @@
                 <li class="mb-2">• Trích dẫn nguồn rõ ràng</li>
                 <li>• Lưu lịch sử hội thoại theo phiên</li>
             </ul>
-            <p class="small text-white opacity-75 mt-3 mb-0">Tài khoản demo dùng mật khẩu <strong>123456</strong></p>
         </div>
         <div class="position-relative small text-white opacity-70">© 2026 EduRAG · RBL Project</div>
     </div>
@@ -40,7 +39,7 @@
             <h1 class="font-display fs-2 fw-bold mb-2">Đăng nhập</h1>
             <p class="text-muted-edurag mb-4">Nhập email và mật khẩu tài khoản của bạn</p>
 
-            <form asp-action="Login" method="post" class="vstack gap-3">
+            <form asp-controller="Auth" asp-action="Login" method="post" class="vstack gap-3">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div>
                     <label asp-for="Email" class="form-label">Email</label>
@@ -57,10 +56,6 @@
                 </div>
                 <button type="submit" class="btn btn-lg btn-edurag-warm w-100">Đăng nhập</button>
             </form>
-            <p class="text-center small text-muted-edurag mt-4 mb-0">
-                Chưa có tài khoản?
-                <a asp-controller="Home" asp-action="Register" class="fw-semibold text-decoration-none" style="color:var(--edurag-primary);">Đăng ký ngay</a>
-            </p>
         </div>
     </div>
 </div>

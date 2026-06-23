@@ -1,67 +1,72 @@
 @model AcademicDocumentRagSystem.Services.DTOs.Accounts.CreateAccountDto
 @{
-    ViewData["Title"] = "Create Account";
+    ViewData["Title"] = "Thêm tài khoản";
+    Layout = "_LayoutDashboard";
 }
 
-<div class="page-header">
-    <div class="page-header__text">
-        <h1 class="page-title">Create Account</h1>
-        <p class="page-subtitle">Create a student or teacher account. Teacher accounts must be assigned to one course.</p>
+<div class="p-4 p-md-5">
+    <div class="mb-4">
+        <a asp-action="Index" class="btn btn-sm btn-edurag-ghost mb-3 d-inline-flex align-items-center gap-1">
+            @{ ViewData["Icon"] = "arrow-left"; ViewData["IconSize"] = "14"; }
+            @await Html.PartialAsync("_Icons")
+            Quay lại
+        </a>
+        <h1 class="font-display fs-2 fw-bold mb-1">Thêm tài khoản</h1>
+        <p class="text-muted-edurag mb-0">Tạo tài khoản sinh viên hoặc giảng viên. Giảng viên phải được gán một môn học.</p>
+    </div>
+
+    <div class="edurag-card p-4 p-md-5" style="max-width:720px;">
+        <form asp-action="Create" method="post" class="vstack gap-3">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div>
+                <label asp-for="Email" class="form-label fw-semibold">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+
+            <div>
+                <label asp-for="Password" class="form-label fw-semibold">Mật khẩu</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div>
+                <label asp-for="FullName" class="form-label fw-semibold">Họ và tên</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger small"></span>
+            </div>
+
+            <div>
+                <label asp-for="Role" class="form-label fw-semibold">Vai trò</label>
+                <select asp-for="Role" class="form-select">
+                    <option value="1">Student</option>
+                    <option value="2">Teacher</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger small"></span>
+            </div>
+
+            <div>
+                <label asp-for="CourseId" class="form-label fw-semibold">Môn học gán</label>
+                <select asp-for="CourseId" asp-items="ViewBag.Courses" class="form-select">
+                    <option value="">Không gán</option>
+                </select>
+                <div class="form-text text-muted-edurag">Bắt buộc với Teacher. Student không được gán môn.</div>
+            </div>
+
+            <div class="form-check">
+                <input asp-for="Status" type="checkbox" class="form-check-input" />
+                <label asp-for="Status" class="form-check-label">Tài khoản hoạt động</label>
+            </div>
+
+            <div class="d-flex gap-2 pt-2">
+                <button type="submit" class="btn btn-edurag-warm">Lưu</button>
+                <a asp-action="Index" class="btn btn-edurag-outline">Huỷ</a>
+            </div>
+        </form>
     </div>
 </div>
 
-<div class="form-card" style="max-width:720px;">
-    <form asp-action="Create" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
-
-        <div class="form-field">
-            <label asp-for="Email" class="form-label">Email</label>
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-
-        <div class="form-field">
-            <label asp-for="Password" class="form-label">Password</label>
-            <input asp-for="Password" type="password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-
-        <div class="form-field">
-            <label asp-for="FullName" class="form-label">Full name</label>
-            <input asp-for="FullName" class="form-control" />
-            <span asp-validation-for="FullName" class="text-danger"></span>
-        </div>
-
-        <div class="form-field">
-            <label asp-for="Role" class="form-label">Role</label>
-            <select asp-for="Role" class="form-control">
-                <option value="1">Student</option>
-                <option value="2">Teacher</option>
-            </select>
-            <span asp-validation-for="Role" class="text-danger"></span>
-        </div>
-
-        <div class="form-field">
-            <label asp-for="CourseId" class="form-label">Assigned course</label>
-            <select asp-for="CourseId" asp-items="ViewBag.Courses" class="form-control">
-                <option value="">No course</option>
-            </select>
-            <span class="field-hint">Required for Teacher. Student accounts must use No course.</span>
-        </div>
-
-        <div class="form-field">
-            <label class="check-field">
-                <input asp-for="Status" type="checkbox" />
-                <span class="check-field__text">
-                    <strong>Active</strong>
-                    Active accounts can sign in.
-                </span>
-            </label>
-        </div>
-
-        <div class="form-actions">
-            <button type="submit" class="btn btn-success">Save</button>
-            <a asp-action="Index" class="btn btn-secondary">Back</a>
-        </div>
-    </form>
-</div>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

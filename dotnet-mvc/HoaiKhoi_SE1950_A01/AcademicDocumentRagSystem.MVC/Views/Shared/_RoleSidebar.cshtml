@@ -24,8 +24,11 @@
     <nav class="role-sidebar__nav">
         @foreach (var item in navItems)
         {
-            var isActive = string.Equals(currentController, item.Controller, StringComparison.OrdinalIgnoreCase)
-                && string.Equals(currentAction, item.Action, StringComparison.OrdinalIgnoreCase);
+            var sameController = string.Equals(currentController, item.Controller, StringComparison.OrdinalIgnoreCase);
+            var isIndexFamily = item.Action == "Index" && (currentAction == "Create" || currentAction == "Edit");
+            var isAllFamily = item.Action == "All" && currentAction == "Details";
+            var isActive = sameController
+                && (string.Equals(currentAction, item.Action, StringComparison.OrdinalIgnoreCase) || isIndexFamily || isAllFamily);
             <a asp-controller="@item.Controller" asp-action="@item.Action"
                class="role-sidebar__link @(isActive ? "active" : "")">
                 @{ ViewData["Icon"] = item.Icon; ViewData["IconSize"] = "16"; }

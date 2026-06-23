@@ -495,6 +495,26 @@ body.edurag-body {
   box-shadow: 0 0 0 0.2rem oklch(0.61 0.15 45 / 0.15);
 }
 
+/* SignalR live indicator (teacher courses) */
+.live-indicator {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--edurag-muted-bg);
+  color: var(--edurag-muted);
+  vertical-align: middle;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.live-indicator--active {
+  background: #f0fdf4;
+  color: #15803d;
+  box-shadow: 0 0 0 2px oklch(0.72 0.15 145 / 0.25);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 991.98px) {
   .chat-grid, .chat-grid--wide { grid-template-columns: 1fr; height: auto; min-height: 100vh; }

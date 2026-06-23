@@ -2,7 +2,8 @@
 @using AcademicDocumentRagSystem.Services.DTOs.Documents
 @model List<AcademicDocumentRagSystem.Services.DTOs.Documents.DocumentListItemDto>
 @{
-    ViewData["Title"] = "All Documents";
+    ViewData["Title"] = "Tài liệu";
+    Layout = "_LayoutDashboard";
     var courses = ViewBag.Courses as List<CourseDto> ?? new List<CourseDto>();
     var filter = ViewBag.Filter as DocumentFilterDto ?? new DocumentFilterDto();
     var totalDocuments = Model?.Count ?? 0;
@@ -12,178 +13,156 @@
     var indexStatuses = new[] { "Pending", "Processing", "Indexed", "Failed" };
 }
 
-<div class="page-header">
-    <div class="page-header__text">
-        <h1 class="page-title">All Documents</h1>
-        <p class="page-subtitle">Every uploaded document across all courses, with full uploader information.</p>
+<div class="p-4 p-md-5">
+    <div class="mb-4">
+        <h1 class="font-display fs-2 fw-bold mb-1">Tất cả tài liệu</h1>
+        <p class="text-muted-edurag mb-0">Danh sách tài liệu đã upload trên toàn hệ thống</p>
     </div>
-</div>
 
-<div class="index-summary-grid">
-    <div class="index-summary-card">
-        <span class="index-summary-card__label">Documents</span>
-        <strong>@totalDocuments</strong>
-        <span>Matching the current filter</span>
-    </div>
-    <div class="index-summary-card">
-        <span class="index-summary-card__label">Indexed documents</span>
-        <strong>@indexedDocuments</strong>
-        <span>Ready for grounded Q&amp;A</span>
-    </div>
-    <div class="index-summary-card">
-        <span class="index-summary-card__label">Embedded chunks</span>
-        <strong>@totalChunks</strong>
-        <span>Retrieval units stored by RAG</span>
-    </div>
-</div>
-
-<div class="form-card mt-3">
-    <form asp-action="All" method="get" class="row g-3 align-items-end">
+    <div class="row g-3 mb-4">
         <div class="col-md-4">
-            <label class="form-label" for="CourseId">Course</label>
-            <select class="form-select" id="CourseId" name="CourseId">
-                <option value="">All courses</option>
-                @foreach (var course in courses)
-                {
-                    if (filter.CourseId == course.CourseId)
-                    {
-                        <option value="@course.CourseId" selected>@course.Code — @course.Name</option>
-                    }
-                    else
-                    {
-                        <option value="@course.CourseId">@course.Code — @course.Name</option>
-                    }
-                }
-            </select>
+            <div class="edurag-card p-4">
+                <div class="small text-muted-edurag text-uppercase fw-semibold mb-1">Tài liệu</div>
+                <div class="font-display fs-3 fw-bold">@totalDocuments</div>
+                <div class="small text-muted-edurag">Theo bộ lọc hiện tại</div>
+            </div>
         </div>
-        <div class="col-md-3">
-            <label class="form-label" for="UploadStatus">Upload status</label>
-            <select class="form-select" id="UploadStatus" name="UploadStatus">
-                <option value="">Any</option>
-                @foreach (var status in uploadStatuses)
-                {
-                    if (filter.UploadStatus == status)
-                    {
-                        <option value="@status" selected>@status</option>
-                    }
-                    else
-                    {
-                        <option value="@status">@status</option>
-                    }
-                }
-            </select>
+        <div class="col-md-4">
+            <div class="edurag-card p-4">
+                <div class="small text-muted-edurag text-uppercase fw-semibold mb-1">Đã index</div>
+                <div class="font-display fs-3 fw-bold text-gradient-warm">@indexedDocuments</div>
+                <div class="small text-muted-edurag">Sẵn sàng cho Q&amp;A</div>
+            </div>
         </div>
-        <div class="col-md-3">
-            <label class="form-label" for="IndexStatus">Index status</label>
-            <select class="form-select" id="IndexStatus" name="IndexStatus">
-                <option value="">Any</option>
-                @foreach (var status in indexStatuses)
-                {
-                    if (filter.IndexStatus == status)
-                    {
-                        <option value="@status" selected>@status</option>
-                    }
-                    else
-                    {
-                        <option value="@status">@status</option>
-                    }
-                }
-            </select>
+        <div class="col-md-4">
+            <div class="edurag-card p-4">
+                <div class="small text-muted-edurag text-uppercase fw-semibold mb-1">Chunks</div>
+                <div class="font-display fs-3 fw-bold">@totalChunks</div>
+                <div class="small text-muted-edurag">Đơn vị retrieval RAG</div>
+            </div>
         </div>
-        <div class="col-md-2 d-flex gap-2">
-            <button type="submit" class="btn btn-primary">Filter</button>
-            <a asp-action="All" class="btn btn-outline-secondary">Reset</a>
-        </div>
-    </form>
-</div>
+    </div>
 
-@if (Model == null || !Model.Any())
-{
-    <div class="empty-state mt-3">
-        <h3>No documents found</h3>
-        <p>No uploaded documents match the selected filter.</p>
-    </div>
-}
-else
-{
-    <div class="table-wrap mt-3">
-        <div class="table-responsive-wrap">
-            <table class="table-modern">
-                <thead>
-                    <tr>
-                        <th>Document</th>
-                        <th>Course</th>
-                        <th>Chapter</th>
-                        <th>File</th>
-                        <th>Upload</th>
-                        <th>Index</th>
-                        <th>Chunks</th>
-                        <th>Uploaded by</th>
-                        <th>Email</th>
-                        <th>Uploaded at</th>
-                        <th>Indexed at</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var document in Model)
+    <div class="edurag-card p-3 mb-4">
+        <form asp-action="All" method="get" class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label class="form-label small fw-semibold" for="CourseId">Môn học</label>
+                <select class="form-select form-select-sm" id="CourseId" name="CourseId">
+                    <option value="">Tất cả môn</option>
+                    @foreach (var course in courses)
                     {
-                        <tr>
-                            <td>
-                                <div class="cell-strong">@document.Title</div>
-                                @if (!string.IsNullOrWhiteSpace(document.Description))
-                                {
-                                    <div class="cell-muted">@document.Description</div>
-                                }
-                            </td>
-                            <td>
-                                <span class="meta-badge">@document.CourseCode</span>
-                                @if (!string.IsNullOrWhiteSpace(document.CourseName))
-                                {
-                                    <div class="cell-muted">@document.CourseName</div>
-                                }
-                            </td>
-                            <td>
-                                @if (!string.IsNullOrWhiteSpace(document.Chapter))
-                                {
-                                    <span class="meta-badge meta-badge--accent">@document.Chapter</span>
-                                }
-                                else
-                                {
-                                    <span class="cell-muted">-</span>
-                                }
-                            </td>
-                            <td>
-                                <div class="cell-strong">@document.OriginalFileName</div>
-                                <div class="cell-muted">@document.FileType.ToUpperInvariant() · @(Math.Ceiling(document.FileSize / 1024.0)) KB</div>
-                            </td>
-                            <td><span class="status-badge status-badge--active">@document.UploadStatus</span></td>
-                            <td>
-                                @if (document.IndexStatus == "Indexed")
-                                {
-                                    <span class="status-badge status-badge--active">Indexed</span>
-                                }
-                                else if (document.IndexStatus == "Failed")
-                                {
-                                    <span class="status-badge status-badge--inactive">Failed</span>
-                                }
-                                else
-                                {
-                                    <span class="status-badge status-badge--inactive">@document.IndexStatus</span>
-                                }
-                            </td>
-                            <td class="cell-id">@document.TotalChunks</td>
-                            <td class="cell-muted">@(string.IsNullOrWhiteSpace(document.SubmittedByFullName) ? "-" : document.SubmittedByFullName)</td>
-                            <td class="cell-muted">@(string.IsNullOrWhiteSpace(document.SubmittedByEmail) ? "-" : document.SubmittedByEmail)</td>
-                            <td class="cell-muted">@document.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
-                            <td class="cell-muted">@(document.IndexedAt.HasValue ? document.IndexedAt.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm") : "-")</td>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@document.DocumentId" class="btn btn-secondary btn-sm">Details</a>
-                            </td>
-                        </tr>
+                        if (filter.CourseId == course.CourseId)
+                        {
+                            <option value="@course.CourseId" selected>@course.Code — @course.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@course.CourseId">@course.Code — @course.Name</option>
+                        }
                     }
-                </tbody>
-            </table>
-        </div>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small fw-semibold" for="UploadStatus">Upload</label>
+                <select class="form-select form-select-sm" id="UploadStatus" name="UploadStatus">
+                    <option value="">Bất kỳ</option>
+                    @foreach (var status in uploadStatuses)
+                    {
+                        if (filter.UploadStatus == status) { <option value="@status" selected>@status</option> }
+                        else { <option value="@status">@status</option> }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small fw-semibold" for="IndexStatus">Index</label>
+                <select class="form-select form-select-sm" id="IndexStatus" name="IndexStatus">
+                    <option value="">Bất kỳ</option>
+                    @foreach (var status in indexStatuses)
+                    {
+                        if (filter.IndexStatus == status) { <option value="@status" selected>@status</option> }
+                        else { <option value="@status">@status</option> }
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-sm btn-edurag-outline">Lọc</button>
+                <a asp-action="All" class="btn btn-sm btn-edurag-ghost">Đặt lại</a>
+            </div>
+        </form>
     </div>
-}
+
+    <div class="edurag-card overflow-hidden">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="text-center text-muted-edurag py-5">Không có tài liệu phù hợp bộ lọc.</div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table-edurag">
+                    <thead>
+                        <tr>
+                            <th>Tài liệu</th>
+                            <th>Môn</th>
+                            <th>Chương</th>
+                            <th>File</th>
+                            <th>Upload</th>
+                            <th>Index</th>
+                            <th>Chunks</th>
+                            <th>Người upload</th>
+                            <th>Thời gian</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var document in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="fw-semibold">@document.Title</div>
+                                    @if (!string.IsNullOrWhiteSpace(document.Description))
+                                    {
+                                        <div class="small text-muted-edurag">@document.Description</div>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="role-badge-teacher">@document.CourseCode</span>
+                                    @if (!string.IsNullOrWhiteSpace(document.CourseName))
+                                    {
+                                        <div class="small text-muted-edurag">@document.CourseName</div>
+                                    }
+                                </td>
+                                <td class="small">@(string.IsNullOrWhiteSpace(document.Chapter) ? "—" : document.Chapter)</td>
+                                <td>
+                                    <div class="small fw-semibold">@document.OriginalFileName</div>
+                                    <div class="small text-muted-edurag">@document.FileType.ToUpperInvariant() · @(Math.Ceiling(document.FileSize / 1024.0)) KB</div>
+                                </td>
+                                <td><span class="pill-filter">@document.UploadStatus</span></td>
+                                <td>
+                                    <span class="@(document.IndexStatus == "Indexed" ? "status-badge-indexed" : document.IndexStatus == "Failed" ? "status-badge-failed" : "pill-filter")">
+                                        @document.IndexStatus
+                                    </span>
+                                </td>
+                                <td class="small">@document.TotalChunks</td>
+                                <td>
+                                    <div class="small">@(string.IsNullOrWhiteSpace(document.SubmittedByFullName) ? "—" : document.SubmittedByFullName)</div>
+                                    <div class="small text-muted-edurag">@(string.IsNullOrWhiteSpace(document.SubmittedByEmail) ? "" : document.SubmittedByEmail)</div>
+                                </td>
+                                <td class="small text-muted-edurag">
+                                    <div>@document.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</div>
+                                    @if (document.IndexedAt.HasValue)
+                                    {
+                                        <div>Index: @document.IndexedAt.Value.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</div>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    <a asp-action="Details" asp-route-id="@document.DocumentId" class="btn btn-sm btn-edurag-ghost">Chi tiết</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

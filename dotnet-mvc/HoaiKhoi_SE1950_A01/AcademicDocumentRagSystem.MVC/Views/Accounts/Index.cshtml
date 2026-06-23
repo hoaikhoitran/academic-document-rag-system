@@ -1,121 +1,115 @@
 @model List<AcademicDocumentRagSystem.Services.DTOs.Accounts.AccountListItemDto>
 @{
-    ViewData["Title"] = "Accounts";
+    ViewData["Title"] = "Người dùng";
+    Layout = "_LayoutDashboard";
     string? searchTerm = ViewBag.SearchTerm as string;
     int? selectedRole = ViewBag.Role as int?;
     bool? selectedStatus = ViewBag.Status as bool?;
 }
 
-<div class="page-header">
-    <div class="page-header__text">
-        <h1 class="page-title">Account Management</h1>
-        <p class="page-subtitle">Create, update, filter, and deactivate student and teacher accounts.</p>
+<div class="p-4 p-md-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-start mb-4 gap-3">
+        <div>
+            <h1 class="font-display fs-2 fw-bold mb-1">Quản lý tài khoản</h1>
+            <p class="text-muted-edurag mb-0">Tạo, cập nhật, lọc và quản lý tài khoản sinh viên, giảng viên</p>
+        </div>
+        <a asp-action="Create" class="btn btn-edurag-warm btn-sm d-inline-flex align-items-center gap-1">
+            @{ ViewData["Icon"] = "plus"; ViewData["IconSize"] = "14"; }
+            @await Html.PartialAsync("_Icons")
+            Thêm tài khoản
+        </a>
     </div>
-    <div class="action-bar">
-        <a asp-action="Create" class="btn btn-primary">Create Account</a>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger mb-3">@TempData["Error"]</div>
+    }
+
+    <div class="edurag-card p-3 mb-4">
+        <form asp-action="Index" method="get" class="row g-3 align-items-end">
+            <div class="col-md-5">
+                <label class="form-label small fw-semibold" for="searchTerm">Tìm kiếm</label>
+                <input id="searchTerm" name="searchTerm" value="@searchTerm" class="form-control form-control-sm" placeholder="Email hoặc họ tên" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small fw-semibold" for="role">Vai trò</label>
+                <select id="role" name="role" class="form-select form-select-sm">
+                    <option value="">Tất cả</option>
+                    @if (selectedRole == 1) { <option value="1" selected>Student</option> } else { <option value="1">Student</option> }
+                    @if (selectedRole == 2) { <option value="2" selected>Teacher</option> } else { <option value="2">Teacher</option> }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label small fw-semibold" for="status">Trạng thái</label>
+                <select id="status" name="status" class="form-select form-select-sm">
+                    <option value="">Tất cả</option>
+                    @if (selectedStatus == true) { <option value="true" selected>Hoạt động</option> } else { <option value="true">Hoạt động</option> }
+                    @if (selectedStatus == false) { <option value="false" selected>Đã khoá</option> } else { <option value="false">Đã khoá</option> }
+                </select>
+            </div>
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-sm btn-edurag-outline">Lọc</button>
+                <a asp-action="Index" class="btn btn-sm btn-edurag-ghost">Đặt lại</a>
+            </div>
+        </form>
     </div>
-</div>
 
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger">@TempData["Error"]</div>
-}
-
-<div class="form-card mb-4">
-    <form asp-action="Index" method="get" class="row g-3 align-items-end">
-        <div class="col-md-5">
-            <label class="form-label" for="searchTerm">Search</label>
-            <input id="searchTerm" name="searchTerm" value="@searchTerm" class="form-control" placeholder="Email or full name" />
-        </div>
-
-        <div class="col-md-3">
-            <label class="form-label" for="role">Role</label>
-            <select id="role" name="role" class="form-control">
-                <option value="">All roles</option>
-                <option value="1" selected="@(selectedRole == 1 ? "selected" : null)">Student</option>
-                <option value="2" selected="@(selectedRole == 2 ? "selected" : null)">Teacher</option>
-            </select>
-        </div>
-
-        <div class="col-md-2">
-            <label class="form-label" for="status">Status</label>
-            <select id="status" name="status" class="form-control">
-                <option value="">All</option>
-                <option value="true" selected="@(selectedStatus == true ? "selected" : null)">Active</option>
-                <option value="false" selected="@(selectedStatus == false ? "selected" : null)">Inactive</option>
-            </select>
-        </div>
-
-        <div class="col-md-2 d-flex gap-2">
-            <button type="submit" class="btn btn-secondary">Filter</button>
-            <a asp-action="Index" class="btn btn-outline-secondary">Reset</a>
-        </div>
-    </form>
-</div>
-
-@if (Model == null || !Model.Any())
-{
-    <div class="empty-state">
-        <h3>No accounts found</h3>
-        <p>Create an account or adjust the search filters.</p>
-        <a asp-action="Create" class="btn btn-primary">Create Account</a>
-    </div>
-}
-else
-{
-    <div class="table-wrap">
-        <div class="table-responsive-wrap">
-            <table class="table-modern">
-                <thead>
-                    <tr>
-                        <th>Email</th>
-                        <th>Full name</th>
-                        <th>Role</th>
-                        <th>Course</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var account in Model)
-                    {
+    <div class="edurag-card overflow-hidden">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="text-center text-muted-edurag py-5">
+                <p class="mb-3">Không tìm thấy tài khoản.</p>
+                <a asp-action="Create" class="btn btn-sm btn-edurag-warm">Thêm tài khoản</a>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table-edurag">
+                    <thead>
                         <tr>
-                            <td class="cell-strong">@account.Email</td>
-                            <td>@account.FullName</td>
-                            <td><span class="meta-badge">@account.RoleName</span></td>
-                            <td>
-                                @if (!string.IsNullOrWhiteSpace(account.CourseCode))
-                                {
-                                    <span class="meta-badge meta-badge--accent">@account.CourseCode</span>
-                                }
-                                else
-                                {
-                                    <span class="cell-muted">-</span>
-                                }
-                            </td>
-                            <td>
-                                @if (account.Status)
-                                {
-                                    <span class="status-badge status-badge--active">Active</span>
-                                }
-                                else
-                                {
-                                    <span class="status-badge status-badge--inactive">Inactive</span>
-                                }
-                            </td>
-                            <td>
-                                <span class="table-actions">
-                                    <a asp-action="Edit" asp-route-id="@account.AccountId" class="btn btn-secondary btn-sm">Edit</a>
-                                    <form asp-action="Delete" asp-route-id="@account.AccountId" method="post" class="d-inline"
-                                          onsubmit="return confirm('Are you sure you want to delete this account?')">
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </form>
-                                </span>
-                            </td>
+                            <th>Người dùng</th>
+                            <th>Vai trò</th>
+                            <th>Môn học</th>
+                            <th>Trạng thái</th>
+                            <th></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        @foreach (var account in Model)
+                        {
+                            var badge = account.RoleName == "Student" ? "role-badge-student" : "role-badge-teacher";
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="avatar-initial" style="width:36px;height:36px;font-size:14px;">@(account.FullName.Length > 0 ? account.FullName[0] : '?')</span>
+                                        <div>
+                                            <div class="fw-semibold">@account.FullName</div>
+                                            <div class="small text-muted-edurag">@account.Email</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="@badge">@account.RoleName</span></td>
+                                <td class="small">@(string.IsNullOrWhiteSpace(account.CourseCode) ? "—" : account.CourseCode)</td>
+                                <td>
+                                    <span class="@(account.Status ? "status-badge-indexed" : "status-badge-failed")">
+                                        @(account.Status ? "Hoạt động" : "Đã khoá")
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <span class="d-inline-flex gap-1">
+                                        <a asp-action="Edit" asp-route-id="@account.AccountId" class="btn btn-sm btn-edurag-ghost">Sửa</a>
+                                        <form asp-action="Delete" asp-route-id="@account.AccountId" method="post" class="d-inline"
+                                              onsubmit="return confirm('Bạn có chắc muốn xóa tài khoản này?')">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Xóa</button>
+                                        </form>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
     </div>
-}
+</div>

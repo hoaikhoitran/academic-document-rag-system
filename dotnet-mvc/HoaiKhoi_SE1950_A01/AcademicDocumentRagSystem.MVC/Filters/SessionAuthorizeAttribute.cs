@@ -19,7 +19,7 @@ public class SessionAuthorizeAttribute : ActionFilterAttribute
 
         if (string.IsNullOrWhiteSpace(email))
         {
-            context.Result = new RedirectToActionResult("Login", "Auth", null);
+            context.Result = new RedirectToRouteResult("login", null);
             return;
         }
 

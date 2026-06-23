@@ -33,20 +33,22 @@ public class TeacherController : Controller
     {
         SetSidebar();
         var accountId = RequireAccountId();
-        if (accountId == null) return RedirectToAction("Login", "Auth");
+        if (accountId == null) return RedirectToRoute("login");
 
-        var courses = await _documentService.GetUploadCoursesForTeacherAsync(accountId.Value);
-        var documents = await _documentService.GetByTeacherAsync(accountId.Value);
-
-        var cards = courses.Select(c => new TeacherCourseCardViewModel
-        {
-            Course = c,
-            DocumentCount = documents.Count(d => d.CourseCode == c.Code),
-            IndexedCount = documents.Count(d => d.CourseCode == c.Code && d.IndexStatus == "Indexed"),
-            TotalChunks = documents.Where(d => d.CourseCode == c.Code).Sum(d => d.TotalChunks)
-        }).ToList();
-
+        var cards = await BuildCourseCardsAsync(accountId.Value);
         return View(cards);
+    }
+
+    /// <summary>
+    /// AJAX fragment for SignalR live refresh (course-realtime.js).
+    /// </summary>
+    public async Task<IActionResult> CoursesTable()
+    {
+        var accountId = RequireAccountId();
+        if (accountId == null) return Unauthorized();
+
+        var cards = await BuildCourseCardsAsync(accountId.Value);
+        return PartialView("_CourseCards", cards);
     }
 
     public async Task<IActionResult> Upload()
@@ -81,7 +83,7 @@ public class TeacherController : Controller
 
         if (accountId == null || string.IsNullOrWhiteSpace(email))
         {
-            return RedirectToAction("Login", "Auth");
+            return RedirectToRoute("login");
         }
 
         if (!ModelState.IsValid)
@@ -108,7 +110,7 @@ public class TeacherController : Controller
     {
         SetSidebar();
         var accountId = RequireAccountId();
-        if (accountId == null) return RedirectToAction("Login", "Auth");
+        if (accountId == null) return RedirectToRoute("login");
 
         var all = await _documentService.GetByTeacherAsync(accountId.Value);
         var docs = all.AsEnumerable();
@@ -146,7 +148,7 @@ public class TeacherController : Controller
     {
         SetSidebar();
         var accountId = RequireAccountId();
-        if (accountId == null) return RedirectToAction("Login", "Auth");
+        if (accountId == null) return RedirectToRoute("login");
 
         var documents = await _documentService.GetByTeacherAsync(accountId.Value);
         ViewBag.HighlightId = highlight;
@@ -159,7 +161,7 @@ public class TeacherController : Controller
     {
         SetSidebar();
         var accountId = RequireAccountId();
-        if (accountId == null) return RedirectToAction("Login", "Auth");
+        if (accountId == null) return RedirectToRoute("login");
 
         var workspace = await _chatService.GetWorkspaceAsync(accountId.Value, documentId, sessionId);
         workspace.SuccessMessage = TempData["Success"] as string;
@@ -172,7 +174,7 @@ public class TeacherController : Controller
     public async Task<IActionResult> Ask(AskQuestionDto dto)
     {
         var accountId = RequireAccountId();
-        if (accountId == null) return RedirectToAction("Login", "Auth");
+        if (accountId == null) return RedirectToRoute("login");
 
         if (!ModelState.IsValid)
         {
@@ -233,4 +235,18 @@ public class TeacherController : Controller
     }
 
     private int? RequireAccountId() => HttpContext.Session.GetInt32("AccountId");
+
+    private async Task<List<TeacherCourseCardViewModel>> BuildCourseCardsAsync(int accountId)
+    {
+        var courses = await _documentService.GetUploadCoursesForTeacherAsync(accountId);
+        var documents = await _documentService.GetByTeacherAsync(accountId);
+
+        return courses.Select(c => new TeacherCourseCardViewModel
+        {
+            Course = c,
+            DocumentCount = documents.Count(d => d.CourseCode == c.Code),
+            IndexedCount = documents.Count(d => d.CourseCode == c.Code && d.IndexStatus == "Indexed"),
+            TotalChunks = documents.Where(d => d.CourseCode == c.Code).Sum(d => d.TotalChunks)
+        }).ToList();
+    }
 }

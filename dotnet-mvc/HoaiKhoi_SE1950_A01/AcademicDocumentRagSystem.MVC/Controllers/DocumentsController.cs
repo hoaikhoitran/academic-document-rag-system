@@ -1,4 +1,5 @@
 using AcademicDocumentRagSystem.MVC.Filters;
+using AcademicDocumentRagSystem.MVC.ViewModels;
 using AcademicDocumentRagSystem.Services.DTOs.Documents;
 using AcademicDocumentRagSystem.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ public class DocumentsController : Controller
 
         if (accountId == null)
         {
-            return RedirectToAction("Login", "Auth");
+            return RedirectToRoute("login");
         }
 
         var documents = await _documentService.GetByTeacherAsync(accountId.Value);
@@ -31,6 +32,7 @@ public class DocumentsController : Controller
     [SessionAuthorize("Admin")]
     public async Task<IActionResult> All(DocumentFilterDto filter)
     {
+        DashboardLayoutHelper.SetAdminSidebar(this);
         var documents = await _documentService.GetAllForAdminAsync(filter);
 
         ViewBag.Courses = await _documentService.GetCourseFilterOptionsAsync();
@@ -71,7 +73,7 @@ public class DocumentsController : Controller
 
         if (accountId == null || string.IsNullOrWhiteSpace(email))
         {
-            return RedirectToAction("Login", "Auth");
+            return RedirectToRoute("login");
         }
 
         // CourseId comes from the form (dropdown) and is validated in the service

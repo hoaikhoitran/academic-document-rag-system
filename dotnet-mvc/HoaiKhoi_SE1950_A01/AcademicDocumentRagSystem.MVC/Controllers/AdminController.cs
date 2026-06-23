@@ -18,9 +18,7 @@ public class AdminController : Controller
 
     private void SetSidebar()
     {
-        ViewBag.SidebarAccent = "Admin";
-        ViewBag.SidebarRole = "Admin";
-        ViewBag.NavItems = SidebarNav.Admin;
+        DashboardLayoutHelper.SetAdminSidebar(this);
     }
 
     public IActionResult Dashboard()
@@ -43,12 +41,7 @@ public class AdminController : Controller
 
     public async Task<IActionResult> Users(string? searchTerm, int? role, bool? status)
     {
-        SetSidebar();
-        ViewBag.SearchTerm = searchTerm;
-        ViewBag.Role = role;
-        ViewBag.Status = status;
-        var users = await _accountService.GetAllAsync(searchTerm, role, status);
-        return View(users);
+        return RedirectToAction("Index", "Accounts", new { searchTerm, role, status });
     }
 
     public IActionResult Settings()

@@ -1,52 +1,52 @@
 @model AcademicDocumentRagSystem.Services.DTOs.Courses.UpdateCourseDto
 @{
-    ViewData["Title"] = "Edit Course";
+    ViewData["Title"] = "Sửa môn học";
+    Layout = "_LayoutDashboard";
 }
 
-<div class="page-header">
-    <div class="page-header__text">
-        <h1 class="page-title">Edit Course</h1>
-        <p class="page-subtitle">Update the course details. Changes apply across the system.</p>
+<div class="p-4 p-md-5">
+    <div class="mb-4">
+        <a asp-action="Index" class="btn btn-sm btn-edurag-ghost mb-3">← Quay lại</a>
+        <h1 class="font-display fs-2 fw-bold mb-1">Sửa môn học</h1>
+        <p class="text-muted-edurag mb-0">Cập nhật thông tin môn học.</p>
+    </div>
+
+    <div class="edurag-card p-4 p-md-5" style="max-width:680px;">
+        <form asp-action="Edit" method="post" class="vstack gap-3">
+            <input type="hidden" asp-for="CourseId" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div>
+                <label asp-for="Code" class="form-label fw-semibold">Mã môn</label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger small"></span>
+            </div>
+
+            <div>
+                <label asp-for="Name" class="form-label fw-semibold">Tên môn</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger small"></span>
+            </div>
+
+            <div>
+                <label asp-for="Description" class="form-label fw-semibold">Mô tả</label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger small"></span>
+            </div>
+
+            <div class="form-check">
+                <input asp-for="Status" type="checkbox" class="form-check-input" />
+                <label asp-for="Status" class="form-check-label">Môn học đang hoạt động</label>
+            </div>
+
+            <div class="d-flex gap-2 pt-2">
+                <button type="submit" class="btn btn-edurag-warm">Cập nhật</button>
+                <a asp-action="Index" class="btn btn-edurag-outline">Huỷ</a>
+            </div>
+        </form>
     </div>
 </div>
 
-<div class="form-card" style="max-width:680px;">
-    <form asp-action="Edit" method="post">
-        <input type="hidden" asp-for="CourseId" />
-
-        <div asp-validation-summary="All" class="text-danger"></div>
-
-        <div class="form-field">
-            <label asp-for="Code" class="form-label">Code</label>
-            <input asp-for="Code" class="form-control" />
-            <span asp-validation-for="Code" class="text-danger"></span>
-        </div>
-
-        <div class="form-field">
-            <label asp-for="Name" class="form-label">Name</label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-
-        <div class="form-field">
-            <label asp-for="Description" class="form-label">Description</label>
-            <textarea asp-for="Description" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-
-        <div class="form-field">
-            <label class="check-field">
-                <input asp-for="Status" type="checkbox" />
-                <span class="check-field__text">
-                    <strong>Active</strong>
-                    Active courses are available for document upload and chat.
-                </span>
-            </label>
-        </div>
-
-        <div class="form-actions">
-            <button type="submit" class="btn btn-success">Update</button>
-            <a asp-action="Index" class="btn btn-secondary">Back</a>
-        </div>
-    </form>
-</div>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

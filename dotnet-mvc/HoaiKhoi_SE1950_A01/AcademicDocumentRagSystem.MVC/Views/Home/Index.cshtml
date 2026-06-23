@@ -21,9 +21,9 @@
                 giáo trình, PDF mà giảng viên upload. Không bịa, không lan man.
             </p>
             <div class="d-flex flex-wrap gap-2 mb-5">
-                <a asp-controller="Student" asp-action="Chat" class="btn btn-lg btn-edurag-warm">Vào với vai Sinh viên @{ ViewData["Icon"] = "arrow-right"; ViewData["IconSize"] = "16"; } @await Html.PartialAsync("_Icons")</a>
-                <a asp-controller="Teacher" asp-action="Courses" class="btn btn-lg btn-outline-secondary">Vai Giảng viên</a>
-                <a asp-controller="Admin" asp-action="Dashboard" class="btn btn-lg btn-link">Vai Admin</a>
+                <a asp-route="login" class="btn btn-lg btn-edurag-warm">
+                    Đăng nhập @{ ViewData["Icon"] = "arrow-right"; ViewData["IconSize"] = "16"; } @await Html.PartialAsync("_Icons")
+                </a>
             </div>
             <div class="row g-4" style="max-width:36rem;">
                 @foreach (var s in new[] { ("4", "Embedding models so sánh"), ("50", "Câu hỏi ground-truth"), ("0.91", "RAGAS faithfulness (bge-m3)"), ("3", "Vai trò người dùng") })
@@ -106,22 +106,22 @@
         </div>
         <div class="row g-4">
             <div class="col-md-4">
-                <a asp-controller="Student" asp-action="Chat" class="edurag-card p-4 d-block text-decoration-none text-dark feature-card h-100">
+                <div class="edurag-card p-4 feature-card h-100">
                     <h3 class="font-display fw-bold fs-4">Sinh viên</h3>
-                    <p class="small text-muted-edurag">Chat với tài liệu, xem giáo trình, lưu hội thoại theo môn.</p>
-                </a>
+                    <p class="small text-muted-edurag mb-0">Chat với tài liệu, xem giáo trình, lưu hội thoại theo môn.</p>
+                </div>
             </div>
             <div class="col-md-4">
-                <a asp-controller="Teacher" asp-action="Courses" class="edurag-card p-4 d-block text-decoration-none text-dark feature-card h-100">
+                <div class="edurag-card p-4 feature-card h-100">
                     <h3 class="font-display fw-bold fs-4">Giảng viên</h3>
-                    <p class="small text-muted-edurag">Tạo môn, upload tài liệu, xem trạng thái index, kiểm thử chatbot.</p>
-                </a>
+                    <p class="small text-muted-edurag mb-0">Tạo môn, upload tài liệu, xem trạng thái index, kiểm thử chatbot.</p>
+                </div>
             </div>
             <div class="col-md-4">
-                <a asp-controller="Admin" asp-action="Dashboard" class="edurag-card p-4 d-block text-decoration-none text-dark feature-card h-100">
+                <div class="edurag-card p-4 feature-card h-100">
                     <h3 class="font-display fw-bold fs-4">Admin</h3>
-                    <p class="small text-muted-edurag">Dashboard tổng quan, benchmark RAG vs fine-tune.</p>
-                </a>
+                    <p class="small text-muted-edurag mb-0">Dashboard tổng quan, benchmark RAG vs fine-tune.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -153,9 +153,8 @@
 <section class="edurag-container pb-5">
     <div class="rounded-4 bg-gradient-hero text-white text-center p-5 shadow-glow">
         <h2 class="font-display display-5 fw-bold mb-3">Sẵn sàng học thông minh hơn?</h2>
-        <p class="opacity-85 mb-4 mx-auto" style="max-width:32rem;">Đăng nhập với vai trò của bạn và bắt đầu trải nghiệm trợ lý học tập RAG.</p>
-        <a asp-controller="Auth" asp-action="Login" class="btn btn-light btn-lg me-2">Đăng nhập</a>
-        <a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light btn-lg">Liên hệ</a>
+        <p class="opacity-85 mb-4 mx-auto" style="max-width:32rem;">Đăng nhập để bắt đầu trải nghiệm trợ lý học tập RAG.</p>
+        <a asp-route="login" class="btn btn-light btn-lg">Đăng nhập</a>
     </div>
 </section>
 

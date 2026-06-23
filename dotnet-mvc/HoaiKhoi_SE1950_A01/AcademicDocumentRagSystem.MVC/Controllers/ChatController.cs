@@ -55,7 +55,7 @@ public class ChatController : Controller
         var accountId = HttpContext.Session.GetInt32("AccountId");
         if (accountId == null)
         {
-            return RedirectToAction("Login", "Auth");
+            return RedirectToRoute("login");
         }
 
         try

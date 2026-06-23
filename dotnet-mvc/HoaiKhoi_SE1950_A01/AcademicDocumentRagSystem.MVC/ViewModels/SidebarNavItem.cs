@@ -32,7 +32,9 @@ public static class SidebarNav
         new() { Controller = "Admin", Action = "Dashboard", Label = "Dashboard", Icon = "dashboard" },
         new() { Controller = "Admin", Action = "Research", Label = "Module RBL", Icon = "beaker" },
         new() { Controller = "Admin", Action = "Benchmark", Label = "Benchmark RAGAS", Icon = "chart" },
-        new() { Controller = "Admin", Action = "Users", Label = "Người dùng", Icon = "users" },
+        new() { Controller = "Accounts", Action = "Index", Label = "Người dùng", Icon = "users" },
+        new() { Controller = "Courses", Action = "Index", Label = "Môn học", Icon = "book" },
+        new() { Controller = "Documents", Action = "All", Label = "Tài liệu", Icon = "file" },
         new() { Controller = "Admin", Action = "Settings", Label = "Cấu hình hệ thống", Icon = "settings" },
     };
 }

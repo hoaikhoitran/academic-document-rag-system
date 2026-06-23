@@ -1,7 +1,10 @@
-﻿using AcademicDocumentRagSystem.Services.DTOs.Courses;
+﻿using AcademicDocumentRagSystem.MVC.Filters;
+using AcademicDocumentRagSystem.MVC.Hubs;
+using AcademicDocumentRagSystem.MVC.ViewModels;
+using AcademicDocumentRagSystem.Services.DTOs.Courses;
 using AcademicDocumentRagSystem.Services.Interfaces;
-using AcademicDocumentRagSystem.MVC.Filters;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace AcademicDocumentRagSystem.MVC.Controllers;
 
@@ -9,20 +12,24 @@ namespace AcademicDocumentRagSystem.MVC.Controllers;
 public class CoursesController : Controller
 {
     private readonly ICourseService _courseService;
+    private readonly IHubContext<CourseHub> _courseHub;
 
-    public CoursesController(ICourseService courseService)
+    public CoursesController(ICourseService courseService, IHubContext<CourseHub> courseHub)
     {
         _courseService = courseService;
+        _courseHub = courseHub;
     }
 
     public async Task<IActionResult> Index()
     {
+        DashboardLayoutHelper.SetAdminSidebar(this);
         var courses = await _courseService.GetAllAsync();
         return View(courses);
     }
 
     public IActionResult Create()
     {
+        DashboardLayoutHelper.SetAdminSidebar(this);
         return View(new CreateCourseDto());
     }
 
@@ -31,23 +38,28 @@ public class CoursesController : Controller
     {
         if (!ModelState.IsValid)
         {
+            DashboardLayoutHelper.SetAdminSidebar(this);
             return View(dto);
         }
 
         try
         {
             await _courseService.CreateAsync(dto);
+            await _courseHub.Clients.All.SendAsync(CourseHub.CourseCreated, new { dto.Code, dto.Name });
+            await _courseHub.Clients.All.SendAsync(CourseHub.CoursesChanged);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
+            DashboardLayoutHelper.SetAdminSidebar(this);
             return View(dto);
         }
     }
 
     public async Task<IActionResult> Edit(int id)
     {
+        DashboardLayoutHelper.SetAdminSidebar(this);
         var course = await _courseService.GetByIdAsync(id);
 
         if (course == null)
@@ -72,24 +84,39 @@ public class CoursesController : Controller
     {
         if (!ModelState.IsValid)
         {
+            DashboardLayoutHelper.SetAdminSidebar(this);
             return View(dto);
         }
 
         try
         {
             await _courseService.UpdateAsync(dto);
+            await _courseHub.Clients.All.SendAsync(
+                CourseHub.CourseUpdated, new { dto.CourseId, dto.Code, dto.Name });
+            await _courseHub.Clients.All.SendAsync(CourseHub.CoursesChanged);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
+            DashboardLayoutHelper.SetAdminSidebar(this);
             return View(dto);
         }
     }
 
     public async Task<IActionResult> Delete(int id)
     {
-        await _courseService.DeleteAsync(id);
+        try
+        {
+            await _courseService.DeleteAsync(id);
+            await _courseHub.Clients.All.SendAsync(CourseHub.CourseDeleted, new { CourseId = id });
+            await _courseHub.Clients.All.SendAsync(CourseHub.CoursesChanged);
+        }
+        catch (Exception ex)
+        {
+            TempData["Error"] = ex.Message;
+        }
+
         return RedirectToAction(nameof(Index));
     }
 }

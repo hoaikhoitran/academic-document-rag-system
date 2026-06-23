@@ -29,7 +29,7 @@ public class StudentController : Controller
     public async Task<IActionResult> Chat(int? documentId, int? sessionId)
     {
         var accountId = RequireAccountId();
-        if (accountId == null) return RedirectToAction("Login", "Auth");
+        if (accountId == null) return RedirectToRoute("login");
 
         var workspace = await _chatService.GetWorkspaceAsync(accountId.Value, documentId, sessionId);
         workspace.SuccessMessage = TempData["Success"] as string;
@@ -44,7 +44,7 @@ public class StudentController : Controller
     public async Task<IActionResult> Ask(AskQuestionDto dto)
     {
         var accountId = RequireAccountId();
-        if (accountId == null) return RedirectToAction("Login", "Auth");
+        if (accountId == null) return RedirectToRoute("login");
 
         if (!ModelState.IsValid)
         {

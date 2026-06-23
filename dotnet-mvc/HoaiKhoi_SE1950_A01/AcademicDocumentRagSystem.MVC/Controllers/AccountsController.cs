@@ -1,4 +1,5 @@
 using AcademicDocumentRagSystem.MVC.Filters;
+using AcademicDocumentRagSystem.MVC.ViewModels;
 using AcademicDocumentRagSystem.Services.DTOs.Accounts;
 using AcademicDocumentRagSystem.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ public class AccountsController : Controller
 
     public async Task<IActionResult> Index(string? searchTerm, int? role, bool? status)
     {
+        DashboardLayoutHelper.SetAdminSidebar(this);
         ViewBag.SearchTerm = searchTerm;
         ViewBag.Role = role;
         ViewBag.Status = status;
@@ -30,6 +32,7 @@ public class AccountsController : Controller
 
     public async Task<IActionResult> Create()
     {
+        DashboardLayoutHelper.SetAdminSidebar(this);
         await LoadCoursesAsync();
         return View(new CreateAccountDto());
     }
@@ -40,6 +43,7 @@ public class AccountsController : Controller
     {
         if (!ModelState.IsValid)
         {
+            DashboardLayoutHelper.SetAdminSidebar(this);
             await LoadCoursesAsync();
             return View(dto);
         }
@@ -52,6 +56,7 @@ public class AccountsController : Controller
         catch (Exception ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
+            DashboardLayoutHelper.SetAdminSidebar(this);
             await LoadCoursesAsync();
             return View(dto);
         }
@@ -59,6 +64,7 @@ public class AccountsController : Controller
 
     public async Task<IActionResult> Edit(int id)
     {
+        DashboardLayoutHelper.SetAdminSidebar(this);
         var account = await _accountService.GetForEditAsync(id);
 
         if (account == null)
@@ -76,6 +82,7 @@ public class AccountsController : Controller
     {
         if (!ModelState.IsValid)
         {
+            DashboardLayoutHelper.SetAdminSidebar(this);
             await LoadCoursesAsync();
             return View(dto);
         }
@@ -88,6 +95,7 @@ public class AccountsController : Controller
         catch (Exception ex)
         {
             ModelState.AddModelError(string.Empty, ex.Message);
+            DashboardLayoutHelper.SetAdminSidebar(this);
             await LoadCoursesAsync();
             return View(dto);
         }
