@@ -73,7 +73,8 @@ namespace AcademicDocumentRagSystem.Services.Implementations
                 Role = account.Role,
                 RoleName = GetRoleName(account.Role),
                 CourseId = account.CourseId,
-                CourseCode = account.Course?.Code
+                CourseCode = account.Course?.Code,
+                CourseName = account.Course?.Name
             };
         }
 

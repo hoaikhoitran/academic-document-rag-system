@@ -14,6 +14,35 @@
     @{
         var email = Context.Session.GetString(SessionKeys.Email);
         var roleName = Context.Session.GetString(SessionKeys.RoleName);
+        var fullName = Context.Session.GetString(SessionKeys.FullName);
+
+        // For teachers the badge shows the assigned course instead of the bare
+        // "TEACHER" role. Preference order: "CODE - NAME" -> "CODE" -> "Teacher".
+        // Uses session data only — no extra database query in the layout.
+        var isTeacher = roleName == "Teacher";
+        var courseCode = isTeacher ? Context.Session.GetString(SessionKeys.CourseCode) : null;
+        var courseName = isTeacher ? Context.Session.GetString(SessionKeys.CourseName) : null;
+
+        string? teacherCourseLabel = null;
+        if (isTeacher)
+        {
+            if (!string.IsNullOrWhiteSpace(courseCode) && !string.IsNullOrWhiteSpace(courseName))
+            {
+                teacherCourseLabel = $"{courseCode} - {courseName}";
+            }
+            else if (!string.IsNullOrWhiteSpace(courseCode))
+            {
+                teacherCourseLabel = courseCode;
+            }
+            else if (!string.IsNullOrWhiteSpace(courseName))
+            {
+                teacherCourseLabel = courseName;
+            }
+            else
+            {
+                teacherCourseLabel = "Teacher";
+            }
+        }
     }
 
     <header>
@@ -95,8 +124,15 @@
                         {
                             <li class="nav-item">
                                 <span class="nav-user">
-                                    <span class="nav-user__name">@Context.Session.GetString(SessionKeys.FullName)</span>
-                                    <span class="nav-user__role">@roleName</span>
+                                    <span class="nav-user__name">@fullName</span>
+                                    @if (isTeacher)
+                                    {
+                                        <span class="nav-user__role nav-user__role--course" title="@teacherCourseLabel">@teacherCourseLabel</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="nav-user__role">@roleName</span>
+                                    }
                                 </span>
                             </li>
                             <li class="nav-item">
