@@ -116,7 +116,34 @@ Python FastAPI RAG Service
    v
 ChromaDB
 ```
-
+```text
+academic-document-rag-system/
+├── database/
+│   ├── AcademicRagManagement.sql
+│   └── migrations/
+│       └── 20260602_AddTeacherCourseAndSeedAccounts.sql
+├── dotnet-mvc/
+│   └── HoaiKhoi_SE1950_A01/
+│       ├── HoaiKhoi_SE1950_A01.sln
+│       ├── AcademicDocumentRagSystem.MVC/
+│       ├── AcademicDocumentRagSystem.Services/
+│       └── AcademicDocumentRagSystem.DataAccess/
+└── rag-service/
+    ├── app/
+    │   ├── api/
+    │   ├── core/
+    │   ├── models/
+    │   ├── repositories/
+    │   ├── services/
+    │   └── utils/
+    ├── tests/
+    ├── storage/
+    ├── chroma_db/
+    ├── requirements.txt
+    ├── Dockerfile
+    ├── docker-compose.yml
+    └── .env.example
+```
 ---
 
 ## Luồng xử lý tài liệu
