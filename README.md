@@ -263,8 +263,3 @@ server is not connected in this environment). Full set + capture notes in
   instead of crashing.
 - No license file is provided yet — add one before publishing publicly.
 
-## Contributors
-
-| Name                                             | Role                        |
-| ------------------------------------------------ | --------------------------- |
-| [@hoaikhoitran](https://github.com/hoaikhoitran) | Owner / author / Maintainer |
