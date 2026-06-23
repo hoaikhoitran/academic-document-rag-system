@@ -119,7 +119,6 @@ ChromaDB
 ```text
 ## Repo structure
 
-```text
 academic-document-rag-system/
 ├── database/
 ├── dotnet-mvc/
