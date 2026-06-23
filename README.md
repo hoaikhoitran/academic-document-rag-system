@@ -117,32 +117,150 @@ Python FastAPI RAG Service
 ChromaDB
 ```
 ```text
+## Repo structure
+
+```text
 academic-document-rag-system/
 ├── database/
-│   ├── AcademicRagManagement.sql
-│   └── migrations/
-│       └── 20260602_AddTeacherCourseAndSeedAccounts.sql
 ├── dotnet-mvc/
 │   └── HoaiKhoi_SE1950_A01/
 │       ├── HoaiKhoi_SE1950_A01.sln
 │       ├── AcademicDocumentRagSystem.MVC/
+│       │   ├── AcademicDocumentRagSystem.MVC.csproj
+│       │   ├── Program.cs
+│       │   ├── appsettings.json
+│       │   ├── appsettings.Development.json
+│       │   ├── Controllers/
+│       │   │   ├── AccountsController.cs
+│       │   │   ├── AuthController.cs
+│       │   │   ├── ChatController.cs
+│       │   │   ├── CoursesController.cs
+│       │   │   ├── DocumentsController.cs
+│       │   │   └── HomeController.cs
+│       │   ├── Filters/
+│       │   │   └── SessionAuthorizeAttribute.cs
+│       │   ├── Models/
+│       │   │   └── ErrorViewModel.cs
+│       │   ├── Properties/
+│       │   │   └── launchSettings.json
+│       │   ├── Views/
+│       │   │   ├── _ViewImports.cshtml
+│       │   │   ├── _ViewStart.cshtml
+│       │   │   ├── Accounts/
+│       │   │   │   ├── Create.cshtml
+│       │   │   │   ├── Edit.cshtml
+│       │   │   │   └── Index.cshtml
+│       │   │   ├── Auth/
+│       │   │   │   ├── AccessDenied.cshtml
+│       │   │   │   └── Login.cshtml
+│       │   │   ├── Chat/
+│       │   │   │   ├── Answer.cshtml
+│       │   │   │   ├── Ask.cshtml
+│       │   │   │   ├── Index.cshtml
+│       │   │   │   ├── Session.cshtml
+│       │   │   │   └── Sessions.cshtml
+│       │   │   ├── Courses/
+│       │   │   │   ├── Create.cshtml
+│       │   │   │   ├── Edit.cshtml
+│       │   │   │   └── Index.cshtml
+│       │   │   ├── Documents/
+│       │   │   │   ├── All.cshtml
+│       │   │   │   ├── Details.cshtml
+│       │   │   │   ├── Index.cshtml
+│       │   │   │   └── Upload.cshtml
+│       │   │   ├── Home/
+│       │   │   │   ├── Index.cshtml
+│       │   │   │   └── Privacy.cshtml
+│       │   │   └── Shared/
+│       │   │       ├── _Layout.cshtml
+│       │   │       ├── _Layout.cshtml.css
+│       │   │       ├── _ValidationScriptsPartial.cshtml
+│       │   │       └── Error.cshtml
+│       │   └── wwwroot/
 │       ├── AcademicDocumentRagSystem.Services/
+│       │   ├── AcademicDocumentRagSystem.Services.csproj
+│       │   ├── DependencyInjection.cs
+│       │   ├── Chunking/
+│       │   │   ├── ChunkPreviewGenerator.cs
+│       │   │   ├── ChunkPreviewItem.cs
+│       │   │   ├── ChunkPreviewResult.cs
+│       │   │   └── IChunkPreviewGenerator.cs
+│       │   ├── DTOs/
+│       │   │   ├── Accounts/
+│       │   │   │   ├── AccountListItemDto.cs
+│       │   │   │   ├── CreateAccountDto.cs
+│       │   │   │   └── UpdateAccountDto.cs
+│       │   │   ├── Auth/
+│       │   │   │   ├── LoginDto.cs
+│       │   │   │   └── LoginResultDto.cs
+│       │   │   ├── Chat/
+│       │   │   │   ├── AskQuestionDto.cs
+│       │   │   │   ├── ChatAnswerDto.cs
+│       │   │   │   ├── ChatMessageDto.cs
+│       │   │   │   ├── ChatSessionDetailsDto.cs
+│       │   │   │   ├── ChatSessionDto.cs
+│       │   │   │   └── IndexedDocumentDto.cs
+│       │   │   ├── Courses/
+│       │   │   │   ├── CourseDto.cs
+│       │   │   │   ├── CreateCourseDto.cs
+│       │   │   │   └── UpdateCourseDto.cs
+│       │   │   ├── Documents/
+│       │   │   │   ├── DocumentChunkDto.cs
+│       │   │   │   ├── DocumentDetailsDto.cs
+│       │   │   │   ├── DocumentFilterDto.cs
+│       │   │   │   ├── DocumentIndexLogDto.cs
+│       │   │   │   ├── DocumentListItemDto.cs
+│       │   │   │   ├── DocumentUploadDto.cs
+│       │   │   │   └── UploaderDisplay.cs
+│       │   │   └── Rag/
+│       │   │       ├── RagAskRequest.cs
+│       │   │       ├── RagAskResponse.cs
+│       │   │       ├── RagConversationTurnDto.cs
+│       │   │       ├── RagIndexRequest.cs
+│       │   │       ├── RagIndexResponse.cs
+│       │   │       └── RagSourceDto.cs
+│       │   ├── Implementations/
+│       │   │   ├── AccountService.cs
+│       │   │   ├── ChatService.cs
+│       │   │   ├── CourseService.cs
+│       │   │   └── DocumentService.cs
+│       │   ├── Interfaces/
+│       │   │   ├── IAccountService.cs
+│       │   │   ├── IChatService.cs
+│       │   │   ├── ICourseService.cs
+│       │   │   └── IDocumentService.cs
+│       │   ├── Maintenance/
+│       │   │   └── DocumentFileHashBackfiller.cs
+│       │   └── RagIntegration/
+│       │       ├── IRagClient.cs
+│       │       └── RagApiClient.cs
 │       └── AcademicDocumentRagSystem.DataAccess/
-└── rag-service/
-    ├── app/
-    │   ├── api/
-    │   ├── core/
-    │   ├── models/
-    │   ├── repositories/
-    │   ├── services/
-    │   └── utils/
-    ├── tests/
-    ├── storage/
-    ├── chroma_db/
-    ├── requirements.txt
-    ├── Dockerfile
-    ├── docker-compose.yml
-    └── .env.example
+│           ├── AcademicDocumentRagSystem.DataAccess.csproj
+│           ├── Models/
+│           │   ├── AcademicRagDbContext.cs
+│           │   ├── Account.cs
+│           │   ├── ChatMessage.cs
+│           │   ├── ChatSession.cs
+│           │   ├── Course.cs
+│           │   ├── Document.cs
+│           │   ├── DocumentChunk.cs
+│           │   └── DocumentIndexLog.cs
+│           └── Repositories/
+│               ├── Implementations/
+│               │   ├── AccountRepository.cs
+│               │   ├── ChatRepository.cs
+│               │   ├── CourseRepository.cs
+│               │   ├── DocumentChunkRepository.cs
+│               │   ├── DocumentIndexLogRepository.cs
+│               │   └── DocumentRepository.cs
+│               └── Interfaces/
+│                   ├── IAccountRepository.cs
+│                   ├── IChatRepository.cs
+│                   ├── ICourseRepository.cs
+│                   ├── IDocumentChunkRepository.cs
+│                   ├── IDocumentIndexLogRepository.cs
+│                   └── IDocumentRepository.cs
+
 ```
 ---
 
