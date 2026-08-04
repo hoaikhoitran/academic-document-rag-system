@@ -302,7 +302,5 @@ Trước khi chạy dự án, cần cài đặt:
 * Git
 ## Contributors
 * Trần Hoài Khôi
-* Chu Vương Mạnh
-* Huỳnh Trần Thế Thuật
 * Lâm Hoàng Nhân
 
